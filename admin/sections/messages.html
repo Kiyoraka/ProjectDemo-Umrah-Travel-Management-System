@@ -239,14 +239,14 @@
         });
     }
 
-    const itemsPerPage = 10;
+    const itemsPerPage = 7;
     let currentPage = 1;
     let filteredMessages = [...messagesData];
     let currentFilter = 'all';
 
     // Display messages function
     window.displayMessages = function(page) {
-        const tbody = document.querySelector('.messages-table tbody');
+        const tbody = document.getElementById('messagesTableBody');
         if (!tbody) return;
 
         const start = (page - 1) * itemsPerPage;
@@ -262,8 +262,8 @@
                 <td>${msg.time}</td>
                 <td><span class="priority-badge ${msg.priority.toLowerCase()}">${msg.priority}</span></td>
                 <td class="action-buttons">
-                    <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
-                    <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    <button class="btn-icon view" onclick="viewMessage(${msg.id})" title="View Message"><i class="fas fa-eye"></i></button>
+                    <button class="btn-icon delete" onclick="deleteMessage(${msg.id})" title="Delete"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
         `).join('');
@@ -278,7 +278,7 @@
         const end = Math.min(currentPage * itemsPerPage, filteredMessages.length);
 
         // Update info
-        const paginationInfo = document.querySelector('.messages-container .pagination-info');
+        const paginationInfo = document.getElementById('messagesPaginationInfo');
         if (paginationInfo) {
             paginationInfo.textContent = `Showing ${start} to ${end} of ${filteredMessages.length} messages`;
         }
@@ -376,6 +376,7 @@
             };
         }
 
+        console.log('Messages initialized with', messagesData.length, 'messages');
         displayMessages(1);
     }, 100);
 })();
