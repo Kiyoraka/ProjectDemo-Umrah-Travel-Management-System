@@ -758,3 +758,266 @@
     display: table-row;
 }
 </style>
+
+<!-- Booking Modals -->
+<!-- View Booking Details Modal -->
+<div class="modal" id="viewBookingModal">
+    <div class="modal-content glass-card">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>Booking Details</h2>
+            <p>Complete booking information</p>
+        </div>
+        <div class="booking-details">
+            <div class="detail-group">
+                <h4><i class="fas fa-hashtag"></i> Booking Information</h4>
+                <div class="detail-row">
+                    <span class="detail-label">Booking ID:</span>
+                    <span class="detail-value" id="viewBookingId">#BK001</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value"><span class="status-badge confirmed" id="viewStatus">Confirmed</span></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Booking Date:</span>
+                    <span class="detail-value" id="viewBookingDate">2025-09-15</span>
+                </div>
+            </div>
+
+            <div class="detail-group">
+                <h4><i class="fas fa-user"></i> Customer Information</h4>
+                <div class="detail-row">
+                    <span class="detail-label">Name:</span>
+                    <span class="detail-value" id="viewCustomerName">Ahmad Hassan</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value" id="viewCustomerEmail">ahmad@example.com</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone:</span>
+                    <span class="detail-value" id="viewCustomerPhone">+1 234-567-8901</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Passport:</span>
+                    <span class="detail-value" id="viewPassport">AB123456</span>
+                </div>
+            </div>
+
+            <div class="detail-group">
+                <h4><i class="fas fa-box"></i> Package Details</h4>
+                <div class="detail-row">
+                    <span class="detail-label">Package:</span>
+                    <span class="detail-value" id="viewPackageName">Premium Package</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Travel Date:</span>
+                    <span class="detail-value" id="viewTravelDate">2025-10-15</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Duration:</span>
+                    <span class="detail-value" id="viewDuration">21 Days</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Amount:</span>
+                    <span class="detail-value" id="viewAmount" style="font-weight: bold; color: var(--primary-green);">$2,500</span>
+                </div>
+            </div>
+
+            <div class="detail-group">
+                <h4><i class="fas fa-sticky-note"></i> Additional Notes</h4>
+                <div class="detail-row">
+                    <p id="viewNotes" style="margin: 0;">Customer requested halal meals and wheelchair accessibility.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn btn-primary" id="printBooking">
+                <i class="fas fa-print"></i> Print Details
+            </button>
+            <button type="button" class="btn btn-glass modal-cancel">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Booking Modal -->
+<div class="modal" id="editBookingModal">
+    <div class="modal-content glass-card">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>Edit Booking</h2>
+            <p>Update booking information</p>
+        </div>
+        <form id="editBookingForm">
+            <input type="hidden" name="bookingId" id="editBookingIdInput">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Customer Name</label>
+                    <input type="text" name="customerName" id="editCustomerName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="customerEmail" id="editEmail" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" name="customerPhone" id="editPhone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Passport Number</label>
+                    <input type="text" name="passport" id="editPassport" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Package</label>
+                    <select name="package" id="editPackage" class="form-control">
+                        <option value="Economy Package">Economy Package - $1,500</option>
+                        <option value="Premium Package">Premium Package - $2,500</option>
+                        <option value="VIP Package">VIP Package - $4,000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Travel Date</label>
+                    <input type="date" name="travelDate" id="editTravelDate" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Status</label>
+                <select name="status" id="editBookingStatus" class="form-control">
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Additional Notes</label>
+                <textarea name="notes" id="editNotes" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="modal-buttons">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Cancel Booking Modal -->
+<div class="modal" id="cancelBookingModal">
+    <div class="modal-content glass-card delete-modal">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>Cancel Booking</h2>
+        </div>
+        <div class="delete-confirmation">
+            <div class="delete-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <p class="delete-message">Are you sure you want to cancel booking <strong id="cancelBookingId">#BK001</strong>?</p>
+            <p class="delete-warning">This action can be reversed later if needed.</p>
+
+            <div class="form-group" style="margin-top: 20px; text-align: left;">
+                <label class="form-label">Cancellation Reason (Optional)</label>
+                <textarea id="cancellationReason" class="form-control" rows="3" placeholder="Enter reason for cancellation..."></textarea>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn btn-danger" id="confirmCancel">Cancel Booking</button>
+            <button type="button" class="btn btn-glass modal-cancel">Keep Booking</button>
+        </div>
+    </div>
+</div>
+
+<!-- Restore Booking Modal -->
+<div class="modal" id="restoreBookingModal">
+    <div class="modal-content glass-card" style="max-width: 400px;">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>Restore Booking</h2>
+        </div>
+        <div class="restore-confirmation" style="padding: 20px; text-align: center;">
+            <div class="restore-icon" style="font-size: 3rem; color: #4CAF50; margin-bottom: 20px;">
+                <i class="fas fa-undo"></i>
+            </div>
+            <p>Restore booking <strong id="restoreBookingId">#BK001</strong> to confirmed status?</p>
+            <p style="color: var(--text-light); font-size: 0.9rem;">The booking will be reactivated and marked as confirmed.</p>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn btn-primary" id="confirmRestore">Restore Booking</button>
+            <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Booking Modal Styles */
+.booking-details {
+    padding: 20px 30px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.detail-group {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.detail-group:last-child {
+    border-bottom: none;
+}
+
+.detail-group h4 {
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-group h4 i {
+    font-size: 0.9rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.detail-label {
+    color: var(--text-light);
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.detail-value {
+    color: var(--text-dark);
+    font-weight: 400;
+    text-align: right;
+    flex: 1;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

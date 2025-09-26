@@ -418,14 +418,16 @@
 
     // Setup booking action buttons
     function setupBookingActions() {
+        // Setup modal close handlers
+        setupBookingModalHandlers();
+
         // View buttons
         const viewBtns = Utils.$$('.btn-icon.view');
         viewBtns.forEach(btn => {
             Utils.addEvent(btn, 'click', function(e) {
                 e.preventDefault();
                 const row = this.closest('tr');
-                const bookingId = row.cells[0].textContent;
-                Toast.show(`Viewing booking ${bookingId}`, 'info');
+                openViewBookingModal(row);
             });
         });
 
@@ -435,8 +437,7 @@
             Utils.addEvent(btn, 'click', function(e) {
                 e.preventDefault();
                 const row = this.closest('tr');
-                const bookingId = row.cells[0].textContent;
-                Toast.show(`Editing booking ${bookingId}`, 'info');
+                openEditBookingModal(row);
             });
         });
 
@@ -446,26 +447,7 @@
             Utils.addEvent(btn, 'click', function(e) {
                 e.preventDefault();
                 const row = this.closest('tr');
-                const bookingId = row.cells[0].textContent;
-                if (confirm(`Cancel booking ${bookingId}?`)) {
-                    // Update status to cancelled
-                    const statusBadge = row.querySelector('.status-badge');
-                    statusBadge.className = 'status-badge cancelled';
-                    statusBadge.textContent = 'Cancelled';
-                    row.dataset.status = 'cancelled';
-
-                    // Replace action buttons
-                    const actions = row.querySelector('.action-buttons');
-                    actions.innerHTML = `
-                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
-                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
-                    `;
-
-                    Toast.show(`Booking ${bookingId} cancelled`, 'success');
-
-                    // Re-initialize buttons for this row
-                    setupBookingActions();
-                }
+                openCancelBookingModal(row);
             });
         });
 
@@ -475,28 +457,237 @@
             Utils.addEvent(btn, 'click', function(e) {
                 e.preventDefault();
                 const row = this.closest('tr');
-                const bookingId = row.cells[0].textContent;
-
-                // Update status to confirmed
-                const statusBadge = row.querySelector('.status-badge');
-                statusBadge.className = 'status-badge confirmed';
-                statusBadge.textContent = 'Confirmed';
-                row.dataset.status = 'confirmed';
-
-                // Replace action buttons
-                const actions = row.querySelector('.action-buttons');
-                actions.innerHTML = `
-                    <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
-                    <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
-                `;
-
-                Toast.show(`Booking ${bookingId} restored`, 'success');
-
-                // Re-initialize buttons for this row
-                setupBookingActions();
+                openRestoreBookingModal(row);
             });
         });
+    }
+
+    // Setup booking modal handlers
+    function setupBookingModalHandlers() {
+        // Modal close buttons
+        const closeButtons = Utils.$$('.modal-close, .modal-cancel');
+        closeButtons.forEach(btn => {
+            Utils.addEvent(btn, 'click', function() {
+                const modal = this.closest('.modal');
+                closeBookingModal(modal);
+            });
+        });
+
+        // Close modal when clicking outside
+        const modals = Utils.$$('.modal');
+        modals.forEach(modal => {
+            Utils.addEvent(modal, 'click', function(e) {
+                if (e.target === this) {
+                    closeBookingModal(this);
+                }
+            });
+        });
+
+        // Edit form submission
+        const editForm = Utils.$('#editBookingForm');
+        if (editForm) {
+            Utils.addEvent(editForm, 'submit', function(e) {
+                e.preventDefault();
+                handleEditBookingSubmit(this);
+            });
+        }
+
+        // Cancel booking confirmation
+        const confirmCancelBtn = Utils.$('#confirmCancel');
+        if (confirmCancelBtn) {
+            Utils.addEvent(confirmCancelBtn, 'click', function() {
+                handleCancelBooking();
+            });
+        }
+
+        // Restore booking confirmation
+        const confirmRestoreBtn = Utils.$('#confirmRestore');
+        if (confirmRestoreBtn) {
+            Utils.addEvent(confirmRestoreBtn, 'click', function() {
+                handleRestoreBooking();
+            });
+        }
+
+        // Print booking
+        const printBtn = Utils.$('#printBooking');
+        if (printBtn) {
+            Utils.addEvent(printBtn, 'click', function() {
+                window.print();
+                Toast.show('Opening print dialog...', 'info');
+            });
+        }
+    }
+
+    // Current booking row reference
+    let currentBookingRow = null;
+
+    // Open View Booking Modal
+    function openViewBookingModal(row) {
+        currentBookingRow = row;
+        const modal = Utils.$('#viewBookingModal');
+
+        // Populate modal with row data
+        Utils.$('#viewBookingId').textContent = row.cells[0].textContent;
+        Utils.$('#viewCustomerName').textContent = row.cells[1].textContent;
+        Utils.$('#viewPackageName').textContent = row.cells[2].textContent;
+        Utils.$('#viewTravelDate').textContent = row.cells[3].textContent;
+        Utils.$('#viewAmount').textContent = row.cells[4].textContent;
+
+        // Set status
+        const statusBadge = row.querySelector('.status-badge');
+        const viewStatus = Utils.$('#viewStatus');
+        viewStatus.textContent = statusBadge.textContent;
+        viewStatus.className = statusBadge.className;
+
+        // Mock additional data
+        Utils.$('#viewBookingDate').textContent = '2025-09-15';
+        Utils.$('#viewCustomerEmail').textContent = 'customer@example.com';
+        Utils.$('#viewCustomerPhone').textContent = '+1 234-567-8900';
+        Utils.$('#viewPassport').textContent = 'AB' + Math.floor(Math.random() * 1000000);
+        Utils.$('#viewDuration').textContent = '21 Days';
+        Utils.$('#viewNotes').textContent = 'Customer requested halal meals and wheelchair accessibility.';
+
+        openBookingModal(modal);
+    }
+
+    // Open Edit Booking Modal
+    function openEditBookingModal(row) {
+        currentBookingRow = row;
+        const modal = Utils.$('#editBookingModal');
+
+        // Populate form with row data
+        Utils.$('#editBookingIdInput').value = row.cells[0].textContent;
+        Utils.$('#editCustomerName').value = row.cells[1].textContent;
+        Utils.$('#editPackage').value = row.cells[2].textContent;
+        Utils.$('#editTravelDate').value = row.cells[3].textContent;
+
+        // Set status
+        const statusBadge = row.querySelector('.status-badge');
+        Utils.$('#editBookingStatus').value = row.dataset.status;
+
+        // Mock additional data
+        Utils.$('#editEmail').value = 'customer@example.com';
+        Utils.$('#editPhone').value = '+1 234-567-8900';
+        Utils.$('#editPassport').value = 'AB' + Math.floor(Math.random() * 1000000);
+        Utils.$('#editNotes').value = 'Customer requested halal meals.';
+
+        openBookingModal(modal);
+    }
+
+    // Open Cancel Booking Modal
+    function openCancelBookingModal(row) {
+        currentBookingRow = row;
+        const modal = Utils.$('#cancelBookingModal');
+        const bookingId = row.cells[0].textContent;
+
+        Utils.$('#cancelBookingId').textContent = bookingId;
+        Utils.$('#cancellationReason').value = '';
+
+        openBookingModal(modal);
+    }
+
+    // Open Restore Booking Modal
+    function openRestoreBookingModal(row) {
+        currentBookingRow = row;
+        const modal = Utils.$('#restoreBookingModal');
+        const bookingId = row.cells[0].textContent;
+
+        Utils.$('#restoreBookingId').textContent = bookingId;
+
+        openBookingModal(modal);
+    }
+
+    // Generic open modal function
+    function openBookingModal(modal) {
+        if (modal) {
+            Utils.addClass(modal, 'active');
+        }
+    }
+
+    // Generic close modal function
+    function closeBookingModal(modal) {
+        if (modal) {
+            Utils.removeClass(modal, 'active');
+            currentBookingRow = null;
+        }
+    }
+
+    // Handle Edit Booking Submit
+    function handleEditBookingSubmit(form) {
+        if (!Utils.validateForm(form)) {
+            return;
+        }
+
+        // Update row with new data
+        if (currentBookingRow) {
+            const formData = new FormData(form);
+            currentBookingRow.cells[1].textContent = formData.get('customerName');
+            currentBookingRow.cells[2].textContent = formData.get('package');
+            currentBookingRow.cells[3].textContent = formData.get('travelDate');
+
+            // Update status
+            const newStatus = formData.get('status');
+            const statusBadge = currentBookingRow.querySelector('.status-badge');
+            statusBadge.className = `status-badge ${newStatus}`;
+            statusBadge.textContent = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+            currentBookingRow.dataset.status = newStatus;
+        }
+
+        Toast.show('Booking updated successfully!', 'success');
+        closeBookingModal(form.closest('.modal'));
+    }
+
+    // Handle Cancel Booking
+    function handleCancelBooking() {
+        if (currentBookingRow) {
+            // Update status to cancelled
+            const statusBadge = currentBookingRow.querySelector('.status-badge');
+            statusBadge.className = 'status-badge cancelled';
+            statusBadge.textContent = 'Cancelled';
+            currentBookingRow.dataset.status = 'cancelled';
+
+            // Replace action buttons
+            const actions = currentBookingRow.querySelector('.action-buttons');
+            actions.innerHTML = `
+                <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+            `;
+
+            const bookingId = currentBookingRow.cells[0].textContent;
+            Toast.show(`Booking ${bookingId} cancelled successfully`, 'success');
+
+            // Re-initialize buttons
+            setupBookingActions();
+        }
+
+        closeBookingModal(Utils.$('#cancelBookingModal'));
+    }
+
+    // Handle Restore Booking
+    function handleRestoreBooking() {
+        if (currentBookingRow) {
+            // Update status to confirmed
+            const statusBadge = currentBookingRow.querySelector('.status-badge');
+            statusBadge.className = 'status-badge confirmed';
+            statusBadge.textContent = 'Confirmed';
+            currentBookingRow.dataset.status = 'confirmed';
+
+            // Replace action buttons
+            const actions = currentBookingRow.querySelector('.action-buttons');
+            actions.innerHTML = `
+                <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+            `;
+
+            const bookingId = currentBookingRow.cells[0].textContent;
+            Toast.show(`Booking ${bookingId} restored successfully`, 'success');
+
+            // Re-initialize buttons
+            setupBookingActions();
+        }
+
+        closeBookingModal(Utils.$('#restoreBookingModal'));
     }
 
     // User Management initialization
