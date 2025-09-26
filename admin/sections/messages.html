@@ -42,126 +42,142 @@
             <i class="fas fa-search"></i>
             <input type="text" class="search-input" placeholder="Search messages...">
         </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Messages</button>
+            <button class="filter-btn" data-filter="unread">Unread</button>
+            <button class="filter-btn" data-filter="important">Important</button>
+        </div>
     </div>
 
     <div class="table-wrapper">
         <table class="data-table messages-table">
             <thead>
                 <tr>
-                    <th width="5%">Status</th>
-                    <th width="20%">Subject</th>
-                    <th width="20%">From</th>
-                    <th width="35%">Message Preview</th>
+                    <th width="5%">No.</th>
+                    <th width="15%">Subject</th>
+                    <th width="15%">From</th>
+                    <th width="40%">Message</th>
                     <th width="10%">Time</th>
+                    <th width="10%">Priority</th>
                     <th width="10%">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="unread">
-                    <td><span class="status-indicator unread"><i class="fas fa-circle"></i></span></td>
+                    <td>1</td>
                     <td><strong>Package Inquiry</strong></td>
-                    <td>Ahmad Hassan<br><small>ahmad@example.com</small></td>
-                    <td class="message-preview-cell">I would like to know more about the VIP package. Can you provide details...</td>
-                    <td><span class="time-badge">2 hours ago</span></td>
+                    <td>Ahmad Hassan</td>
+                    <td class="message-text">I would like to know more about the VIP package. Can you provide details about...</td>
+                    <td>2 hours ago</td>
+                    <td><span class="priority-badge normal">Normal</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr class="unread">
-                    <td><span class="status-indicator unread"><i class="fas fa-circle"></i></span></td>
+                    <td>2</td>
                     <td><strong>Booking Assistance</strong></td>
-                    <td>Fatima Al-Rashid<br><small>fatima@example.com</small></td>
-                    <td class="message-preview-cell">I need help with my booking process. The payment gateway seems to be not...</td>
-                    <td><span class="time-badge">5 hours ago</span></td>
+                    <td>Fatima Al-Rashid</td>
+                    <td class="message-text">I need help with my booking process. The payment gateway seems to be not...</td>
+                    <td>5 hours ago</td>
+                    <td><span class="priority-badge high">High</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr class="unread">
-                    <td><span class="status-indicator unread"><i class="fas fa-circle"></i></span></td>
+                    <td>3</td>
                     <td><strong>Special Request</strong></td>
-                    <td>Mohammed Ibrahim<br><small>mohammed@example.com</small></td>
-                    <td class="message-preview-cell">I have special dietary requirements and would like to ensure these are...</td>
-                    <td><span class="time-badge">1 day ago</span></td>
+                    <td>Mohammed Ibrahim</td>
+                    <td class="message-text">I have special dietary requirements and would like to ensure these are...</td>
+                    <td>1 day ago</td>
+                    <td><span class="priority-badge normal">Normal</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
+                    <td>4</td>
                     <td>Thank You Note</td>
-                    <td>Aisha Malik<br><small>aisha@example.com</small></td>
-                    <td class="message-preview-cell">Thank you for the excellent service during our Umrah trip. Everything was...</td>
-                    <td><span class="time-badge">2 days ago</span></td>
+                    <td>Aisha Malik</td>
+                    <td class="message-text">Thank you for the excellent service during our Umrah trip. Everything was...</td>
+                    <td>2 days ago</td>
+                    <td><span class="priority-badge low">Low</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
+                    <td>5</td>
                     <td>Group Booking</td>
-                    <td>Omar Khaled<br><small>omar@example.com</small></td>
-                    <td class="message-preview-cell">We are a group of 15 people interested in booking the Premium package...</td>
-                    <td><span class="time-badge">3 days ago</span></td>
+                    <td>Omar Khaled</td>
+                    <td class="message-text">We are a group of 15 people interested in booking the Premium package for...</td>
+                    <td>3 days ago</td>
+                    <td><span class="priority-badge high">High</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
+                    <td>6</td>
                     <td>Document Request</td>
-                    <td>Zainab Ahmed<br><small>zainab@example.com</small></td>
-                    <td class="message-preview-cell">Could you please send me the list of required documents for the Umrah visa...</td>
-                    <td><span class="time-badge">4 days ago</span></td>
+                    <td>Zainab Ahmed</td>
+                    <td class="message-text">Could you please send me the list of required documents for the Umrah visa...</td>
+                    <td>4 days ago</td>
+                    <td><span class="priority-badge normal">Normal</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
-                    <td>Payment Confirmation</td>
-                    <td>Ali Hassan<br><small>ali@example.com</small></td>
-                    <td class="message-preview-cell">I have completed the payment for my booking. Please confirm the receipt...</td>
-                    <td><span class="time-badge">5 days ago</span></td>
+                    <td>7</td>
+                    <td>Payment Query</td>
+                    <td>Ali Hassan</td>
+                    <td class="message-text">I have a question regarding the payment installment options available...</td>
+                    <td>5 days ago</td>
+                    <td><span class="priority-badge normal">Normal</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
-                    <td>Visa Update</td>
-                    <td>Sara Abdullah<br><small>sara@example.com</small></td>
-                    <td class="message-preview-cell">My visa has been approved. When should I send the passport for stamping...</td>
-                    <td><span class="time-badge">6 days ago</span></td>
+                    <td>8</td>
+                    <td>Visa Status</td>
+                    <td>Sara Abdullah</td>
+                    <td class="message-text">Could you please update me on the status of my visa application? I submitted...</td>
+                    <td>6 days ago</td>
+                    <td><span class="priority-badge high">High</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
-                    <td>Itinerary Request</td>
-                    <td>Khalid Mahmoud<br><small>khalid@example.com</small></td>
-                    <td class="message-preview-cell">Can you please share the detailed itinerary for the Economy package...</td>
-                    <td><span class="time-badge">1 week ago</span></td>
+                    <td>9</td>
+                    <td>Hotel Preferences</td>
+                    <td>Khalid Mahmoud</td>
+                    <td class="message-text">I would like to request a room closer to Haram for my elderly parents...</td>
+                    <td>1 week ago</td>
+                    <td><span class="priority-badge normal">Normal</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="status-indicator read"><i class="fas fa-circle"></i></span></td>
+                    <td>10</td>
                     <td>Feedback</td>
-                    <td>Noor Fatima<br><small>noor@example.com</small></td>
-                    <td class="message-preview-cell">Just returned from Umrah. Wanted to share my feedback about the services...</td>
-                    <td><span class="time-badge">1 week ago</span></td>
+                    <td>Noor Fatima</td>
+                    <td class="message-text">Just wanted to share my wonderful experience with your services. The guides were...</td>
+                    <td>1 week ago</td>
+                    <td><span class="priority-badge low">Low</span></td>
                     <td class="action-buttons">
                         <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
                         <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
@@ -170,7 +186,200 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <div class="pagination-info">
+            Showing 1 to 10 of 156 messages
+        </div>
+        <div class="pagination">
+            <button class="btn btn-glass pagination-btn" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="page-numbers">
+                <button class="page-num active" data-page="1">1</button>
+                <button class="page-num" data-page="2">2</button>
+                <button class="page-num" data-page="3">3</button>
+                <button class="page-num" data-page="4">4</button>
+                <button class="page-num" data-page="5">5</button>
+            </div>
+            <button class="btn btn-glass pagination-btn">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
 </div>
+
+<script>
+(function() {
+    // Messages data
+    const messagesData = [
+        { id: 1, subject: 'Package Inquiry', from: 'Ahmad Hassan', message: 'I would like to know more about the VIP package. Can you provide details about...', time: '2 hours ago', priority: 'Normal', unread: true },
+        { id: 2, subject: 'Booking Assistance', from: 'Fatima Al-Rashid', message: 'I need help with my booking process. The payment gateway seems to be not...', time: '5 hours ago', priority: 'High', unread: true },
+        { id: 3, subject: 'Special Request', from: 'Mohammed Ibrahim', message: 'I have special dietary requirements and would like to ensure these are...', time: '1 day ago', priority: 'Normal', unread: true },
+        { id: 4, subject: 'Thank You Note', from: 'Aisha Malik', message: 'Thank you for the excellent service during our Umrah trip. Everything was...', time: '2 days ago', priority: 'Low', unread: false },
+        { id: 5, subject: 'Group Booking', from: 'Omar Khaled', message: 'We are a group of 15 people interested in booking the Premium package for...', time: '3 days ago', priority: 'High', unread: false },
+        { id: 6, subject: 'Document Request', from: 'Zainab Ahmed', message: 'Could you please send me the list of required documents for the Umrah visa...', time: '4 days ago', priority: 'Normal', unread: false },
+        { id: 7, subject: 'Payment Query', from: 'Ali Hassan', message: 'I have a question regarding the payment installment options available...', time: '5 days ago', priority: 'Normal', unread: false },
+        { id: 8, subject: 'Visa Status', from: 'Sara Abdullah', message: 'Could you please update me on the status of my visa application? I submitted...', time: '6 days ago', priority: 'High', unread: false },
+        { id: 9, subject: 'Hotel Preferences', from: 'Khalid Mahmoud', message: 'I would like to request a room closer to Haram for my elderly parents...', time: '1 week ago', priority: 'Normal', unread: false },
+        { id: 10, subject: 'Feedback', from: 'Noor Fatima', message: 'Just wanted to share my wonderful experience with your services. The guides were...', time: '1 week ago', priority: 'Low', unread: false }
+    ];
+
+    // Add more messages to reach 156 total
+    for (let i = 11; i <= 156; i++) {
+        messagesData.push({
+            id: i,
+            subject: ['Travel Insurance', 'Accommodation Query', 'Flight Schedule', 'Refund Request', 'Package Upgrade', 'Complaint', 'Testimonial'][Math.floor(Math.random() * 7)],
+            from: ['Ahmed Ali', 'Mariam Hassan', 'Yusuf Omar', 'Khadija Noor', 'Ibrahim Saeed', 'Layla Ahmed'][Math.floor(Math.random() * 6)],
+            message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor...',
+            time: `${Math.floor(Math.random() * 30) + 1} days ago`,
+            priority: ['High', 'Normal', 'Low'][Math.floor(Math.random() * 3)],
+            unread: false
+        });
+    }
+
+    const itemsPerPage = 10;
+    let currentPage = 1;
+    let filteredMessages = [...messagesData];
+    let currentFilter = 'all';
+
+    // Display messages function
+    window.displayMessages = function(page) {
+        const tbody = document.querySelector('.messages-table tbody');
+        if (!tbody) return;
+
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageMessages = filteredMessages.slice(start, end);
+
+        tbody.innerHTML = pageMessages.map((msg, index) => `
+            <tr${msg.unread ? ' class="unread"' : ''}>
+                <td>${start + index + 1}</td>
+                <td>${msg.unread ? `<strong>${msg.subject}</strong>` : msg.subject}</td>
+                <td>${msg.from}</td>
+                <td class="message-text">${msg.message}</td>
+                <td>${msg.time}</td>
+                <td><span class="priority-badge ${msg.priority.toLowerCase()}">${msg.priority}</span></td>
+                <td class="action-buttons">
+                    <button class="btn-icon view" title="View Message"><i class="fas fa-eye"></i></button>
+                    <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        `).join('');
+
+        updatePagination();
+    };
+
+    // Update pagination
+    function updatePagination() {
+        const totalPages = Math.ceil(filteredMessages.length / itemsPerPage);
+        const start = (currentPage - 1) * itemsPerPage + 1;
+        const end = Math.min(currentPage * itemsPerPage, filteredMessages.length);
+
+        // Update info
+        const paginationInfo = document.querySelector('.messages-container .pagination-info');
+        if (paginationInfo) {
+            paginationInfo.textContent = `Showing ${start} to ${end} of ${filteredMessages.length} messages`;
+        }
+
+        // Update page numbers
+        const pageNumbers = document.querySelector('.messages-container .page-numbers');
+        if (pageNumbers) {
+            pageNumbers.innerHTML = '';
+
+            for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+                const button = document.createElement('button');
+                button.className = `page-num ${i === currentPage ? 'active' : ''}`;
+                button.setAttribute('data-page', i);
+                button.textContent = i;
+                button.onclick = function() {
+                    currentPage = i;
+                    displayMessages(currentPage);
+                };
+                pageNumbers.appendChild(button);
+            }
+        }
+
+        // Update navigation buttons
+        const prevBtn = document.querySelector('.messages-container .pagination-btn:first-child');
+        const nextBtn = document.querySelector('.messages-container .pagination-btn:last-child');
+
+        if (prevBtn) {
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayMessages(currentPage);
+                }
+            };
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayMessages(currentPage);
+                }
+            };
+        }
+    }
+
+    // Filter messages
+    function filterMessages(filter) {
+        currentFilter = filter;
+        currentPage = 1;
+
+        switch(filter) {
+            case 'unread':
+                filteredMessages = messagesData.filter(m => m.unread);
+                break;
+            case 'important':
+                filteredMessages = messagesData.filter(m => m.priority === 'High');
+                break;
+            default:
+                filteredMessages = [...messagesData];
+        }
+
+        displayMessages(currentPage);
+    }
+
+    // Initialize on load
+    setTimeout(() => {
+        // Set up filter buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.onclick = function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterMessages(this.getAttribute('data-filter'));
+            };
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.messages-container .search-input');
+        if (searchInput) {
+            searchInput.oninput = function() {
+                const searchTerm = this.value.toLowerCase();
+                if (searchTerm === '') {
+                    filterMessages(currentFilter);
+                } else {
+                    filteredMessages = messagesData.filter(m =>
+                        m.subject.toLowerCase().includes(searchTerm) ||
+                        m.from.toLowerCase().includes(searchTerm) ||
+                        m.message.toLowerCase().includes(searchTerm)
+                    );
+                    currentPage = 1;
+                    displayMessages(currentPage);
+                }
+            };
+        }
+
+        displayMessages(1);
+    }, 100);
+})();
+</script>
 
 <style>
 /* Messages Specific Styles */
@@ -178,103 +387,366 @@
     margin-top: 30px;
 }
 
-.messages-table {
-    width: 100%;
-}
-
 .messages-table tbody tr.unread {
     background: rgba(76, 175, 80, 0.05);
     font-weight: 500;
 }
 
-.messages-table tbody tr.unread td {
-    color: var(--text-dark);
-}
-
 .status-indicator {
-    font-size: 0.6rem;
     display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 
 .status-indicator.unread {
-    color: var(--primary-green);
+    background: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
 
 .status-indicator.read {
-    color: #ccc;
+    background: #ccc;
 }
 
-.message-preview-cell {
-    max-width: 300px;
+.message-text {
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    color: var(--text-light);
+    max-width: 350px;
+    color: var(--text-dark);
+}
+
+.priority-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.priority-badge.high {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+}
+
+.priority-badge.normal {
+    background: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+}
+
+.priority-badge.low {
+    background: rgba(158, 158, 158, 0.2);
+    color: #757575;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 8px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
     font-size: 0.9rem;
 }
 
-.time-badge {
-    display: inline-block;
-    padding: 4px 8px;
+.filter-btn:hover {
     background: rgba(76, 175, 80, 0.1);
-    color: var(--primary-green);
-    border-radius: 12px;
-    font-size: 0.85rem;
-    white-space: nowrap;
+    border-color: var(--primary-green);
 }
 
-.messages-table td small {
-    color: var(--text-light);
-    font-size: 0.85rem;
+.filter-btn.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
 }
 
-/* Search box styles */
-.table-actions {
+/* Pagination Styles - Matching other sections */
+.pagination-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 0 20px;
+    margin-top: 20px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(76, 175, 80, 0.1);
 }
 
-.search-box {
-    position: relative;
-    width: 300px;
-}
-
-.search-box i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+.pagination-info {
     color: var(--text-light);
+    font-size: 0.95rem;
 }
 
-.search-input {
-    width: 100%;
-    padding: 10px 15px 10px 40px;
-    border: 1px solid rgba(76, 175, 80, 0.2);
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-dark);
-    font-size: 0.95rem;
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     transition: all 0.3s;
 }
 
-.search-input:focus {
-    outline: none;
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn:not(:disabled):hover {
+    background: var(--primary-green);
+    color: white;
     border-color: var(--primary-green);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
-/* Action button colors - Green for consistency */
-.messages-table .action-buttons .btn-icon {
-    color: #4CAF50;
+.page-numbers {
+    display: flex;
+    gap: 5px;
 }
 
-.messages-table .action-buttons .btn-icon:hover {
+.page-num {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-num:hover {
     background: rgba(76, 175, 80, 0.1);
-    color: #4CAF50;
+    border-color: var(--primary-green);
+}
+
+.page-num.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+    font-weight: 600;
 }
 </style>
+
+<script>
+(function() {
+    // Messages data with 70 hardcoded messages
+    const messagesData = [
+        { id: 1, subject: 'Package Inquiry', from: 'Ahmad Hassan', message: 'I would like to know more about the VIP package. Can you provide details about...', time: '2 hours ago', priority: 'normal', unread: true },
+        { id: 2, subject: 'Booking Assistance', from: 'Fatima Al-Rashid', message: 'I need help with my booking process. The payment gateway seems to be not...', time: '5 hours ago', priority: 'high', unread: true },
+        { id: 3, subject: 'Special Request', from: 'Mohammed Ibrahim', message: 'I have special dietary requirements and would like to ensure these are...', time: '1 day ago', priority: 'normal', unread: true },
+        { id: 4, subject: 'Thank You Note', from: 'Aisha Malik', message: 'Thank you for the excellent service during our Umrah trip. Everything was...', time: '2 days ago', priority: 'low', unread: false },
+        { id: 5, subject: 'Group Booking', from: 'Omar Khaled', message: 'We are a group of 15 people interested in booking the Premium package for...', time: '3 days ago', priority: 'high', unread: false },
+        { id: 6, subject: 'Document Request', from: 'Zainab Ahmed', message: 'Could you please send me the list of required documents for the Umrah visa...', time: '4 days ago', priority: 'normal', unread: false },
+        { id: 7, subject: 'Payment Query', from: 'Ali Hassan', message: 'I have a question regarding the payment installment options available...', time: '5 days ago', priority: 'normal', unread: false },
+        { id: 8, subject: 'Visa Status', from: 'Sara Abdullah', message: 'Could you please update me on the status of my visa application? I submitted...', time: '6 days ago', priority: 'high', unread: false },
+        { id: 9, subject: 'Hotel Preferences', from: 'Khalid Mahmoud', message: 'I would like to request a room closer to Haram for my elderly parents...', time: '1 week ago', priority: 'normal', unread: false },
+        { id: 10, subject: 'Feedback', from: 'Noor Fatima', message: 'Just wanted to share my wonderful experience with your services. The guides were...', time: '1 week ago', priority: 'low', unread: false },
+        { id: 11, subject: 'Urgent: Flight Change', from: 'Hassan Ali', message: 'My flight has been rescheduled. Need to update my booking details...', time: '1 week ago', priority: 'high', unread: false },
+        { id: 12, subject: 'Package Upgrade', from: 'Mariam Sheikh', message: 'I would like to upgrade from Economy to Premium package. Please advise...', time: '1 week ago', priority: 'normal', unread: false },
+        { id: 13, subject: 'Medical Assistance', from: 'Ibrahim Youssef', message: 'I require wheelchair assistance during the trip. Can this be arranged...', time: '2 weeks ago', priority: 'high', unread: false },
+        { id: 14, subject: 'Refund Request', from: 'Amina Hassan', message: 'Due to medical emergency, I need to cancel my booking and request refund...', time: '2 weeks ago', priority: 'high', unread: false },
+        { id: 15, subject: 'Transportation Query', from: 'Yusuf Ahmed', message: 'What are the transportation options from hotel to Haram? Daily schedule...', time: '2 weeks ago', priority: 'normal', unread: false },
+        { id: 16, subject: 'Family Package', from: 'Khalid Family', message: 'Looking for family package for 8 members including 2 children...', time: '2 weeks ago', priority: 'normal', unread: false },
+        { id: 17, subject: 'Ziyarat Tours', from: 'Fatima Omar', message: 'Are Ziyarat tours included in the Premium package? Which sites...', time: '2 weeks ago', priority: 'normal', unread: false },
+        { id: 18, subject: 'Complaint', from: 'Mohammed Rashid', message: 'Disappointed with the hotel service in my last trip. Room was not...', time: '3 weeks ago', priority: 'high', unread: false },
+        { id: 19, subject: 'Early Check-in', from: 'Sarah Khan', message: 'Our flight arrives early morning. Can we get early check-in at hotel...', time: '3 weeks ago', priority: 'normal', unread: false },
+        { id: 20, subject: 'Guide Request', from: 'Abdul Rahman', message: 'We need an English speaking guide for our group. Is this available...', time: '3 weeks ago', priority: 'normal', unread: false },
+        { id: 21, subject: 'Insurance Coverage', from: 'Yasmin Ali', message: 'What medical insurance coverage is included in the VIP package...', time: '3 weeks ago', priority: 'normal', unread: false },
+        { id: 22, subject: 'Baggage Allowance', from: 'Omar Sheikh', message: 'What is the baggage allowance for the Economy package flights...', time: '3 weeks ago', priority: 'normal', unread: false },
+        { id: 23, subject: 'Room Sharing', from: 'Brothers Group', message: 'We are 4 brothers. Can we get 2 twin sharing rooms next to each other...', time: '3 weeks ago', priority: 'normal', unread: false },
+        { id: 24, subject: 'Elderly Care', from: 'Aisha Rahman', message: 'My parents are 75+. What special arrangements can be made for elderly...', time: '4 weeks ago', priority: 'high', unread: false },
+        { id: 25, subject: 'Ramadan Package', from: 'Hamza Ali', message: 'Do you offer special packages for Ramadan Umrah? Dates and prices...', time: '4 weeks ago', priority: 'normal', unread: false },
+        { id: 26, subject: 'Testimonial', from: 'Happy Customer', message: 'Excellent service! Want to share my experience for your website...', time: '4 weeks ago', priority: 'low', unread: false },
+        { id: 27, subject: 'Halal Meals', from: 'Zara Ahmed', message: 'Are all meals provided certified Halal? Any vegetarian options...', time: '1 month ago', priority: 'normal', unread: false },
+        { id: 28, subject: 'Solo Travel', from: 'Bilal Khan', message: 'I am traveling alone. Can I share room with another solo traveler...', time: '1 month ago', priority: 'normal', unread: false },
+        { id: 29, subject: 'Vaccination Requirements', from: 'Dr. Hassan', message: 'What are the current vaccination requirements for Saudi visa...', time: '1 month ago', priority: 'high', unread: false },
+        { id: 30, subject: 'Currency Exchange', from: 'Tariq Mahmoud', message: 'Do you provide currency exchange service? What are the rates...', time: '1 month ago', priority: 'normal', unread: false },
+        { id: 31, subject: 'Prayer Mat Gift', from: 'Sister Maryam', message: 'I heard you provide complimentary prayer mats. Is this true for all packages...', time: '1 month ago', priority: 'low', unread: false },
+        { id: 32, subject: 'Ihram Purchase', from: 'New Pilgrim', message: 'Where can I purchase Ihram? Do you provide it or should I bring my own...', time: '1 month ago', priority: 'normal', unread: false },
+        { id: 33, subject: 'Weather Inquiry', from: 'Canadian Family', message: 'What is the weather like in March? What clothing should we pack...', time: '5 weeks ago', priority: 'normal', unread: false },
+        { id: 34, subject: 'Makkah Hotels', from: 'VIP Client', message: 'Which hotels do you use in Makkah for VIP package? Distance from Haram...', time: '5 weeks ago', priority: 'normal', unread: false },
+        { id: 35, subject: 'Group Discount', from: 'Community Leader', message: 'We have a group of 50 people. What group discounts are available...', time: '5 weeks ago', priority: 'high', unread: false },
+        { id: 36, subject: 'Laundry Service', from: 'Long Stay Guest', message: 'Is laundry service available at the hotels? What are the charges...', time: '5 weeks ago', priority: 'normal', unread: false },
+        { id: 37, subject: 'Wi-Fi Availability', from: 'Business Traveler', message: 'Is Wi-Fi available in hotels and during transportation...', time: '5 weeks ago', priority: 'normal', unread: false },
+        { id: 38, subject: 'Baby Stroller', from: 'Young Parents', message: 'Can we bring baby strollers to Haram? Any restrictions...', time: '6 weeks ago', priority: 'normal', unread: false },
+        { id: 39, subject: 'Photography Rules', from: 'First Timer', message: 'What are the photography rules in Makkah and Madinah...', time: '6 weeks ago', priority: 'normal', unread: false },
+        { id: 40, subject: 'Shopping Time', from: 'Ladies Group', message: 'Is shopping time allocated in the itinerary? Which markets...', time: '6 weeks ago', priority: 'low', unread: false },
+        { id: 41, subject: 'Madinah Stay', from: 'Ahmed Family', message: 'How many days in Madinah for Premium package? Hotel details...', time: '6 weeks ago', priority: 'normal', unread: false },
+        { id: 42, subject: 'Emergency Contact', from: 'Concerned Parent', message: 'What emergency support is available during the trip...', time: '6 weeks ago', priority: 'high', unread: false },
+        { id: 43, subject: 'Direct Flights', from: 'Time Conscious', message: 'Are all flights direct or do some have stopovers...', time: '7 weeks ago', priority: 'normal', unread: false },
+        { id: 44, subject: 'Umrah Training', from: 'New Muslim', message: 'Do you provide Umrah training sessions before departure...', time: '7 weeks ago', priority: 'normal', unread: false },
+        { id: 45, subject: 'Repeat Customer', from: 'Loyal Client', message: 'This is my 5th trip with you. Any loyalty discounts...', time: '7 weeks ago', priority: 'normal', unread: false },
+        { id: 46, subject: 'Tawaf Assistance', from: 'Elderly Pilgrim', message: 'Is wheelchair assistance available for Tawaf...', time: '7 weeks ago', priority: 'high', unread: false },
+        { id: 47, subject: 'Booking Confirmation', from: 'Imran Shah', message: 'I made a booking last week but haven\'t received confirmation...', time: '7 weeks ago', priority: 'high', unread: false },
+        { id: 48, subject: 'Itinerary Details', from: 'Planning Committee', message: 'Please send detailed day-wise itinerary for Premium package...', time: '8 weeks ago', priority: 'normal', unread: false },
+        { id: 49, subject: 'Child Discount', from: 'Family Man', message: 'What discounts are available for children under 12...', time: '8 weeks ago', priority: 'normal', unread: false },
+        { id: 50, subject: 'Departure Cities', from: 'Remote Location', message: 'Do you have departures from smaller cities or only major airports...', time: '8 weeks ago', priority: 'normal', unread: false },
+        { id: 51, subject: 'Translator Service', from: 'International Guest', message: 'We need Arabic translator for official work. Can you arrange...', time: '8 weeks ago', priority: 'normal', unread: false },
+        { id: 52, subject: 'Bus Quality', from: 'Comfort Seeker', message: 'What is the quality of buses used for transportation...', time: '8 weeks ago', priority: 'normal', unread: false },
+        { id: 53, subject: 'Food Allergies', from: 'Health Conscious', message: 'I have severe nut allergies. How can this be managed...', time: '2 months ago', priority: 'high', unread: false },
+        { id: 54, subject: 'Umrah Visa', from: 'First Timer', message: 'What documents are required for Umrah visa application...', time: '2 months ago', priority: 'normal', unread: false },
+        { id: 55, subject: 'Payment Plans', from: 'Budget Traveler', message: 'Do you offer installment payment plans? What are terms...', time: '2 months ago', priority: 'normal', unread: false },
+        { id: 56, subject: 'Female Guide', from: 'Sisters Group', message: 'We are an all-female group. Can we get a female guide...', time: '2 months ago', priority: 'normal', unread: false },
+        { id: 57, subject: 'Hajj Packages', from: 'Future Pilgrim', message: 'Do you also offer Hajj packages? When do bookings open...', time: '2 months ago', priority: 'normal', unread: false },
+        { id: 58, subject: 'Agent Partnership', from: 'Travel Agent', message: 'We want to partner as sub-agents. What are the terms...', time: '2 months ago', priority: 'high', unread: false },
+        { id: 59, subject: 'Charitable Work', from: 'NGO Representative', message: 'We want to sponsor Umrah for needy. Can you help arrange...', time: '2 months ago', priority: 'normal', unread: false },
+        { id: 60, subject: 'Media Coverage', from: 'Journalist', message: 'Writing article on Umrah services. Can we schedule interview...', time: '2 months ago', priority: 'normal', unread: false },
+        { id: 61, subject: 'Corporate Package', from: 'HR Manager', message: 'Looking for corporate Umrah packages for our employees...', time: '3 months ago', priority: 'high', unread: false },
+        { id: 62, subject: 'Student Discount', from: 'University Group', message: 'We are university students. Any special student rates...', time: '3 months ago', priority: 'normal', unread: false },
+        { id: 63, subject: 'Zamzam Water', from: 'Curious Pilgrim', message: 'How much Zamzam water can we bring back? Any restrictions...', time: '3 months ago', priority: 'normal', unread: false },
+        { id: 64, subject: 'Friday Prayer', from: 'Weekend Traveler', message: 'Will we get chance to pray Jummah in Masjid Nabawi...', time: '3 months ago', priority: 'normal', unread: false },
+        { id: 65, subject: 'Sacred Sites', from: 'History Enthusiast', message: 'Which historical Islamic sites are included in tours...', time: '3 months ago', priority: 'normal', unread: false },
+        { id: 66, subject: 'Sim Cards', from: 'Tech Savvy', message: 'Do you provide local SIM cards or should we arrange...', time: '3 months ago', priority: 'normal', unread: false },
+        { id: 67, subject: 'Lost Luggage', from: 'Previous Customer', message: 'What support is provided if luggage is lost by airline...', time: '3 months ago', priority: 'high', unread: false },
+        { id: 68, subject: 'Companion Search', from: 'Solo Sister', message: 'Looking for female companion to share room. Can you connect...', time: '3 months ago', priority: 'normal', unread: false },
+        { id: 69, subject: 'Certificate', from: 'Record Keeper', message: 'Do you provide Umrah completion certificates...', time: '3 months ago', priority: 'low', unread: false },
+        { id: 70, subject: 'Next Season', from: 'Advance Planner', message: 'When will next year\'s packages be announced? Want to book early...', time: '3 months ago', priority: 'normal', unread: false }
+    ];
+
+    const messagesPerPage = 7;
+    let currentPage = 1;
+
+    // Display messages function
+    window.displayMessages = function(page) {
+        const tbody = document.getElementById('messagesTableBody');
+        const start = (page - 1) * messagesPerPage;
+        const end = start + messagesPerPage;
+        const paginatedMessages = messagesData.slice(start, end);
+
+        tbody.innerHTML = '';
+
+        paginatedMessages.forEach((message, index) => {
+            const row = document.createElement('tr');
+            if (message.unread) {
+                row.classList.add('unread');
+            }
+
+            const globalIndex = start + index + 1;
+
+            row.innerHTML = `
+                <td>${globalIndex}</td>
+                <td>${message.unread ? '<strong>' + message.subject + '</strong>' : message.subject}</td>
+                <td>${message.from}</td>
+                <td class="message-text">${message.message}</td>
+                <td>${message.time}</td>
+                <td><span class="priority-badge ${message.priority}">${message.priority.charAt(0).toUpperCase() + message.priority.slice(1)}</span></td>
+                <td class="action-buttons">
+                    <button class="btn-icon view" onclick="viewMessage(${message.id})" title="View Message">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn-icon delete" onclick="deleteMessage(${message.id})" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        currentPage = page;
+        updatePagination();
+    };
+
+    // Update pagination controls
+    function updatePagination() {
+        const totalPages = Math.ceil(messagesData.length / messagesPerPage);
+        const paginationInfo = document.getElementById('messagesPaginationInfo');
+        const pagination = document.getElementById('messagesPagination');
+
+        const start = (currentPage - 1) * messagesPerPage + 1;
+        const end = Math.min(currentPage * messagesPerPage, messagesData.length);
+
+        paginationInfo.innerHTML = `Showing ${start} to ${end} of ${messagesData.length} messages`;
+
+        pagination.innerHTML = `
+            <button class="btn btn-glass pagination-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="page-numbers">
+                ${generatePageNumbers(totalPages)}
+            </div>
+            <button class="btn btn-glass pagination-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        `;
+    }
+
+    // Generate page number buttons
+    function generatePageNumbers(totalPages) {
+        let pageNumbers = '';
+        const maxVisible = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+        if (endPage - startPage < maxVisible - 1) {
+            startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers += `
+                <button class="page-num ${i === currentPage ? 'active' : ''}"
+                        onclick="changePage(${i})" data-page="${i}">
+                    ${i}
+                </button>
+            `;
+        }
+
+        return pageNumbers;
+    }
+
+    // Change page function
+    window.changePage = function(page) {
+        const totalPages = Math.ceil(messagesData.length / messagesPerPage);
+        if (page >= 1 && page <= totalPages) {
+            displayMessages(page);
+        }
+    };
+
+    // View message function
+    window.viewMessage = function(id) {
+        const message = messagesData.find(m => m.id === id);
+        if (message) {
+            alert(`Viewing message: ${message.subject}\n\nFrom: ${message.from}\n\nMessage: ${message.message}`);
+        }
+    };
+
+    // Delete message function
+    window.deleteMessage = function(id) {
+        if (confirm('Are you sure you want to delete this message?')) {
+            const index = messagesData.findIndex(m => m.id === id);
+            if (index > -1) {
+                messagesData.splice(index, 1);
+
+                // Recalculate current page if needed
+                const totalPages = Math.ceil(messagesData.length / messagesPerPage);
+                if (currentPage > totalPages) {
+                    currentPage = totalPages;
+                }
+
+                displayMessages(currentPage);
+            }
+        }
+    };
+
+    // Initialize messages display
+    function initializeMessagesDisplay() {
+        console.log('Initializing messages display...');
+        displayMessages(1);
+    }
+
+    // Initialize on load
+    initializeMessagesDisplay();
+})();
+</script>
