@@ -1,0 +1,196 @@
+<!-- User Management Section -->
+<div class="section-header">
+    <h3>User Management</h3>
+</div>
+
+<!-- User Stats -->
+<div class="stats-grid">
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-content">
+            <h4>Total Users</h4>
+            <p class="stat-value">1,234</p>
+        </div>
+    </div>
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+        <div class="stat-content">
+            <h4>Active Users</h4>
+            <p class="stat-value">1,180</p>
+        </div>
+    </div>
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+        <div class="stat-content">
+            <h4>New This Month</h4>
+            <p class="stat-value">42</p>
+        </div>
+    </div>
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-user-shield"></i></div>
+        <div class="stat-content">
+            <h4>Admin Users</h4>
+            <p class="stat-value">5</p>
+        </div>
+    </div>
+</div>
+
+<!-- Users Table -->
+<div class="users-container glass-card">
+    <div class="table-actions">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" placeholder="Search users...">
+        </div>
+        <button class="btn btn-primary">
+            <i class="fas fa-user-plus"></i> Add New User
+        </button>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table users-table">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#U001</td>
+                    <td>Ahmad Hassan</td>
+                    <td>ahmad@example.com</td>
+                    <td>+1 234-567-8901</td>
+                    <td><span class="role-badge customer">Customer</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U002</td>
+                    <td>Fatima Al-Rashid</td>
+                    <td>fatima@example.com</td>
+                    <td>+1 234-567-8902</td>
+                    <td><span class="role-badge customer">Customer</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U003</td>
+                    <td>Mohammed Ibrahim</td>
+                    <td>mohammed@example.com</td>
+                    <td>+1 234-567-8903</td>
+                    <td><span class="role-badge admin">Admin</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U004</td>
+                    <td>Aisha Malik</td>
+                    <td>aisha@example.com</td>
+                    <td>+1 234-567-8904</td>
+                    <td><span class="role-badge customer">Customer</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U005</td>
+                    <td>Omar Khaled</td>
+                    <td>omar@example.com</td>
+                    <td>+1 234-567-8905</td>
+                    <td><span class="role-badge customer">Customer</span></td>
+                    <td><span class="status-badge inactive">Inactive</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U006</td>
+                    <td>Zainab Ahmed</td>
+                    <td>zainab@example.com</td>
+                    <td>+1 234-567-8906</td>
+                    <td><span class="role-badge staff">Staff</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U007</td>
+                    <td>Ali Hassan</td>
+                    <td>ali@example.com</td>
+                    <td>+1 234-567-8907</td>
+                    <td><span class="role-badge customer">Customer</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#U008</td>
+                    <td>Sara Abdullah</td>
+                    <td>sara@example.com</td>
+                    <td>+1 234-567-8908</td>
+                    <td><span class="role-badge customer">Customer</span></td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+/* User Management Specific Styles */
+.role-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.role-badge.customer {
+    background: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+}
+
+.role-badge.admin {
+    background: rgba(156, 39, 176, 0.2);
+    color: #9C27B0;
+}
+
+.role-badge.staff {
+    background: rgba(255, 152, 0, 0.2);
+    color: #ff9800;
+}
+</style>

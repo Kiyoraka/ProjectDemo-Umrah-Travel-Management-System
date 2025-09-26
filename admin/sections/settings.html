@@ -1,0 +1,246 @@
+<!-- Settings Section -->
+<div class="section-header">
+    <h3>Settings</h3>
+</div>
+
+<div class="settings-grid">
+    <!-- General Settings -->
+    <div class="settings-card glass-card">
+        <h4><i class="fas fa-cog"></i> General Settings</h4>
+        <form class="settings-form">
+            <div class="form-group">
+                <label class="form-label">Site Name</label>
+                <input type="text" class="form-control" value="Umrah Travel Management System">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Site URL</label>
+                <input type="url" class="form-control" value="https://www.umrahtravel.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Admin Email</label>
+                <input type="email" class="form-control" value="admin@umrahtravel.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Time Zone</label>
+                <select class="form-control">
+                    <option>UTC+00:00</option>
+                    <option selected>UTC+03:00 (Saudi Arabia)</option>
+                    <option>UTC+05:00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Language</label>
+                <select class="form-control">
+                    <option selected>English</option>
+                    <option>Arabic</option>
+                    <option>Urdu</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+        </form>
+    </div>
+
+    <!-- Email Settings -->
+    <div class="settings-card glass-card">
+        <h4><i class="fas fa-envelope"></i> Email Settings</h4>
+        <form class="settings-form">
+            <div class="form-group">
+                <label class="form-label">SMTP Host</label>
+                <input type="text" class="form-control" value="smtp.gmail.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">SMTP Port</label>
+                <input type="number" class="form-control" value="587">
+            </div>
+            <div class="form-group">
+                <label class="form-label">SMTP Username</label>
+                <input type="text" class="form-control" value="noreply@umrahtravel.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">SMTP Password</label>
+                <input type="password" class="form-control" value="••••••••">
+            </div>
+            <div class="form-group">
+                <label class="form-label">
+                    <input type="checkbox" checked> Use TLS Encryption
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Email Settings</button>
+        </form>
+    </div>
+
+    <!-- Payment Settings -->
+    <div class="settings-card glass-card">
+        <h4><i class="fas fa-credit-card"></i> Payment Settings</h4>
+        <form class="settings-form">
+            <div class="form-group">
+                <label class="form-label">Payment Gateway</label>
+                <select class="form-control">
+                    <option>Stripe</option>
+                    <option selected>PayPal</option>
+                    <option>Square</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">API Key</label>
+                <input type="password" class="form-control" value="••••••••••••••••">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Secret Key</label>
+                <input type="password" class="form-control" value="••••••••••••••••">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Currency</label>
+                <select class="form-control">
+                    <option selected>USD</option>
+                    <option>SAR</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">
+                    <input type="checkbox" checked> Enable Test Mode
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Payment Settings</button>
+        </form>
+    </div>
+
+    <!-- Security Settings -->
+    <div class="settings-card glass-card">
+        <h4><i class="fas fa-shield-alt"></i> Security Settings</h4>
+        <form class="settings-form">
+            <div class="form-group">
+                <label class="form-label">Admin Password</label>
+                <input type="password" class="form-control" placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Confirm new password">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Session Timeout (minutes)</label>
+                <input type="number" class="form-control" value="30">
+            </div>
+            <div class="form-group">
+                <label class="form-label">
+                    <input type="checkbox" checked> Enable Two-Factor Authentication
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-label">
+                    <input type="checkbox" checked> Force SSL/HTTPS
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Security Settings</button>
+        </form>
+    </div>
+
+    <!-- Backup Settings -->
+    <div class="settings-card glass-card">
+        <h4><i class="fas fa-database"></i> Backup & Maintenance</h4>
+        <form class="settings-form">
+            <div class="form-group">
+                <label class="form-label">Automatic Backup</label>
+                <select class="form-control">
+                    <option>Disabled</option>
+                    <option>Daily</option>
+                    <option selected>Weekly</option>
+                    <option>Monthly</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Backup Time</label>
+                <input type="time" class="form-control" value="02:00">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Keep Backups For</label>
+                <select class="form-control">
+                    <option>7 days</option>
+                    <option selected>30 days</option>
+                    <option>90 days</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-glass">
+                    <i class="fas fa-download"></i> Download Backup Now
+                </button>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Backup Settings</button>
+        </form>
+    </div>
+
+    <!-- API Settings -->
+    <div class="settings-card glass-card">
+        <h4><i class="fas fa-plug"></i> API Settings</h4>
+        <form class="settings-form">
+            <div class="form-group">
+                <label class="form-label">API Endpoint</label>
+                <input type="url" class="form-control" value="https://api.umrahtravel.com/v1">
+            </div>
+            <div class="form-group">
+                <label class="form-label">API Key</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" class="form-control" value="sk_live_••••••••••••••••" readonly>
+                    <button type="button" class="btn btn-glass">Regenerate</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Rate Limit (requests/hour)</label>
+                <input type="number" class="form-control" value="1000">
+            </div>
+            <div class="form-group">
+                <label class="form-label">
+                    <input type="checkbox" checked> Enable API Access
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save API Settings</button>
+        </form>
+    </div>
+</div>
+
+<style>
+/* Settings Specific Styles */
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.settings-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.settings-card h4 {
+    color: var(--dark-green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-card h4 i {
+    color: var(--primary-green);
+}
+
+.settings-form .form-group {
+    margin-bottom: 20px;
+}
+
+.settings-form .form-control {
+    width: 100%;
+}
+
+.settings-form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
