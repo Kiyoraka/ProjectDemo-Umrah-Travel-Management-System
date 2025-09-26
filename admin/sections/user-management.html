@@ -42,9 +42,7 @@
             <i class="fas fa-search"></i>
             <input type="text" class="search-input" placeholder="Search users...">
         </div>
-        <button class="btn btn-primary">
-            <i class="fas fa-user-plus"></i> Add New User
-        </button>
+        <!-- Add New User button removed -->
     </div>
 
     <div class="table-wrapper">
@@ -55,8 +53,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Role</th>
-                    <th>Status</th>
+                    <th>Package</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -75,76 +72,76 @@
 <script>
 // User data - 70 users who have made bookings
 const userData = [
-    { id: 'U001', name: 'Ahmad Hassan', email: 'ahmad@example.com', phone: '+1 234-567-8901', role: 'Customer', status: 'Active' },
-    { id: 'U002', name: 'Fatima Al-Rashid', email: 'fatima@example.com', phone: '+1 234-567-8902', role: 'Customer', status: 'Active' },
-    { id: 'U003', name: 'Mohammed Ibrahim', email: 'mohammed@example.com', phone: '+1 234-567-8903', role: 'Admin', status: 'Active' },
-    { id: 'U004', name: 'Aisha Malik', email: 'aisha@example.com', phone: '+1 234-567-8904', role: 'Customer', status: 'Active' },
-    { id: 'U005', name: 'Omar Khaled', email: 'omar@example.com', phone: '+1 234-567-8905', role: 'Customer', status: 'Inactive' },
-    { id: 'U006', name: 'Zainab Ahmed', email: 'zainab@example.com', phone: '+1 234-567-8906', role: 'Staff', status: 'Active' },
-    { id: 'U007', name: 'Ali Hassan', email: 'ali@example.com', phone: '+1 234-567-8907', role: 'Customer', status: 'Active' },
-    { id: 'U008', name: 'Sara Abdullah', email: 'sara@example.com', phone: '+1 234-567-8908', role: 'Customer', status: 'Active' },
-    { id: 'U009', name: 'Khalid Mahmoud', email: 'khalid@example.com', phone: '+1 234-567-8909', role: 'Customer', status: 'Active' },
-    { id: 'U010', name: 'Noor Fatima', email: 'noor@example.com', phone: '+1 234-567-8910', role: 'Customer', status: 'Active' },
-    { id: 'U011', name: 'Yusuf Ali', email: 'yusuf@example.com', phone: '+1 234-567-8911', role: 'Customer', status: 'Active' },
-    { id: 'U012', name: 'Mariam Hassan', email: 'mariam@example.com', phone: '+1 234-567-8912', role: 'Customer', status: 'Inactive' },
-    { id: 'U013', name: 'Ibrahim Nasir', email: 'ibrahim@example.com', phone: '+1 234-567-8913', role: 'Admin', status: 'Active' },
-    { id: 'U014', name: 'Hafsa Rahman', email: 'hafsa@example.com', phone: '+1 234-567-8914', role: 'Customer', status: 'Active' },
-    { id: 'U015', name: 'Tariq Hussain', email: 'tariq@example.com', phone: '+1 234-567-8915', role: 'Customer', status: 'Active' },
-    { id: 'U016', name: 'Ruqayyah Begum', email: 'ruqayyah@example.com', phone: '+1 234-567-8916', role: 'Staff', status: 'Active' },
-    { id: 'U017', name: 'Hamza Sheikh', email: 'hamza@example.com', phone: '+1 234-567-8917', role: 'Customer', status: 'Active' },
-    { id: 'U018', name: 'Safiya Khan', email: 'safiya@example.com', phone: '+1 234-567-8918', role: 'Customer', status: 'Active' },
-    { id: 'U019', name: 'Bilal Ahmed', email: 'bilal@example.com', phone: '+1 234-567-8919', role: 'Customer', status: 'Active' },
-    { id: 'U020', name: 'Khadijah Ali', email: 'khadijah@example.com', phone: '+1 234-567-8920', role: 'Customer', status: 'Inactive' },
-    { id: 'U021', name: 'Zaid Mustafa', email: 'zaid@example.com', phone: '+1 234-567-8921', role: 'Customer', status: 'Active' },
-    { id: 'U022', name: 'Amina Siddiqui', email: 'amina@example.com', phone: '+1 234-567-8922', role: 'Customer', status: 'Active' },
-    { id: 'U023', name: 'Usman Qureshi', email: 'usman@example.com', phone: '+1 234-567-8923', role: 'Staff', status: 'Active' },
-    { id: 'U024', name: 'Sumayya Patel', email: 'sumayya@example.com', phone: '+1 234-567-8924', role: 'Customer', status: 'Active' },
-    { id: 'U025', name: 'Imran Abbas', email: 'imran@example.com', phone: '+1 234-567-8925', role: 'Customer', status: 'Active' },
-    { id: 'U026', name: 'Huda Malik', email: 'huda@example.com', phone: '+1 234-567-8926', role: 'Customer', status: 'Active' },
-    { id: 'U027', name: 'Salman Raza', email: 'salman@example.com', phone: '+1 234-567-8927', role: 'Customer', status: 'Inactive' },
-    { id: 'U028', name: 'Asma Begum', email: 'asma@example.com', phone: '+1 234-567-8928', role: 'Admin', status: 'Active' },
-    { id: 'U029', name: 'Farhan Shaikh', email: 'farhan@example.com', phone: '+1 234-567-8929', role: 'Customer', status: 'Active' },
-    { id: 'U030', name: 'Zahra Noor', email: 'zahra@example.com', phone: '+1 234-567-8930', role: 'Customer', status: 'Active' },
-    { id: 'U031', name: 'Adnan Iqbal', email: 'adnan@example.com', phone: '+1 234-567-8931', role: 'Customer', status: 'Active' },
-    { id: 'U032', name: 'Layla Hassan', email: 'layla@example.com', phone: '+1 234-567-8932', role: 'Customer', status: 'Active' },
-    { id: 'U033', name: 'Rizwan Ahmad', email: 'rizwan@example.com', phone: '+1 234-567-8933', role: 'Staff', status: 'Active' },
-    { id: 'U034', name: 'Maryam Fatima', email: 'maryam@example.com', phone: '+1 234-567-8934', role: 'Customer', status: 'Inactive' },
-    { id: 'U035', name: 'Faisal Khan', email: 'faisal@example.com', phone: '+1 234-567-8935', role: 'Customer', status: 'Active' },
-    { id: 'U036', name: 'Sana Sheikh', email: 'sana@example.com', phone: '+1 234-567-8936', role: 'Customer', status: 'Active' },
-    { id: 'U037', name: 'Arif Hussain', email: 'arif@example.com', phone: '+1 234-567-8937', role: 'Customer', status: 'Active' },
-    { id: 'U038', name: 'Bushra Ali', email: 'bushra@example.com', phone: '+1 234-567-8938', role: 'Customer', status: 'Active' },
-    { id: 'U039', name: 'Junaid Rahman', email: 'junaid@example.com', phone: '+1 234-567-8939', role: 'Customer', status: 'Active' },
-    { id: 'U040', name: 'Aaliya Mirza', email: 'aaliya@example.com', phone: '+1 234-567-8940', role: 'Customer', status: 'Active' },
-    { id: 'U041', name: 'Nasir Ahmed', email: 'nasir@example.com', phone: '+1 234-567-8941', role: 'Customer', status: 'Inactive' },
-    { id: 'U042', name: 'Rabia Qureshi', email: 'rabia@example.com', phone: '+1 234-567-8942', role: 'Customer', status: 'Active' },
-    { id: 'U043', name: 'Waheed Abbas', email: 'waheed@example.com', phone: '+1 234-567-8943', role: 'Staff', status: 'Active' },
-    { id: 'U044', name: 'Naima Patel', email: 'naima@example.com', phone: '+1 234-567-8944', role: 'Customer', status: 'Active' },
-    { id: 'U045', name: 'Shoaib Malik', email: 'shoaib@example.com', phone: '+1 234-567-8945', role: 'Customer', status: 'Active' },
-    { id: 'U046', name: 'Hina Begum', email: 'hina@example.com', phone: '+1 234-567-8946', role: 'Customer', status: 'Active' },
-    { id: 'U047', name: 'Danish Khan', email: 'danish@example.com', phone: '+1 234-567-8947', role: 'Customer', status: 'Active' },
-    { id: 'U048', name: 'Faiza Shaikh', email: 'faiza@example.com', phone: '+1 234-567-8948', role: 'Customer', status: 'Active' },
-    { id: 'U049', name: 'Aamir Siddiqui', email: 'aamir@example.com', phone: '+1 234-567-8949', role: 'Customer', status: 'Inactive' },
-    { id: 'U050', name: 'Shabana Noor', email: 'shabana@example.com', phone: '+1 234-567-8950', role: 'Customer', status: 'Active' },
-    { id: 'U051', name: 'Rehan Aziz', email: 'rehan@example.com', phone: '+1 234-567-8951', role: 'Customer', status: 'Active' },
-    { id: 'U052', name: 'Safia Yusuf', email: 'safia@example.com', phone: '+1 234-567-8952', role: 'Customer', status: 'Active' },
-    { id: 'U053', name: 'Kamran Ali', email: 'kamran@example.com', phone: '+1 234-567-8953', role: 'Staff', status: 'Active' },
-    { id: 'U054', name: 'Rubina Hassan', email: 'rubina@example.com', phone: '+1 234-567-8954', role: 'Customer', status: 'Active' },
-    { id: 'U055', name: 'Sajid Raza', email: 'sajid@example.com', phone: '+1 234-567-8955', role: 'Customer', status: 'Active' },
-    { id: 'U056', name: 'Mehreen Fatima', email: 'mehreen@example.com', phone: '+1 234-567-8956', role: 'Customer', status: 'Inactive' },
-    { id: 'U057', name: 'Asif Iqbal', email: 'asif@example.com', phone: '+1 234-567-8957', role: 'Customer', status: 'Active' },
-    { id: 'U058', name: 'Sabah Khan', email: 'sabah@example.com', phone: '+1 234-567-8958', role: 'Customer', status: 'Active' },
-    { id: 'U059', name: 'Nadeem Ahmad', email: 'nadeem@example.com', phone: '+1 234-567-8959', role: 'Customer', status: 'Active' },
-    { id: 'U060', name: 'Tahira Sheikh', email: 'tahira@example.com', phone: '+1 234-567-8960', role: 'Customer', status: 'Active' },
-    { id: 'U061', name: 'Irfan Malik', email: 'irfan@example.com', phone: '+1 234-567-8961', role: 'Customer', status: 'Active' },
-    { id: 'U062', name: 'Shazia Begum', email: 'shazia@example.com', phone: '+1 234-567-8962', role: 'Customer', status: 'Active' },
-    { id: 'U063', name: 'Naveed Qureshi', email: 'naveed@example.com', phone: '+1 234-567-8963', role: 'Customer', status: 'Active' },
-    { id: 'U064', name: 'Uzma Patel', email: 'uzma@example.com', phone: '+1 234-567-8964', role: 'Customer', status: 'Inactive' },
-    { id: 'U065', name: 'Kashif Abbas', email: 'kashif@example.com', phone: '+1 234-567-8965', role: 'Customer', status: 'Active' },
-    { id: 'U066', name: 'Salma Noor', email: 'salma@example.com', phone: '+1 234-567-8966', role: 'Customer', status: 'Active' },
-    { id: 'U067', name: 'Javed Hassan', email: 'javed@example.com', phone: '+1 234-567-8967', role: 'Customer', status: 'Active' },
-    { id: 'U068', name: 'Razia Mirza', email: 'razia@example.com', phone: '+1 234-567-8968', role: 'Customer', status: 'Active' },
-    { id: 'U069', name: 'Tanveer Ali', email: 'tanveer@example.com', phone: '+1 234-567-8969', role: 'Customer', status: 'Active' },
-    { id: 'U070', name: 'Fouzia Rahman', email: 'fouzia@example.com', phone: '+1 234-567-8970', role: 'Customer', status: 'Active' }
+    { id: 'U001', name: 'Ahmad Hassan', email: 'ahmad@example.com', phone: '+1 234-567-8901', package: 'Premium Umrah' },
+    { id: 'U002', name: 'Fatima Al-Rashid', email: 'fatima@example.com', phone: '+1 234-567-8902', package: 'Standard Umrah' },
+    { id: 'U003', name: 'Mohammed Ibrahim', email: 'mohammed@example.com', phone: '+1 234-567-8903', package: 'VIP Umrah' },
+    { id: 'U004', name: 'Aisha Malik', email: 'aisha@example.com', phone: '+1 234-567-8904', package: 'Premium Umrah' },
+    { id: 'U005', name: 'Omar Khaled', email: 'omar@example.com', phone: '+1 234-567-8905', package: 'Economy Umrah' },
+    { id: 'U006', name: 'Zainab Ahmed', email: 'zainab@example.com', phone: '+1 234-567-8906', package: 'Standard Umrah' },
+    { id: 'U007', name: 'Ali Hassan', email: 'ali@example.com', phone: '+1 234-567-8907', package: 'Premium Umrah' },
+    { id: 'U008', name: 'Sara Abdullah', email: 'sara@example.com', phone: '+1 234-567-8908', package: 'VIP Umrah' },
+    { id: 'U009', name: 'Khalid Mahmoud', email: 'khalid@example.com', phone: '+1 234-567-8909', package: 'Economy Umrah' },
+    { id: 'U010', name: 'Noor Fatima', email: 'noor@example.com', phone: '+1 234-567-8910', package: 'Standard Umrah' },
+    { id: 'U011', name: 'Yusuf Ali', email: 'yusuf@example.com', phone: '+1 234-567-8911', package: 'Premium Umrah' },
+    { id: 'U012', name: 'Mariam Hassan', email: 'mariam@example.com', phone: '+1 234-567-8912', package: 'VIP Umrah' },
+    { id: 'U013', name: 'Ibrahim Nasir', email: 'ibrahim@example.com', phone: '+1 234-567-8913', package: 'Premium Umrah' },
+    { id: 'U014', name: 'Hafsa Rahman', email: 'hafsa@example.com', phone: '+1 234-567-8914', package: 'Standard Umrah' },
+    { id: 'U015', name: 'Tariq Hussain', email: 'tariq@example.com', phone: '+1 234-567-8915', package: 'Economy Umrah' },
+    { id: 'U016', name: 'Ruqayyah Begum', email: 'ruqayyah@example.com', phone: '+1 234-567-8916', package: 'Premium Umrah' },
+    { id: 'U017', name: 'Hamza Sheikh', email: 'hamza@example.com', phone: '+1 234-567-8917', package: 'Standard Umrah' },
+    { id: 'U018', name: 'Safiya Khan', email: 'safiya@example.com', phone: '+1 234-567-8918', package: 'VIP Umrah' },
+    { id: 'U019', name: 'Bilal Ahmed', email: 'bilal@example.com', phone: '+1 234-567-8919', package: 'Premium Umrah' },
+    { id: 'U020', name: 'Khadijah Ali', email: 'khadijah@example.com', phone: '+1 234-567-8920', package: 'Economy Umrah' },
+    { id: 'U021', name: 'Zaid Mustafa', email: 'zaid@example.com', phone: '+1 234-567-8921', package: 'Standard Umrah' },
+    { id: 'U022', name: 'Amina Siddiqui', email: 'amina@example.com', phone: '+1 234-567-8922', package: 'Premium Umrah' },
+    { id: 'U023', name: 'Usman Qureshi', email: 'usman@example.com', phone: '+1 234-567-8923', package: 'VIP Umrah' },
+    { id: 'U024', name: 'Sumayya Patel', email: 'sumayya@example.com', phone: '+1 234-567-8924', package: 'Economy Umrah' },
+    { id: 'U025', name: 'Imran Abbas', email: 'imran@example.com', phone: '+1 234-567-8925', package: 'Standard Umrah' },
+    { id: 'U026', name: 'Huda Malik', email: 'huda@example.com', phone: '+1 234-567-8926', package: 'Premium Umrah' },
+    { id: 'U027', name: 'Salman Raza', email: 'salman@example.com', phone: '+1 234-567-8927', package: 'VIP Umrah' },
+    { id: 'U028', name: 'Asma Begum', email: 'asma@example.com', phone: '+1 234-567-8928', package: 'Premium Umrah' },
+    { id: 'U029', name: 'Farhan Shaikh', email: 'farhan@example.com', phone: '+1 234-567-8929', package: 'Standard Umrah' },
+    { id: 'U030', name: 'Zahra Noor', email: 'zahra@example.com', phone: '+1 234-567-8930', package: 'Economy Umrah' },
+    { id: 'U031', name: 'Adnan Iqbal', email: 'adnan@example.com', phone: '+1 234-567-8931', package: 'Premium Umrah' },
+    { id: 'U032', name: 'Layla Hassan', email: 'layla@example.com', phone: '+1 234-567-8932', package: 'Standard Umrah' },
+    { id: 'U033', name: 'Rizwan Ahmad', email: 'rizwan@example.com', phone: '+1 234-567-8933', package: 'VIP Umrah' },
+    { id: 'U034', name: 'Maryam Fatima', email: 'maryam@example.com', phone: '+1 234-567-8934', package: 'Economy Umrah' },
+    { id: 'U035', name: 'Faisal Khan', email: 'faisal@example.com', phone: '+1 234-567-8935', package: 'Premium Umrah' },
+    { id: 'U036', name: 'Sana Sheikh', email: 'sana@example.com', phone: '+1 234-567-8936', package: 'Standard Umrah' },
+    { id: 'U037', name: 'Arif Hussain', email: 'arif@example.com', phone: '+1 234-567-8937', package: 'VIP Umrah' },
+    { id: 'U038', name: 'Bushra Ali', email: 'bushra@example.com', phone: '+1 234-567-8938', package: 'Economy Umrah' },
+    { id: 'U039', name: 'Junaid Rahman', email: 'junaid@example.com', phone: '+1 234-567-8939', package: 'Premium Umrah' },
+    { id: 'U040', name: 'Aaliya Mirza', email: 'aaliya@example.com', phone: '+1 234-567-8940', package: 'Standard Umrah' },
+    { id: 'U041', name: 'Nasir Ahmed', email: 'nasir@example.com', phone: '+1 234-567-8941', package: 'VIP Umrah' },
+    { id: 'U042', name: 'Rabia Qureshi', email: 'rabia@example.com', phone: '+1 234-567-8942', package: 'Economy Umrah' },
+    { id: 'U043', name: 'Waheed Abbas', email: 'waheed@example.com', phone: '+1 234-567-8943', package: 'Premium Umrah' },
+    { id: 'U044', name: 'Naima Patel', email: 'naima@example.com', phone: '+1 234-567-8944', package: 'Standard Umrah' },
+    { id: 'U045', name: 'Shoaib Malik', email: 'shoaib@example.com', phone: '+1 234-567-8945', package: 'VIP Umrah' },
+    { id: 'U046', name: 'Hina Begum', email: 'hina@example.com', phone: '+1 234-567-8946', package: 'Economy Umrah' },
+    { id: 'U047', name: 'Danish Khan', email: 'danish@example.com', phone: '+1 234-567-8947', package: 'Premium Umrah' },
+    { id: 'U048', name: 'Faiza Shaikh', email: 'faiza@example.com', phone: '+1 234-567-8948', package: 'Standard Umrah' },
+    { id: 'U049', name: 'Aamir Siddiqui', email: 'aamir@example.com', phone: '+1 234-567-8949', package: 'VIP Umrah' },
+    { id: 'U050', name: 'Shabana Noor', email: 'shabana@example.com', phone: '+1 234-567-8950', package: 'Economy Umrah' },
+    { id: 'U051', name: 'Rehan Aziz', email: 'rehan@example.com', phone: '+1 234-567-8951', package: 'Premium Umrah' },
+    { id: 'U052', name: 'Safia Yusuf', email: 'safia@example.com', phone: '+1 234-567-8952', package: 'Standard Umrah' },
+    { id: 'U053', name: 'Kamran Ali', email: 'kamran@example.com', phone: '+1 234-567-8953', package: 'VIP Umrah' },
+    { id: 'U054', name: 'Rubina Hassan', email: 'rubina@example.com', phone: '+1 234-567-8954', package: 'Economy Umrah' },
+    { id: 'U055', name: 'Sajid Raza', email: 'sajid@example.com', phone: '+1 234-567-8955', package: 'Premium Umrah' },
+    { id: 'U056', name: 'Mehreen Fatima', email: 'mehreen@example.com', phone: '+1 234-567-8956', package: 'Standard Umrah' },
+    { id: 'U057', name: 'Asif Iqbal', email: 'asif@example.com', phone: '+1 234-567-8957', package: 'VIP Umrah' },
+    { id: 'U058', name: 'Sabah Khan', email: 'sabah@example.com', phone: '+1 234-567-8958', package: 'Economy Umrah' },
+    { id: 'U059', name: 'Nadeem Ahmad', email: 'nadeem@example.com', phone: '+1 234-567-8959', package: 'Premium Umrah' },
+    { id: 'U060', name: 'Tahira Sheikh', email: 'tahira@example.com', phone: '+1 234-567-8960', package: 'Standard Umrah' },
+    { id: 'U061', name: 'Irfan Malik', email: 'irfan@example.com', phone: '+1 234-567-8961', package: 'VIP Umrah' },
+    { id: 'U062', name: 'Shazia Begum', email: 'shazia@example.com', phone: '+1 234-567-8962', package: 'Economy Umrah' },
+    { id: 'U063', name: 'Naveed Qureshi', email: 'naveed@example.com', phone: '+1 234-567-8963', package: 'Premium Umrah' },
+    { id: 'U064', name: 'Uzma Patel', email: 'uzma@example.com', phone: '+1 234-567-8964', package: 'Standard Umrah' },
+    { id: 'U065', name: 'Kashif Abbas', email: 'kashif@example.com', phone: '+1 234-567-8965', package: 'VIP Umrah' },
+    { id: 'U066', name: 'Salma Noor', email: 'salma@example.com', phone: '+1 234-567-8966', package: 'Economy Umrah' },
+    { id: 'U067', name: 'Javed Hassan', email: 'javed@example.com', phone: '+1 234-567-8967', package: 'Premium Umrah' },
+    { id: 'U068', name: 'Razia Mirza', email: 'razia@example.com', phone: '+1 234-567-8968', package: 'Standard Umrah' },
+    { id: 'U069', name: 'Tanveer Ali', email: 'tanveer@example.com', phone: '+1 234-567-8969', package: 'VIP Umrah' },
+    { id: 'U070', name: 'Fouzia Rahman', email: 'fouzia@example.com', phone: '+1 234-567-8970', package: 'Economy Umrah' }
 ];
 
 const usersPerPage = 7;
@@ -159,17 +156,13 @@ function displayUsers(page) {
     tbody.innerHTML = '';
 
     paginatedUsers.forEach(user => {
-        const roleClass = user.role.toLowerCase().replace(' ', '-');
-        const statusClass = user.status.toLowerCase();
-
         const row = `
             <tr>
                 <td>#${user.id}</td>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
                 <td>${user.phone}</td>
-                <td><span class="role-badge ${roleClass}">${user.role}</span></td>
-                <td><span class="status-badge ${statusClass}">${user.status}</span></td>
+                <td><span class="package-badge">${user.package}</span></td>
                 <td class="action-buttons">
                     <button class="btn-icon view" title="View" onclick="viewUser('${user.id}')"><i class="fas fa-eye"></i></button>
                     <button class="btn-icon edit" title="Edit" onclick="editUser('${user.id}')"><i class="fas fa-edit"></i></button>
@@ -265,25 +258,13 @@ if (typeof window.initializeUserManagement === 'undefined') {
 
 <style>
 /* User Management Specific Styles */
-.role-badge {
+.package-badge {
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
-}
-
-.role-badge.customer {
-    background: rgba(33, 150, 243, 0.2);
-    color: #2196F3;
-}
-
-.role-badge.admin {
-    background: rgba(156, 39, 176, 0.2);
-    color: #9C27B0;
-}
-
-.role-badge.staff {
-    background: rgba(255, 152, 0, 0.2);
-    color: #ff9800;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.2));
+    color: #4CAF50;
+    display: inline-block;
 }
 </style>
