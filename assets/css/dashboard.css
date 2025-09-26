@@ -456,6 +456,49 @@
     min-width: 120px;
 }
 
+/* Package Management Container */
+.package-management-container {
+    margin-top: 20px;
+}
+
+/* Table Actions Bar */
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    background: var(--white);
+}
+
 /* Data Table */
 .table-wrapper {
     overflow-x: auto;
@@ -511,13 +554,73 @@
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
-    padding: 5px;
-    margin: 0 5px;
-    transition: transform 0.2s;
+    padding: 8px;
+    margin: 0 3px;
+    transition: all 0.2s;
+    border-radius: 5px;
 }
 
 .btn-icon:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.btn-icon.edit {
+    color: var(--primary-green);
+}
+
+.btn-icon.delete {
+    color: #f44336;
+}
+
+.btn-icon.save {
+    color: #4CAF50;
+}
+
+.btn-icon.cancel {
+    color: #ff9800;
+}
+
+/* Table Input Styles */
+.table-input {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.table-select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background: var(--white);
+}
+
+/* Add Package Row */
+.add-package-row {
+    background: rgba(76, 175, 80, 0.05);
+}
+
+.add-package-row td {
+    padding: 10px 15px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    white-space: nowrap;
+}
+
+/* Packages Table Specific */
+.packages-table tbody tr {
+    transition: all 0.2s;
+}
+
+.packages-table tbody tr:hover {
+    background: rgba(76, 175, 80, 0.05);
+    transform: translateX(2px);
 }
 
 /* Messages */

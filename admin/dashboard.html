@@ -269,58 +269,83 @@ Sunday: Closed</textarea>
                     <div class="section-header">
                         <h3>Package Management</h3>
                     </div>
-                    <div style="text-align: right; margin-bottom: 20px;">
-                        <button class="btn btn-primary">Add New Package</button>
-                    </div>
 
-                    <div class="table-wrapper glass-card">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Package Name</th>
-                                    <th>Price</th>
-                                    <th>Duration</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Economy Package</td>
-                                    <td>$2,500</td>
-                                    <td>15 Days</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Premium Package</td>
-                                    <td>$4,500</td>
-                                    <td>21 Days</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>VIP Package</td>
-                                    <td>$7,000</td>
-                                    <td>30 Days</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="package-management-container">
+                        <div class="table-actions">
+                            <button class="btn btn-primary" id="addPackageBtn">
+                                <i class="fas fa-plus"></i> Add New Package
+                            </button>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search packages..." class="search-input">
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper glass-card">
+                            <table class="data-table packages-table">
+                                <thead>
+                                    <tr>
+                                        <th width="60">ID</th>
+                                        <th>Package Name</th>
+                                        <th width="120">Price</th>
+                                        <th width="100">Duration</th>
+                                        <th width="100">Status</th>
+                                        <th width="120">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="packagesTableBody">
+                                    <tr class="add-package-row" style="display: none;">
+                                        <td>#</td>
+                                        <td><input type="text" class="table-input" placeholder="Package Name"></td>
+                                        <td><input type="text" class="table-input" placeholder="Price"></td>
+                                        <td><input type="text" class="table-input" placeholder="Duration"></td>
+                                        <td>
+                                            <select class="table-select">
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button class="btn-icon save" title="Save"><i class="fas fa-check"></i></button>
+                                            <button class="btn-icon cancel" title="Cancel"><i class="fas fa-times"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><span class="editable-text">Economy Package</span></td>
+                                        <td><span class="editable-text">$2,500</span></td>
+                                        <td><span class="editable-text">15 Days</span></td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><span class="editable-text">Premium Package</span></td>
+                                        <td><span class="editable-text">$4,500</span></td>
+                                        <td><span class="editable-text">21 Days</span></td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><span class="editable-text">VIP Package</span></td>
+                                        <td><span class="editable-text">$7,000</span></td>
+                                        <td><span class="editable-text">30 Days</span></td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
 

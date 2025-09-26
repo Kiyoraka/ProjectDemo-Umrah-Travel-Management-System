@@ -364,11 +364,92 @@
         }
     }
 
+    // Setup package management functionality
+    function setupPackageManagement() {
+        const addBtn = Utils.$('#addPackageBtn');
+        const addRow = Utils.$('.add-package-row');
+
+        if (addBtn && addRow) {
+            // Show add row when button clicked
+            Utils.addEvent(addBtn, 'click', function(e) {
+                e.preventDefault();
+                addRow.style.display = 'table-row';
+                const firstInput = addRow.querySelector('.table-input');
+                if (firstInput) firstInput.focus();
+            });
+
+            // Save button in add row
+            const saveBtn = addRow.querySelector('.btn-icon.save');
+            if (saveBtn) {
+                Utils.addEvent(saveBtn, 'click', function(e) {
+                    e.preventDefault();
+                    handleAddPackage(addRow);
+                });
+            }
+
+            // Cancel button in add row
+            const cancelBtn = addRow.querySelector('.btn-icon.cancel');
+            if (cancelBtn) {
+                Utils.addEvent(cancelBtn, 'click', function(e) {
+                    e.preventDefault();
+                    addRow.style.display = 'none';
+                    addRow.querySelectorAll('.table-input').forEach(input => input.value = '');
+                });
+            }
+        }
+
+        // Search functionality
+        const searchInput = Utils.$('.search-input');
+        if (searchInput) {
+            Utils.addEvent(searchInput, 'input', Utils.debounce(function() {
+                filterPackages(this.value);
+            }, 300));
+        }
+    }
+
+    // Handle adding new package
+    function handleAddPackage(row) {
+        const inputs = row.querySelectorAll('.table-input');
+        const select = row.querySelector('.table-select');
+
+        // Validate inputs
+        let isValid = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = 'red';
+            } else {
+                input.style.borderColor = '';
+            }
+        });
+
+        if (isValid) {
+            Toast.show('Package added successfully!', 'success');
+            row.style.display = 'none';
+            inputs.forEach(input => input.value = '');
+            // In real app, would add to table and save to database
+        } else {
+            Toast.show('Please fill all fields', 'error');
+        }
+    }
+
+    // Filter packages based on search
+    function filterPackages(searchTerm) {
+        const rows = Utils.$$('.packages-table tbody tr:not(.add-package-row)');
+        const term = searchTerm.toLowerCase();
+
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(term) ? '' : 'none';
+        });
+    }
+
     // Initialize when DOM is ready
     Utils.addEvent(document, 'DOMContentLoaded', function() {
         init();
         setupMobileSidebar();
         setupButtonContains();
+        setupPackageManagement();
     });
 
     // Handle window resize
