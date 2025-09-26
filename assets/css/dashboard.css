@@ -802,11 +802,14 @@
 .modal-cancel {
     background: transparent;
     border: 1px solid rgba(46, 125, 50, 0.3);
-    color: var(--dark-green);
+    color: #666;
+    transition: all 0.3s ease;
 }
 
 .modal-cancel:hover {
     background: rgba(46, 125, 50, 0.1);
+    color: var(--primary-green);
+    border-color: var(--primary-green);
 }
 
 /* Delete Modal Specific Styles */
