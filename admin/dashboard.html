@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Umrah Travel Management System</title>
+
+    <!-- Base CSS (loaded first) -->
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar glass-dark">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🕌</span>
+                    <span class="logo-text">UTMS Admin</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-section="main">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            <span class="nav-text">Main Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="content">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">📝</span>
+                            <span class="nav-text">Content Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="packages">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">📦</span>
+                            <span class="nav-text">Package Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="users">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">👥</span>
+                            <span class="nav-text">User Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="messages">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">💬</span>
+                            <span class="nav-text">Messages</span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="settings">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-glass logout-btn">
+                    <span>🚪</span> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="top-header glass">
+                <div class="header-left">
+                    <button class="sidebar-toggle">☰</button>
+                    <h2 class="page-title">Dashboard</h2>
+                </div>
+
+                <div class="header-right">
+                    <div class="user-info">
+                        <span class="user-avatar">👤</span>
+                        <div class="user-details">
+                            <span class="user-name">Admin User</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Sections -->
+            <div class="content-wrapper">
+
+                <!-- Main Dashboard Section -->
+                <section id="main-section" class="dashboard-section active">
+                    <div class="section-header">
+                        <h3>Dashboard Overview</h3>
+                        <p>Welcome to the Umrah Travel Management System</p>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">👥</div>
+                            <div class="stat-content">
+                                <h4>Total Users</h4>
+                                <p class="stat-value">1,234</p>
+                                <span class="stat-change positive">+12%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">📦</div>
+                            <div class="stat-content">
+                                <h4>Active Packages</h4>
+                                <p class="stat-value">24</p>
+                                <span class="stat-change positive">+5%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">💰</div>
+                            <div class="stat-content">
+                                <h4>Total Revenue</h4>
+                                <p class="stat-value">$125,430</p>
+                                <span class="stat-change positive">+23%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">📈</div>
+                            <div class="stat-content">
+                                <h4>Bookings Today</h4>
+                                <p class="stat-value">43</p>
+                                <span class="stat-change negative">-5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities -->
+                    <div class="recent-activities glass-card">
+                        <h4>Recent Activities</h4>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <span class="activity-icon">🆕</span>
+                                <div class="activity-content">
+                                    <p>New booking for VIP Package</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon">👤</span>
+                                <div class="activity-content">
+                                    <p>New user registration: John Doe</p>
+                                    <span class="activity-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon">✉️</span>
+                                <div class="activity-content">
+                                    <p>New contact message received</p>
+                                    <span class="activity-time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Management Section -->
+                <section id="content-section" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Content Management</h3>
+                        <p>Manage website content and pages</p>
+                    </div>
+
+                    <div class="content-cards">
+                        <div class="content-card glass">
+                            <h4>Home Page Content</h4>
+                            <p>Edit hero section, features, and welcome message</p>
+                            <button class="btn btn-primary">Edit Content</button>
+                        </div>
+
+                        <div class="content-card glass">
+                            <h4>About Us Page</h4>
+                            <p>Update company information and mission statement</p>
+                            <button class="btn btn-primary">Edit Content</button>
+                        </div>
+
+                        <div class="content-card glass">
+                            <h4>Contact Information</h4>
+                            <p>Update contact details and office hours</p>
+                            <button class="btn btn-primary">Edit Content</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Package Management Section -->
+                <section id="packages-section" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Package Management</h3>
+                        <button class="btn btn-primary">Add New Package</button>
+                    </div>
+
+                    <div class="table-wrapper glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Package Name</th>
+                                    <th>Price</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Economy Package</td>
+                                    <td>$2,500</td>
+                                    <td>15 Days</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Premium Package</td>
+                                    <td>$4,500</td>
+                                    <td>21 Days</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>VIP Package</td>
+                                    <td>$7,000</td>
+                                    <td>30 Days</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- User Management Section -->
+                <section id="users-section" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>User Management</h3>
+                        <button class="btn btn-primary">Add New User</button>
+                    </div>
+
+                    <div class="table-wrapper glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>Customer</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td>Customer</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Admin User</td>
+                                    <td>admin@gmail.com</td>
+                                    <td>Administrator</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon edit">✏️</button>
+                                        <button class="btn-icon delete">🗑️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Messages Section -->
+                <section id="messages-section" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Messages</h3>
+                    </div>
+
+                    <div class="messages-container">
+                        <div class="message-card glass unread">
+                            <div class="message-header">
+                                <h4>Inquiry about VIP Package</h4>
+                                <span class="message-time">2 hours ago</span>
+                            </div>
+                            <p class="message-sender">From: customer@example.com</p>
+                            <p class="message-preview">I would like to know more about the VIP package inclusions...</p>
+                            <button class="btn btn-primary">View Message</button>
+                        </div>
+
+                        <div class="message-card glass unread">
+                            <div class="message-header">
+                                <h4>Booking Confirmation Request</h4>
+                                <span class="message-time">5 hours ago</span>
+                            </div>
+                            <p class="message-sender">From: user@example.com</p>
+                            <p class="message-preview">Please confirm my booking for the Economy package...</p>
+                            <button class="btn btn-primary">View Message</button>
+                        </div>
+
+                        <div class="message-card glass">
+                            <div class="message-header">
+                                <h4>Support Request</h4>
+                                <span class="message-time">1 day ago</span>
+                            </div>
+                            <p class="message-sender">From: support@example.com</p>
+                            <p class="message-preview">Need assistance with payment processing...</p>
+                            <button class="btn btn-primary">View Message</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings-section" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Settings</h3>
+                        <p>System preferences and configuration</p>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="settings-card glass">
+                            <h4>Profile Settings</h4>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label class="form-label">Admin Name</label>
+                                    <input type="text" class="form-control" value="Admin User">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" value="admin@gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" placeholder="Enter new password">
+                                </div>
+                                <button class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+
+                        <div class="settings-card glass">
+                            <h4>System Preferences</h4>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label class="form-label">Site Name</label>
+                                    <input type="text" class="form-control" value="Umrah Travel Management">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Contact Email</label>
+                                    <input type="email" class="form-control" value="info@umrahtravel.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Theme Color</label>
+                                    <select class="form-control">
+                                        <option>Green (Default)</option>
+                                        <option>Blue</option>
+                                        <option>Purple</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary">Save Settings</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Base JavaScript (loaded first) -->
+    <script src="../assets/js/base.js"></script>
+    <!-- Dashboard JavaScript -->
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
