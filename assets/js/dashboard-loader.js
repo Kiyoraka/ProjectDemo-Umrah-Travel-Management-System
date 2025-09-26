@@ -693,8 +693,8 @@
     // User Management initialization
     function initializeUserManagement() {
         // Initialize user display if the function exists
-        if (typeof window.initializeUserManagement === 'function') {
-            window.initializeUserManagement();
+        if (typeof window.initializeUsersDisplay === 'function') {
+            window.initializeUsersDisplay();
         }
 
         // Setup user management features

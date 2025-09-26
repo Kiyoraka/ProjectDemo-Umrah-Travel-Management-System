@@ -241,18 +241,25 @@ function deleteUser(userId) {
     }
 }
 
-// Initialize on section load
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize users display function
+window.initializeUsersDisplay = function() {
     if (document.getElementById('usersTableBody')) {
         displayUsers(1);
     }
-});
+};
 
-// Also initialize when section becomes visible
-if (typeof window.initializeUserManagement === 'undefined') {
-    window.initializeUserManagement = function() {
+// Initialize on load if not loaded dynamically
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('usersTableBody')) {
+            displayUsers(1);
+        }
+    });
+} else {
+    // DOM already loaded, initialize immediately if element exists
+    if (document.getElementById('usersTableBody')) {
         displayUsers(1);
-    };
+    }
 }
 </script>
 
