@@ -79,6 +79,102 @@
     </div>
 </div>
 
+<!-- Message Modals -->
+<!-- View Message Modal -->
+<div class="modal" id="viewMessageModal">
+    <div class="modal-content glass-card">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>View Message</h2>
+            <p>Message details and content</p>
+        </div>
+        <div class="message-details">
+            <div class="detail-group">
+                <label>From:</label>
+                <p id="viewMessageFrom"></p>
+            </div>
+            <div class="detail-group">
+                <label>Subject:</label>
+                <p id="viewMessageSubject"></p>
+            </div>
+            <div class="detail-group">
+                <label>Time:</label>
+                <p id="viewMessageTime"></p>
+            </div>
+            <div class="detail-group">
+                <label>Priority:</label>
+                <p id="viewMessagePriority"></p>
+            </div>
+            <div class="detail-group">
+                <label>Message:</label>
+                <p id="viewMessageContent" class="message-full-content"></p>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn btn-primary" onclick="replyToMessage()">
+                <i class="fas fa-reply"></i> Reply
+            </button>
+            <button type="button" class="btn btn-glass modal-cancel">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Message Modal -->
+<div class="modal" id="deleteMessageModal">
+    <div class="modal-content glass-card delete-modal">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>Delete Message</h2>
+        </div>
+        <div class="delete-confirmation">
+            <div class="delete-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <p class="delete-message">Are you sure you want to delete this message?</p>
+            <p class="delete-details">
+                <strong>Subject:</strong> <span id="deleteMessageSubject"></span><br>
+                <strong>From:</strong> <span id="deleteMessageFrom"></span>
+            </p>
+            <p class="delete-warning">This action cannot be undone.</p>
+        </div>
+        <div class="modal-buttons">
+            <button type="button" class="btn btn-danger" id="confirmDeleteMessage">Delete</button>
+            <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Reply Message Modal -->
+<div class="modal" id="replyMessageModal">
+    <div class="modal-content glass-card">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+            <h2>Reply to Message</h2>
+            <p>Compose your reply</p>
+        </div>
+        <form id="replyMessageForm">
+            <div class="form-group">
+                <label class="form-label">To:</label>
+                <input type="text" id="replyTo" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Subject:</label>
+                <input type="text" id="replySubject" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Your Reply:</label>
+                <textarea id="replyContent" class="form-control" rows="5" placeholder="Type your reply here..." required></textarea>
+            </div>
+            <div class="modal-buttons">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Send Reply
+                </button>
+                <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
 (function() {
     // Initialize messages immediately when script loads
@@ -265,36 +361,130 @@
         }
     };
 
+    // Current message being viewed/deleted
+    let currentMessageId = null;
+
     // View message function
     window.viewMessage = function(id) {
         const message = messagesData.find(m => m.id === id);
         if (message) {
-            alert(`Viewing message: ${message.subject}\n\nFrom: ${message.from}\n\nMessage: ${message.message}`);
+            currentMessageId = id;
+
+            // Populate modal with message data
+            document.getElementById('viewMessageFrom').textContent = message.from;
+            document.getElementById('viewMessageSubject').textContent = message.subject;
+            document.getElementById('viewMessageTime').textContent = message.time;
+            document.getElementById('viewMessagePriority').innerHTML = `<span class="priority-badge ${message.priority}">${message.priority.charAt(0).toUpperCase() + message.priority.slice(1)}</span>`;
+            document.getElementById('viewMessageContent').textContent = message.message;
+
+            // Mark as read if unread
+            if (message.unread) {
+                message.unread = false;
+                displayMessages(currentPage);
+            }
+
+            // Show modal
+            document.getElementById('viewMessageModal').style.display = 'block';
         }
     };
 
     // Delete message function
     window.deleteMessage = function(id) {
-        if (confirm('Are you sure you want to delete this message?')) {
-            const index = messagesData.findIndex(m => m.id === id);
-            if (index > -1) {
-                messagesData.splice(index, 1);
+        const message = messagesData.find(m => m.id === id);
+        if (message) {
+            currentMessageId = id;
 
-                // Recalculate current page if needed
-                const totalPages = Math.ceil(messagesData.length / messagesPerPage);
-                if (currentPage > totalPages && totalPages > 0) {
-                    currentPage = totalPages;
-                }
+            // Populate delete modal
+            document.getElementById('deleteMessageSubject').textContent = message.subject;
+            document.getElementById('deleteMessageFrom').textContent = message.from;
 
-                displayMessages(currentPage);
-            }
+            // Show modal
+            document.getElementById('deleteMessageModal').style.display = 'block';
         }
     };
+
+    // Reply to message function
+    window.replyToMessage = function() {
+        const message = messagesData.find(m => m.id === currentMessageId);
+        if (message) {
+            // Close view modal
+            document.getElementById('viewMessageModal').style.display = 'none';
+
+            // Populate reply modal
+            document.getElementById('replyTo').value = message.from;
+            document.getElementById('replySubject').value = 'Re: ' + message.subject;
+            document.getElementById('replyContent').value = '';
+
+            // Show reply modal
+            document.getElementById('replyMessageModal').style.display = 'block';
+        }
+    };
+
+    // Initialize modal event handlers
+    function initializeModalHandlers() {
+        // Close modal handlers
+        document.querySelectorAll('.modal-close, .modal-cancel').forEach(element => {
+            element.onclick = function() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            };
+        });
+
+        // Click outside modal to close
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.onclick = function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            };
+        });
+
+        // Delete confirmation handler
+        const confirmDeleteBtn = document.getElementById('confirmDeleteMessage');
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.onclick = function() {
+                if (currentMessageId) {
+                    const index = messagesData.findIndex(m => m.id === currentMessageId);
+                    if (index > -1) {
+                        messagesData.splice(index, 1);
+
+                        // Recalculate current page if needed
+                        const totalPages = Math.ceil(messagesData.length / messagesPerPage);
+                        if (currentPage > totalPages && totalPages > 0) {
+                            currentPage = totalPages;
+                        }
+
+                        displayMessages(currentPage);
+                        document.getElementById('deleteMessageModal').style.display = 'none';
+                        currentMessageId = null;
+                    }
+                }
+            };
+        }
+
+        // Reply form handler
+        const replyForm = document.getElementById('replyMessageForm');
+        if (replyForm) {
+            replyForm.onsubmit = function(e) {
+                e.preventDefault();
+                const replyContent = document.getElementById('replyContent').value;
+
+                // In a real application, this would send the reply to the server
+                alert('Reply sent successfully!\n\nTo: ' + document.getElementById('replyTo').value + '\n\nMessage: ' + replyContent);
+
+                // Close modal and reset form
+                document.getElementById('replyMessageModal').style.display = 'none';
+                this.reset();
+            };
+        }
+    }
 
     // Initialize messages display
     setTimeout(() => {
         console.log('Initializing messages with', messagesData.length, 'messages');
         displayMessages(1);
+        initializeModalHandlers();
     }, 100);
 })();
 </script>
@@ -438,5 +628,216 @@
     color: white;
     border-color: var(--primary-green);
     font-weight: 600;
+}
+
+/* Modal Styles - Matching User Management */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.modal-header h2 {
+    color: var(--primary-green);
+    margin-bottom: 8px;
+    font-size: 1.8rem;
+}
+
+.modal-header p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--primary-green);
+    transform: rotate(90deg);
+}
+
+/* Message Details Styles */
+.message-details {
+    padding: 20px 0;
+}
+
+.detail-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.detail-group:last-child {
+    border-bottom: none;
+}
+
+.detail-group label {
+    font-weight: 600;
+    color: var(--primary-green);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.detail-group p {
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.message-full-content {
+    background: rgba(76, 175, 80, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    background: white;
+}
+
+.form-control[readonly] {
+    background: rgba(158, 158, 158, 0.1);
+    cursor: not-allowed;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.modal-buttons .btn {
+    padding: 10px 20px;
+}
+
+/* Delete Modal Specific Styles */
+.delete-modal .delete-confirmation {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.delete-modal .delete-icon {
+    font-size: 3rem;
+    color: #FFA500;
+    margin-bottom: 20px;
+}
+
+.delete-modal .delete-message {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.delete-modal .delete-details {
+    background: rgba(76, 175, 80, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.delete-modal .delete-warning {
+    color: #f44336;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: var(--primary-green);
+    color: white;
+    border: 1px solid var(--primary-green);
+}
+
+.btn-primary:hover {
+    background: #22923d;
+    border-color: #22923d;
+}
+
+.btn-danger {
+    background: #f44336;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #da190b;
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    color: var(--text-primary);
+}
+
+.btn-glass:hover {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: var(--primary-green);
 }
 </style>
