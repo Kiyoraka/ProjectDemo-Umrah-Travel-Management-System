@@ -81,11 +81,7 @@
 
 <script>
 (function() {
-    // Only run when messages section exists
-    if (!document.querySelector('#messages-section')) {
-        console.log('Messages section not active, skipping initialization');
-        return;
-    }
+    // Initialize messages immediately when script loads
 
     // Messages data with 70 hardcoded messages
     const messagesData = [
