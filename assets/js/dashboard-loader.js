@@ -94,6 +94,15 @@
             // Update container
             container.innerHTML = html;
 
+            // Execute any scripts in the loaded content
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(script => {
+                const newScript = document.createElement('script');
+                newScript.textContent = script.textContent;
+                document.body.appendChild(newScript);
+                document.body.removeChild(newScript);
+            });
+
             // Store current section
             config.currentSection = sectionName;
 
