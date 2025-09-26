@@ -273,6 +273,21 @@
     background-position: center;
 }
 
+.packages-section h2 {
+    color: var(--white) !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.packages-section > .container > .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.packages-section p {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
