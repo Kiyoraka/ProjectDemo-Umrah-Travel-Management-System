@@ -258,15 +258,7 @@
             });
         });
 
-        // Add New buttons
-        const addBtns = Utils.$$('button:contains("Add New")');
-        addBtns.forEach(btn => {
-            Utils.addEvent(btn, 'click', function(e) {
-                e.preventDefault();
-                Toast.show('Add new item form would open here', 'info');
-                // Here you would open an add new modal/form
-            });
-        });
+        // Add New buttons - removed as no longer needed
 
         // View Message buttons
         const viewBtns = Utils.$$('.message-card button');
@@ -341,18 +333,10 @@
         });
     }
 
-    // Add button contains selector helper (jQuery-like)
+    // Add button contains selector helper - removed as using specific button IDs now
     function setupButtonContains() {
-        const buttons = Utils.$$('button');
-        buttons.forEach(btn => {
-            if (btn.textContent.includes('Add New')) {
-                Utils.addEvent(btn, 'click', function(e) {
-                    e.preventDefault();
-                    const section = this.closest('.dashboard-section').id.replace('-section', '');
-                    Toast.show(`Opening add new ${section} form...`, 'info');
-                });
-            }
-        });
+        // Function kept for compatibility but no longer needed
+        // All Add New buttons now have specific IDs
     }
 
     // Handle window resize
