@@ -94,45 +94,14 @@
         }
     }
 
-    // Update page title
+    // Update page title (no longer needed as title is fixed)
     function updatePageTitle(sectionName) {
-        const pageTitle = Utils.$('.page-title');
-        if (pageTitle) {
-            const titles = {
-                main: 'Dashboard',
-                content: 'Content Management',
-                packages: 'Package Management',
-                users: 'User Management',
-                messages: 'Messages',
-                settings: 'Settings'
-            };
-            pageTitle.textContent = titles[sectionName] || 'Dashboard';
-        }
+        // Title is now fixed as "Umrah Travel Management System"
     }
 
-    // Setup sidebar toggle
+    // Setup sidebar toggle (removed as toggle button is gone)
     function setupSidebarToggle() {
-        const toggleBtn = Utils.$('.sidebar-toggle');
-        const sidebar = Utils.$('.sidebar');
-
-        if (toggleBtn && sidebar) {
-            Utils.addEvent(toggleBtn, 'click', function() {
-                Utils.toggleClass(sidebar, 'collapsed');
-                config.sidebarCollapsed = !config.sidebarCollapsed;
-
-                // Store preference
-                Utils.storage.set('sidebarCollapsed', config.sidebarCollapsed);
-            });
-
-            // Check stored preference
-            const storedPreference = Utils.storage.get('sidebarCollapsed');
-            if (storedPreference) {
-                config.sidebarCollapsed = storedPreference;
-                if (config.sidebarCollapsed) {
-                    Utils.addClass(sidebar, 'collapsed');
-                }
-            }
-        }
+        // Toggle functionality removed as per requirement
     }
 
     // Setup logout functionality
@@ -295,28 +264,18 @@
         // For demo, we'll leave them as is
     }
 
-    // Mobile sidebar handling
+    // Mobile sidebar handling (simplified without toggle button)
     function setupMobileSidebar() {
         const sidebar = Utils.$('.sidebar');
 
         // Close sidebar when clicking outside on mobile
         Utils.addEvent(document, 'click', function(e) {
             if (window.innerWidth <= 1024) {
-                if (!sidebar.contains(e.target) && !e.target.classList.contains('sidebar-toggle')) {
+                if (!sidebar.contains(e.target)) {
                     Utils.removeClass(sidebar, 'active');
                 }
             }
         });
-
-        // Toggle sidebar on mobile
-        const toggleBtn = Utils.$('.sidebar-toggle');
-        if (toggleBtn) {
-            Utils.addEvent(toggleBtn, 'click', function() {
-                if (window.innerWidth <= 1024) {
-                    Utils.toggleClass(sidebar, 'active');
-                }
-            });
-        }
     }
 
     // Add button contains selector helper (jQuery-like)
