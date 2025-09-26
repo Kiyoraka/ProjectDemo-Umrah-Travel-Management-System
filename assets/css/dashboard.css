@@ -558,19 +558,27 @@
     margin: 0 3px;
     transition: all 0.2s;
     border-radius: 5px;
+    color: #4CAF50; /* Green for all icons by default */
 }
 
 .btn-icon:hover {
     transform: scale(1.1);
     background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+/* All action button types in green for consistency */
+.btn-icon.view {
+    color: #4CAF50;
 }
 
 .btn-icon.edit {
-    color: var(--primary-green);
+    color: #4CAF50;
 }
 
 .btn-icon.delete {
-    color: #f44336;
+    color: #4CAF50;
 }
 
 .btn-icon.save {
@@ -578,7 +586,21 @@
 }
 
 .btn-icon.cancel {
-    color: #ff9800;
+    color: #4CAF50;
+}
+
+.btn-icon.restore {
+    color: #4CAF50;
+}
+
+/* Ensure green color for action buttons in tables */
+.action-buttons .btn-icon {
+    color: #4CAF50;
+}
+
+.action-buttons .btn-icon:hover {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
 }
 
 /* Table Input Styles */
