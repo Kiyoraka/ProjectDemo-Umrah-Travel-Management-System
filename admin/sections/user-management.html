@@ -70,8 +70,9 @@
 </div>
 
 <script>
-// User data - 70 users who have made bookings
-const userData = [
+(function() {
+    // User data - 70 users who have made bookings
+    const userData = [
     { id: 'U001', name: 'Ahmad Hassan', email: 'ahmad@example.com', phone: '+1 234-567-8901', package: 'Premium Umrah' },
     { id: 'U002', name: 'Fatima Al-Rashid', email: 'fatima@example.com', phone: '+1 234-567-8902', package: 'Standard Umrah' },
     { id: 'U003', name: 'Mohammed Ibrahim', email: 'mohammed@example.com', phone: '+1 234-567-8903', package: 'VIP Umrah' },
@@ -142,121 +143,133 @@ const userData = [
     { id: 'U068', name: 'Razia Mirza', email: 'razia@example.com', phone: '+1 234-567-8968', package: 'Standard Umrah' },
     { id: 'U069', name: 'Tanveer Ali', email: 'tanveer@example.com', phone: '+1 234-567-8969', package: 'VIP Umrah' },
     { id: 'U070', name: 'Fouzia Rahman', email: 'fouzia@example.com', phone: '+1 234-567-8970', package: 'Economy Umrah' }
-];
+    ];
 
-const usersPerPage = 7;
-let currentUserPage = 1;
+    const usersPerPage = 7;
+    let currentUserPage = 1;
 
-window.displayUsers = function(page) {
-    const tbody = document.getElementById('usersTableBody');
-    const start = (page - 1) * usersPerPage;
-    const end = start + usersPerPage;
-    const paginatedUsers = userData.slice(start, end);
-
-    tbody.innerHTML = '';
-
-    paginatedUsers.forEach(user => {
-        const row = `
-            <tr>
-                <td>#${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.phone}</td>
-                <td><span class="package-badge">${user.package}</span></td>
-                <td class="action-buttons">
-                    <button class="btn-icon view" title="View" onclick="viewUser('${user.id}')"><i class="fas fa-eye"></i></button>
-                    <button class="btn-icon edit" title="Edit" onclick="editUser('${user.id}')"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon delete" title="Delete" onclick="deleteUser('${user.id}')"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-        `;
-        tbody.innerHTML += row;
-    });
-
-    updateUserPagination();
-};
-
-window.updateUserPagination = function() {
-    const totalPages = Math.ceil(userData.length / usersPerPage);
-    const pagination = document.getElementById('usersPagination');
-
-    let paginationHTML = '';
-
-    // Previous button
-    paginationHTML += `
-        <button class="page-btn" onclick="changeUserPage(${currentUserPage - 1})" ${currentUserPage === 1 ? 'disabled' : ''}>
-            <i class="fas fa-chevron-left"></i>
-        </button>
-    `;
-
-    // Page numbers
-    for (let i = 1; i <= totalPages; i++) {
-        if (i === 1 || i === totalPages || (i >= currentUserPage - 1 && i <= currentUserPage + 1)) {
-            paginationHTML += `
-                <button class="page-btn ${i === currentUserPage ? 'active' : ''}" onclick="changeUserPage(${i})">
-                    ${i}
-                </button>
-            `;
-        } else if (i === currentUserPage - 2 || i === currentUserPage + 2) {
-            paginationHTML += `<span class="page-dots">...</span>`;
+    function displayUsers(page) {
+        const tbody = document.getElementById('usersTableBody');
+        if (!tbody) {
+            console.log('Users table body not found');
+            return;
         }
+
+        const start = (page - 1) * usersPerPage;
+        const end = start + usersPerPage;
+        const paginatedUsers = userData.slice(start, end);
+
+        tbody.innerHTML = '';
+
+        paginatedUsers.forEach(user => {
+            const row = `
+                <tr>
+                    <td>#${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phone}</td>
+                    <td><span class="package-badge">${user.package}</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View" onclick="viewUser('${user.id}')"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit" onclick="editUser('${user.id}')"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete" onclick="deleteUser('${user.id}')"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+
+        updateUserPagination();
     }
 
-    // Next button
-    paginationHTML += `
-        <button class="page-btn" onclick="changeUserPage(${currentUserPage + 1})" ${currentUserPage === totalPages ? 'disabled' : ''}>
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    `;
+    function updateUserPagination() {
+        const totalPages = Math.ceil(userData.length / usersPerPage);
+        const pagination = document.getElementById('usersPagination');
 
-    pagination.innerHTML = paginationHTML;
-};
+        if (!pagination) {
+            console.log('Pagination element not found');
+            return;
+        }
 
-window.changeUserPage = function(page) {
-    const totalPages = Math.ceil(userData.length / usersPerPage);
-    if (page >= 1 && page <= totalPages) {
-        currentUserPage = page;
-        window.displayUsers(currentUserPage);
+        let paginationHTML = '';
+
+        // Previous button
+        paginationHTML += `
+            <button class="page-btn" onclick="changeUserPage(${currentUserPage - 1})" ${currentUserPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        `;
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || (i >= currentUserPage - 1 && i <= currentUserPage + 1)) {
+                paginationHTML += `
+                    <button class="page-btn ${i === currentUserPage ? 'active' : ''}" onclick="changeUserPage(${i})">
+                        ${i}
+                    </button>
+                `;
+            } else if (i === currentUserPage - 2 || i === currentUserPage + 2) {
+                paginationHTML += `<span class="page-dots">...</span>`;
+            }
+        }
+
+        // Next button
+        paginationHTML += `
+            <button class="page-btn" onclick="changeUserPage(${currentUserPage + 1})" ${currentUserPage === totalPages ? 'disabled' : ''}>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        `;
+
+        pagination.innerHTML = paginationHTML;
     }
-};
 
-window.viewUser = function(userId) {
-    const user = userData.find(u => u.id === userId);
-    if (user) {
-        alert(`Viewing user: ${user.name}`);
+    window.changeUserPage = function(page) {
+        const totalPages = Math.ceil(userData.length / usersPerPage);
+        if (page >= 1 && page <= totalPages) {
+            currentUserPage = page;
+            displayUsers(currentUserPage);
+        }
+    };
+
+    window.viewUser = function(userId) {
+        const user = userData.find(u => u.id === userId);
+        if (user) {
+            alert(`Viewing user: ${user.name}`);
+        }
+    };
+
+    window.editUser = function(userId) {
+        const user = userData.find(u => u.id === userId);
+        if (user) {
+            alert(`Editing user: ${user.name}`);
+        }
+    };
+
+    window.deleteUser = function(userId) {
+        const user = userData.find(u => u.id === userId);
+        if (user && confirm(`Are you sure you want to delete user: ${user.name}?`)) {
+            alert(`User ${user.name} deleted`);
+        }
+    };
+
+    // Initialize users display function
+    window.initializeUsersDisplay = function() {
+        console.log('Initializing users display...');
+        const tbody = document.getElementById('usersTableBody');
+        if (tbody) {
+            console.log('Users table body found, displaying users...');
+            displayUsers(1);
+        } else {
+            console.log('Users table body not found');
+        }
+    };
+
+    // Initialize immediately when script loads
+    if (document.getElementById('usersTableBody')) {
+        console.log('Direct initialization - displaying users');
+        displayUsers(1);
     }
-};
-
-window.editUser = function(userId) {
-    const user = userData.find(u => u.id === userId);
-    if (user) {
-        alert(`Editing user: ${user.name}`);
-    }
-};
-
-window.deleteUser = function(userId) {
-    const user = userData.find(u => u.id === userId);
-    if (user && confirm(`Are you sure you want to delete user: ${user.name}?`)) {
-        alert(`User ${user.name} deleted`);
-    }
-};
-
-// Initialize users display function
-window.initializeUsersDisplay = function() {
-    console.log('Initializing users display...');
-    const tbody = document.getElementById('usersTableBody');
-    if (tbody) {
-        console.log('Users table body found, displaying users...');
-        window.displayUsers(1);
-    } else {
-        console.log('Users table body not found');
-    }
-};
-
-// Initialize immediately when script loads (for dynamic loading)
-setTimeout(function() {
-    window.initializeUsersDisplay();
-}, 100);
+})();
 </script>
 
 <style>
