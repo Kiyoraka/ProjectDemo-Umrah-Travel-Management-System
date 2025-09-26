@@ -270,11 +270,9 @@
             // Show success message
             Toast.show('Login successful! Redirecting to dashboard...', 'success');
 
-            // Store login state if remember is checked
-            if (remember) {
-                Utils.storage.set('isLoggedIn', true);
-                Utils.storage.set('userEmail', email);
-            }
+            // Always store login state (not just when remember is checked)
+            Utils.storage.set('isLoggedIn', true);
+            Utils.storage.set('userEmail', email);
 
             // Redirect to dashboard after delay
             setTimeout(() => {
