@@ -240,23 +240,7 @@
             });
         });
 
-        // Delete buttons
-        const deleteBtns = Utils.$$('.btn-icon.delete');
-        deleteBtns.forEach(btn => {
-            Utils.addEvent(btn, 'click', function(e) {
-                e.preventDefault();
-                const row = this.closest('tr');
-                const itemName = row.cells[1].textContent;
-
-                if (confirm(`Are you sure you want to delete ${itemName}?`)) {
-                    row.style.opacity = '0.5';
-                    Toast.show(`${itemName} deleted successfully`, 'success');
-                    setTimeout(() => {
-                        row.remove();
-                    }, 1000);
-                }
-            });
-        });
+        // Delete buttons - removed old confirm dialog (now using modals in package management)
 
         // Add New buttons - removed as no longer needed
 
