@@ -3,19 +3,12 @@
     <h3>Content Management</h3>
 </div>
 
-<div class="content-tabs-container glass-card">
-    <!-- Tab Navigation -->
-    <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="home">Home Page</button>
-        <button class="tab-btn" data-tab="about">About Us</button>
-        <button class="tab-btn" data-tab="contact">Contact Info</button>
-    </div>
-
-    <!-- Tab Content -->
-    <div class="tabs-content">
-        <!-- Home Tab -->
-        <div class="tab-panel active" id="home-tab">
-            <form class="content-form">
+<div class="content-grid">
+    <!-- Home Page Content -->
+    <div class="content-card glass-card">
+        <h4><i class="fas fa-home"></i> Home Page Content</h4>
+        <form class="content-form">
+            <div class="content-form-fields">
                 <div class="form-group">
                     <label class="form-label">Hero Title</label>
                     <input type="text" class="form-control" value="Journey to the Sacred">
@@ -32,27 +25,27 @@
                     <label class="form-label">Featured Packages Title</label>
                     <input type="text" class="form-control" value="Our Exclusive Packages">
                 </div>
-                <div class="form-buttons">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="reset" class="btn btn-glass">Cancel</button>
-                </div>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Home Content</button>
+        </form>
+    </div>
 
-        <!-- About Tab -->
-        <div class="tab-panel" id="about-tab">
-            <form class="content-form">
+    <!-- About Us Content -->
+    <div class="content-card glass-card">
+        <h4><i class="fas fa-info-circle"></i> About Us Content</h4>
+        <form class="content-form">
+            <div class="content-form-fields">
                 <div class="form-group">
                     <label class="form-label">About Title</label>
                     <input type="text" class="form-control" value="Your Trusted Umrah Partner">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Company Description</label>
-                    <textarea class="form-control" rows="6">With over 10 years of experience in organizing Umrah trips, we have served thousands of pilgrims with dedication and excellence. Our team of experienced professionals ensures that your spiritual journey is comfortable, meaningful, and memorable.</textarea>
+                    <textarea class="form-control" rows="5">With over 10 years of experience in organizing Umrah trips, we have served thousands of pilgrims with dedication and excellence. Our team of experienced professionals ensures that your spiritual journey is comfortable, meaningful, and memorable.</textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Mission Statement</label>
-                    <textarea class="form-control" rows="4">To provide exceptional Umrah services that combine spiritual fulfillment with comfort and convenience, making the sacred journey accessible to all.</textarea>
+                    <textarea class="form-control" rows="3">To provide exceptional Umrah services that combine spiritual fulfillment with comfort and convenience, making the sacred journey accessible to all.</textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Years of Experience</label>
@@ -62,16 +55,16 @@
                     <label class="form-label">Happy Pilgrims</label>
                     <input type="number" class="form-control" value="5000">
                 </div>
-                <div class="form-buttons">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="reset" class="btn btn-glass">Cancel</button>
-                </div>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save About Content</button>
+        </form>
+    </div>
 
-        <!-- Contact Tab -->
-        <div class="tab-panel" id="contact-tab">
-            <form class="content-form">
+    <!-- Contact Information -->
+    <div class="content-card glass-card">
+        <h4><i class="fas fa-phone"></i> Contact Information</h4>
+        <form class="content-form">
+            <div class="content-form-fields">
                 <div class="form-group">
                     <label class="form-label">Office Address</label>
                     <input type="text" class="form-control" value="123 Main Street, City Center">
@@ -92,11 +85,198 @@
                     <label class="form-label">Office Hours</label>
                     <input type="text" class="form-control" value="Mon-Sat: 9:00 AM - 6:00 PM">
                 </div>
-                <div class="form-buttons">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="reset" class="btn btn-glass">Cancel</button>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Contact Info</button>
+        </form>
+    </div>
+
+    <!-- SEO Settings -->
+    <div class="content-card glass-card">
+        <h4><i class="fas fa-search"></i> SEO Settings</h4>
+        <form class="content-form">
+            <div class="content-form-fields">
+                <div class="form-group">
+                    <label class="form-label">Meta Title</label>
+                    <input type="text" class="form-control" value="Umrah Travel Management - Best Packages & Services">
                 </div>
-            </form>
-        </div>
+                <div class="form-group">
+                    <label class="form-label">Meta Description</label>
+                    <textarea class="form-control" rows="3">Professional Umrah travel services with customized packages, visa assistance, and complete guidance for your spiritual journey.</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Meta Keywords</label>
+                    <input type="text" class="form-control" value="umrah, hajj, travel, packages, saudi arabia, makkah, madinah">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <input type="checkbox" checked> Enable Search Engine Indexing
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save SEO Settings</button>
+        </form>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="content-card glass-card">
+        <h4><i class="fas fa-share-alt"></i> Social Media Links</h4>
+        <form class="content-form">
+            <div class="content-form-fields">
+                <div class="form-group">
+                    <label class="form-label">Facebook URL</label>
+                    <input type="url" class="form-control" value="https://facebook.com/umrahtravel">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Twitter URL</label>
+                    <input type="url" class="form-control" value="https://twitter.com/umrahtravel">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Instagram URL</label>
+                    <input type="url" class="form-control" value="https://instagram.com/umrahtravel">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">YouTube URL</label>
+                    <input type="url" class="form-control" value="https://youtube.com/umrahtravel">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Social Links</button>
+        </form>
+    </div>
+
+    <!-- Footer Content -->
+    <div class="content-card glass-card">
+        <h4><i class="fas fa-copyright"></i> Footer Content</h4>
+        <form class="content-form">
+            <div class="content-form-fields">
+                <div class="form-group">
+                    <label class="form-label">Copyright Text</label>
+                    <input type="text" class="form-control" value="© 2025 Umrah Travel Management. All rights reserved.">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Footer Description</label>
+                    <textarea class="form-control" rows="3">Your trusted partner for Umrah journeys. We provide complete packages with visa processing, flights, accommodation, and guided tours.</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Newsletter Text</label>
+                    <input type="text" class="form-control" value="Subscribe to our newsletter for exclusive offers">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <input type="checkbox" checked> Show Newsletter Signup
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Footer Content</button>
+        </form>
     </div>
 </div>
+
+<style>
+/* Content Management Specific Styles */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.content-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+}
+
+.content-card h4 {
+    color: var(--dark-green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.content-card h4 i {
+    color: var(--primary-green);
+    font-size: 1.2rem;
+}
+
+.content-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.content-form-fields {
+    flex: 1;
+}
+
+.content-form .form-group {
+    margin-bottom: 20px;
+}
+
+.content-form .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.content-form .form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
+}
+
+.content-form .form-control:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    background: white;
+}
+
+.content-form textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.content-form .btn-primary {
+    margin-top: auto;
+    align-self: flex-start;
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.content-form .btn-primary:hover {
+    background: #22923d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.content-form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        min-height: auto;
+    }
+}
+</style>
