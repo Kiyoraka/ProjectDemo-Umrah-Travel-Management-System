@@ -147,7 +147,7 @@ const userData = [
 const usersPerPage = 7;
 let currentUserPage = 1;
 
-function displayUsers(page) {
+window.displayUsers = function(page) {
     const tbody = document.getElementById('usersTableBody');
     const start = (page - 1) * usersPerPage;
     const end = start + usersPerPage;
@@ -174,9 +174,9 @@ function displayUsers(page) {
     });
 
     updateUserPagination();
-}
+};
 
-function updateUserPagination() {
+window.updateUserPagination = function() {
     const totalPages = Math.ceil(userData.length / usersPerPage);
     const pagination = document.getElementById('usersPagination');
 
@@ -210,57 +210,53 @@ function updateUserPagination() {
     `;
 
     pagination.innerHTML = paginationHTML;
-}
+};
 
-function changeUserPage(page) {
+window.changeUserPage = function(page) {
     const totalPages = Math.ceil(userData.length / usersPerPage);
     if (page >= 1 && page <= totalPages) {
         currentUserPage = page;
-        displayUsers(currentUserPage);
+        window.displayUsers(currentUserPage);
     }
-}
+};
 
-function viewUser(userId) {
+window.viewUser = function(userId) {
     const user = userData.find(u => u.id === userId);
     if (user) {
         alert(`Viewing user: ${user.name}`);
     }
-}
+};
 
-function editUser(userId) {
+window.editUser = function(userId) {
     const user = userData.find(u => u.id === userId);
     if (user) {
         alert(`Editing user: ${user.name}`);
     }
-}
+};
 
-function deleteUser(userId) {
+window.deleteUser = function(userId) {
     const user = userData.find(u => u.id === userId);
     if (user && confirm(`Are you sure you want to delete user: ${user.name}?`)) {
         alert(`User ${user.name} deleted`);
     }
-}
+};
 
 // Initialize users display function
 window.initializeUsersDisplay = function() {
-    if (document.getElementById('usersTableBody')) {
-        displayUsers(1);
+    console.log('Initializing users display...');
+    const tbody = document.getElementById('usersTableBody');
+    if (tbody) {
+        console.log('Users table body found, displaying users...');
+        window.displayUsers(1);
+    } else {
+        console.log('Users table body not found');
     }
 };
 
-// Initialize on load if not loaded dynamically
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        if (document.getElementById('usersTableBody')) {
-            displayUsers(1);
-        }
-    });
-} else {
-    // DOM already loaded, initialize immediately if element exists
-    if (document.getElementById('usersTableBody')) {
-        displayUsers(1);
-    }
-}
+// Initialize immediately when script loads (for dynamic loading)
+setTimeout(function() {
+    window.initializeUsersDisplay();
+}, 100);
 </script>
 
 <style>
