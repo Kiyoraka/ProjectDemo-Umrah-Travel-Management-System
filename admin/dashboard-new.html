@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Umrah Travel Management</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-kaaba"></i></span>
+                    <span class="logo-text">UTMS Admin</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-section="main">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-tachometer-alt"></i></span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="content">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-edit"></i></span>
+                            <span class="nav-text">Content Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="packages">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-box"></i></span>
+                            <span class="nav-text">Package Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="bookings">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
+                            <span class="nav-text">Booking Management</span>
+                            <span class="badge">42</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="users">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-users"></i></span>
+                            <span class="nav-text">User Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="messages">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-comments"></i></span>
+                            <span class="nav-text">Messages</span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="settings">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-glass logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="top-header">
+                <h1 class="page-title">Umrah Travel Management System</h1>
+            </header>
+
+            <!-- Content Wrapper - Dynamic Content Loads Here -->
+            <div class="content-wrapper">
+                <div id="content-container">
+                    <!-- Content will be loaded dynamically here -->
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../assets/js/base.js"></script>
+    <script src="../assets/js/dashboard-loader.js"></script>
+</body>
+</html>

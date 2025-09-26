@@ -1,0 +1,659 @@
+<!-- Booking Management Section -->
+<div class="section-header">
+    <h3>Booking Management</h3>
+</div>
+
+<!-- Booking Stats -->
+<div class="stats-grid">
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+        <div class="stat-content">
+            <h4>Active Bookings</h4>
+            <p class="stat-value">42</p>
+        </div>
+    </div>
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+        <div class="stat-content">
+            <h4>Pending</h4>
+            <p class="stat-value">8</p>
+        </div>
+    </div>
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="stat-content">
+            <h4>Confirmed</h4>
+            <p class="stat-value">28</p>
+        </div>
+    </div>
+    <div class="stat-card glass">
+        <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
+        <div class="stat-content">
+            <h4>Cancelled</h4>
+            <p class="stat-value">6</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bookings Table -->
+<div class="bookings-container glass-card">
+    <div class="table-actions">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" id="bookingSearch" placeholder="Search bookings...">
+        </div>
+        <div class="filter-buttons">
+            <button class="btn btn-glass filter-btn active" data-filter="all">All (42)</button>
+            <button class="btn btn-glass filter-btn" data-filter="pending">Pending (8)</button>
+            <button class="btn btn-glass filter-btn" data-filter="confirmed">Confirmed (28)</button>
+            <button class="btn btn-glass filter-btn" data-filter="cancelled">Cancelled (6)</button>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table bookings-table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Customer Name</th>
+                    <th>Package</th>
+                    <th>Travel Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 42 Hardcoded Bookings -->
+                <tr data-status="confirmed">
+                    <td>#BK001</td>
+                    <td>Ahmad Hassan</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-15</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK002</td>
+                    <td>Fatima Al-Rashid</td>
+                    <td>VIP Package</td>
+                    <td>2025-10-20</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK003</td>
+                    <td>Mohammed Ibrahim</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-10</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK004</td>
+                    <td>Aisha Malik</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-18</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="cancelled">
+                    <td>#BK005</td>
+                    <td>Omar Khaled</td>
+                    <td>Economy Package</td>
+                    <td>2025-09-25</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK006</td>
+                    <td>Zainab Ahmed</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-01</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK007</td>
+                    <td>Ali Hassan</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-25</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK008</td>
+                    <td>Sara Abdullah</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-12</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK009</td>
+                    <td>Yusuf Rahman</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-22</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK010</td>
+                    <td>Mariam Noor</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-05</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK011</td>
+                    <td>Ibrahim Siddiqui</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-08</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="cancelled">
+                    <td>#BK012</td>
+                    <td>Khalid Al-Mansour</td>
+                    <td>Premium Package</td>
+                    <td>2025-09-28</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK013</td>
+                    <td>Nadia Hussain</td>
+                    <td>VIP Package</td>
+                    <td>2025-10-30</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK014</td>
+                    <td>Hassan Ali</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-14</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK015</td>
+                    <td>Amina Sheikh</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-16</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK016</td>
+                    <td>Tariq Mahmood</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-10</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="cancelled">
+                    <td>#BK017</td>
+                    <td>Layla Ahmad</td>
+                    <td>Economy Package</td>
+                    <td>2025-09-20</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK018</td>
+                    <td>Bilal Khan</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-19</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK019</td>
+                    <td>Huda Ismail</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-11</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK020</td>
+                    <td>Rashid Al-Zahrani</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-15</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK021</td>
+                    <td>Samira Javed</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-23</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK022</td>
+                    <td>Karim Abbas</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-09</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK023</td>
+                    <td>Yasmin Al-Rashid</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-26</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="cancelled">
+                    <td>#BK024</td>
+                    <td>Adil Hamza</td>
+                    <td>VIP Package</td>
+                    <td>2025-09-15</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK025</td>
+                    <td>Sana Mirza</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-13</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK026</td>
+                    <td>Imran Shaikh</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-28</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK027</td>
+                    <td>Ruqaiya Fatima</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-20</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK028</td>
+                    <td>Hamza Ali</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-07</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK029</td>
+                    <td>Safiya Rahman</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-24</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="cancelled">
+                    <td>#BK030</td>
+                    <td>Usman Qureshi</td>
+                    <td>Economy Package</td>
+                    <td>2025-09-22</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK031</td>
+                    <td>Zahra Hussain</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-12</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK032</td>
+                    <td>Asif Malik</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-21</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="pending">
+                    <td>#BK033</td>
+                    <td>Khadija Begum</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-06</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK034</td>
+                    <td>Nasir Ahmed</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-27</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK035</td>
+                    <td>Rabia Shah</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-08</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="cancelled">
+                    <td>#BK036</td>
+                    <td>Jamal Hassan</td>
+                    <td>Economy Package</td>
+                    <td>2025-09-18</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon restore" title="Restore"><i class="fas fa-undo"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK037</td>
+                    <td>Ayesha Siddiqui</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-17</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK038</td>
+                    <td>Rizwan Ali</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-05</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK039</td>
+                    <td>Farah Khan</td>
+                    <td>VIP Package</td>
+                    <td>2025-11-25</td>
+                    <td>$4,000</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK040</td>
+                    <td>Saad Mahmood</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-29</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK041</td>
+                    <td>Lubna Al-Rasheed</td>
+                    <td>Economy Package</td>
+                    <td>2025-10-04</td>
+                    <td>$1,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr data-status="confirmed">
+                    <td>#BK042</td>
+                    <td>Waheed Ibrahim</td>
+                    <td>Premium Package</td>
+                    <td>2025-10-31</td>
+                    <td>$2,500</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                    <td class="action-buttons">
+                        <button class="btn-icon view" title="View Details"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+/* Booking Management Specific Styles */
+.bookings-container {
+    margin-top: 30px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.filter-btn.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.status-badge.pending {
+    background: rgba(255, 193, 7, 0.2);
+    color: #f39c12;
+}
+
+.status-badge.confirmed {
+    background: rgba(76, 175, 80, 0.2);
+    color: var(--dark-green);
+}
+
+.status-badge.cancelled {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+}
+
+.btn-icon.restore {
+    color: #4CAF50;
+}
+
+.btn-icon.view {
+    color: #2196F3;
+}
+</style>
