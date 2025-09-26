@@ -149,19 +149,28 @@
     let currentUserPage = 1;
 
     function displayUsers(page) {
+        console.log('=== displayUsers called with page:', page);
+        console.log('userData length:', userData.length);
+        console.log('First user:', userData[0]);
+
         const tbody = document.getElementById('usersTableBody');
         if (!tbody) {
-            console.log('Users table body not found');
+            console.error('ERROR: Users table body not found!');
             return;
         }
+        console.log('Table body found:', tbody);
 
         const start = (page - 1) * usersPerPage;
         const end = start + usersPerPage;
         const paginatedUsers = userData.slice(start, end);
+        console.log('Paginated users count:', paginatedUsers.length);
+        console.log('Paginated users:', paginatedUsers);
 
         tbody.innerHTML = '';
+        console.log('Cleared table body');
 
-        paginatedUsers.forEach(user => {
+        paginatedUsers.forEach((user, index) => {
+            console.log(`Adding user ${index + 1}:`, user);
             const row = `
                 <tr>
                     <td>#${user.id}</td>
@@ -179,7 +188,11 @@
             tbody.innerHTML += row;
         });
 
+        console.log('Final table HTML length:', tbody.innerHTML.length);
+        console.log('Table rows count:', tbody.getElementsByTagName('tr').length);
+
         updateUserPagination();
+        console.log('=== displayUsers completed ===');
     }
 
     function updateUserPagination() {
@@ -254,20 +267,33 @@
 
     // Initialize users display function
     window.initializeUsersDisplay = function() {
-        console.log('Initializing users display...');
+        console.log('=== initializeUsersDisplay called ===');
+        console.log('userData available?', typeof userData !== 'undefined');
+        console.log('userData length:', userData ? userData.length : 'N/A');
+
         const tbody = document.getElementById('usersTableBody');
+        console.log('Looking for tbody with id "usersTableBody"');
+
         if (tbody) {
-            console.log('Users table body found, displaying users...');
+            console.log('SUCCESS: Users table body found!');
+            console.log('Calling displayUsers(1)...');
             displayUsers(1);
         } else {
-            console.log('Users table body not found');
+            console.error('ERROR: Users table body NOT found!');
+            console.log('Available elements with IDs:');
+            const allElements = document.querySelectorAll('[id]');
+            allElements.forEach(el => console.log('  -', el.id));
         }
     };
 
     // Initialize immediately when script loads
-    if (document.getElementById('usersTableBody')) {
-        console.log('Direct initialization - displaying users');
+    console.log('=== Script loaded, checking for immediate init ===');
+    const tbody = document.getElementById('usersTableBody');
+    if (tbody) {
+        console.log('DIRECT INIT: Table body found, displaying users');
         displayUsers(1);
+    } else {
+        console.log('DIRECT INIT: Table body not found, waiting for initializeUsersDisplay call');
     }
 })();
 </script>
