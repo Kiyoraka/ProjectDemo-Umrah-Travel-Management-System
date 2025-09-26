@@ -352,6 +352,10 @@
     font-size: 1.2rem;
 }
 
+.activity-icon i {
+    color: var(--white);
+}
+
 .activity-content {
     flex: 1;
 }

@@ -207,6 +207,10 @@
     color: var(--primary-green);
 }
 
+.feature-icon i {
+    color: var(--primary-green);
+}
+
 /* About Section */
 .about-section {
     background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(76, 175, 80, 0.1));
@@ -388,6 +392,10 @@
     justify-content: center;
     margin-right: 20px;
     font-size: 1.2rem;
+}
+
+.info-icon i {
+    color: var(--white);
 }
 
 .info-text h4 {

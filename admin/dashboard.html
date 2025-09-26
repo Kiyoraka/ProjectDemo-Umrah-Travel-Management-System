@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Umrah Travel Management System</title>
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Base CSS (loaded first) -->
     <link rel="stylesheet" href="../assets/css/base.css">
     <!-- Dashboard CSS -->
@@ -19,7 +21,7 @@
         <aside class="sidebar glass-dark">
             <div class="sidebar-header">
                 <div class="logo">
-                    <span class="logo-icon">🕌</span>
+                    <span class="logo-icon"><i class="fas fa-mosque"></i></span>
                     <span class="logo-text">UTMS Admin</span>
                 </div>
             </div>
@@ -28,35 +30,35 @@
                 <ul class="nav-menu">
                     <li class="nav-item active" data-section="main">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon">📊</span>
+                            <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
                             <span class="nav-text">Main Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-item" data-section="content">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon">📝</span>
+                            <span class="nav-icon"><i class="fas fa-edit"></i></span>
                             <span class="nav-text">Content Management</span>
                         </a>
                     </li>
 
                     <li class="nav-item" data-section="packages">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon">📦</span>
+                            <span class="nav-icon"><i class="fas fa-box"></i></span>
                             <span class="nav-text">Package Management</span>
                         </a>
                     </li>
 
                     <li class="nav-item" data-section="users">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon">👥</span>
+                            <span class="nav-icon"><i class="fas fa-users"></i></span>
                             <span class="nav-text">User Management</span>
                         </a>
                     </li>
 
                     <li class="nav-item" data-section="messages">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon">💬</span>
+                            <span class="nav-icon"><i class="fas fa-comments"></i></span>
                             <span class="nav-text">Messages</span>
                             <span class="badge">3</span>
                         </a>
@@ -64,7 +66,7 @@
 
                     <li class="nav-item" data-section="settings">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-icon"><i class="fas fa-cog"></i></span>
                             <span class="nav-text">Settings</span>
                         </a>
                     </li>
@@ -73,7 +75,7 @@
 
             <div class="sidebar-footer">
                 <button class="btn btn-glass logout-btn">
-                    <span>🚪</span> Logout
+                    <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </div>
         </aside>
@@ -84,13 +86,13 @@
             <!-- Top Header -->
             <header class="top-header glass">
                 <div class="header-left">
-                    <button class="sidebar-toggle">☰</button>
+                    <button class="sidebar-toggle"><i class="fas fa-bars"></i></button>
                     <h2 class="page-title">Dashboard</h2>
                 </div>
 
                 <div class="header-right">
                     <div class="user-info">
-                        <span class="user-avatar">👤</span>
+                        <span class="user-avatar"><i class="fas fa-user-circle fa-2x"></i></span>
                         <div class="user-details">
                             <span class="user-name">Admin User</span>
                             <span class="user-role">Administrator</span>
@@ -112,7 +114,7 @@
                     <!-- Stats Cards -->
                     <div class="stats-grid">
                         <div class="stat-card glass">
-                            <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">👥</div>
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);"><i class="fas fa-users"></i></div>
                             <div class="stat-content">
                                 <h4>Total Users</h4>
                                 <p class="stat-value">1,234</p>
@@ -121,7 +123,7 @@
                         </div>
 
                         <div class="stat-card glass">
-                            <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">📦</div>
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);"><i class="fas fa-box"></i></div>
                             <div class="stat-content">
                                 <h4>Active Packages</h4>
                                 <p class="stat-value">24</p>
@@ -130,7 +132,7 @@
                         </div>
 
                         <div class="stat-card glass">
-                            <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">💰</div>
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"><i class="fas fa-dollar-sign"></i></div>
                             <div class="stat-content">
                                 <h4>Total Revenue</h4>
                                 <p class="stat-value">$125,430</p>
@@ -139,7 +141,7 @@
                         </div>
 
                         <div class="stat-card glass">
-                            <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">📈</div>
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);"><i class="fas fa-chart-line"></i></div>
                             <div class="stat-content">
                                 <h4>Bookings Today</h4>
                                 <p class="stat-value">43</p>
@@ -153,21 +155,21 @@
                         <h4>Recent Activities</h4>
                         <div class="activity-list">
                             <div class="activity-item">
-                                <span class="activity-icon">🆕</span>
+                                <span class="activity-icon"><i class="fas fa-plus-circle"></i></span>
                                 <div class="activity-content">
                                     <p>New booking for VIP Package</p>
                                     <span class="activity-time">2 hours ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
-                                <span class="activity-icon">👤</span>
+                                <span class="activity-icon"><i class="fas fa-user"></i></span>
                                 <div class="activity-content">
                                     <p>New user registration: John Doe</p>
                                     <span class="activity-time">5 hours ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
-                                <span class="activity-icon">✉️</span>
+                                <span class="activity-icon"><i class="fas fa-envelope"></i></span>
                                 <div class="activity-content">
                                     <p>New contact message received</p>
                                     <span class="activity-time">1 day ago</span>
@@ -232,8 +234,8 @@
                                     <td>15 Days</td>
                                     <td><span class="status-badge active">Active</span></td>
                                     <td>
-                                        <button class="btn-icon edit">✏️</button>
-                                        <button class="btn-icon delete">🗑️</button>
+                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -243,8 +245,8 @@
                                     <td>21 Days</td>
                                     <td><span class="status-badge active">Active</span></td>
                                     <td>
-                                        <button class="btn-icon edit">✏️</button>
-                                        <button class="btn-icon delete">🗑️</button>
+                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -254,8 +256,8 @@
                                     <td>30 Days</td>
                                     <td><span class="status-badge active">Active</span></td>
                                     <td>
-                                        <button class="btn-icon edit">✏️</button>
-                                        <button class="btn-icon delete">🗑️</button>
+                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -290,8 +292,8 @@
                                     <td>Customer</td>
                                     <td><span class="status-badge active">Active</span></td>
                                     <td>
-                                        <button class="btn-icon edit">✏️</button>
-                                        <button class="btn-icon delete">🗑️</button>
+                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -301,8 +303,8 @@
                                     <td>Customer</td>
                                     <td><span class="status-badge active">Active</span></td>
                                     <td>
-                                        <button class="btn-icon edit">✏️</button>
-                                        <button class="btn-icon delete">🗑️</button>
+                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -312,8 +314,8 @@
                                     <td>Administrator</td>
                                     <td><span class="status-badge active">Active</span></td>
                                     <td>
-                                        <button class="btn-icon edit">✏️</button>
-                                        <button class="btn-icon delete">🗑️</button>
+                                        <button class="btn-icon edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
