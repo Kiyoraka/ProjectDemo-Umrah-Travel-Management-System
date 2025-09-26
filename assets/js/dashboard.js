@@ -142,8 +142,71 @@
             });
         });
 
+        // Content forms
+        const contentForms = Utils.$$('.content-form');
+        contentForms.forEach(form => {
+            Utils.addEvent(form, 'submit', function(e) {
+                e.preventDefault();
+                handleContentUpdate(this);
+            });
+        });
+
+        // Cancel buttons
+        const cancelBtns = Utils.$$('.content-form .btn-glass');
+        cancelBtns.forEach(btn => {
+            Utils.addEvent(btn, 'click', function(e) {
+                e.preventDefault();
+                this.closest('form').reset();
+                Toast.show('Changes cancelled', 'info');
+            });
+        });
+
+        // Setup tabs
+        setupContentTabs();
+
         // Add/Edit buttons
         setupCrudButtons();
+    }
+
+    // Setup content tabs
+    function setupContentTabs() {
+        const tabBtns = Utils.$$('.tab-btn');
+
+        tabBtns.forEach(btn => {
+            Utils.addEvent(btn, 'click', function(e) {
+                e.preventDefault();
+
+                // Remove active from all tabs and panels
+                tabBtns.forEach(b => Utils.removeClass(b, 'active'));
+                const panels = Utils.$$('.tab-panel');
+                panels.forEach(p => Utils.removeClass(p, 'active'));
+
+                // Add active to clicked tab and corresponding panel
+                Utils.addClass(btn, 'active');
+                const tabName = btn.dataset.tab;
+                const targetPanel = Utils.$(`#${tabName}-tab`);
+                if (targetPanel) {
+                    Utils.addClass(targetPanel, 'active');
+                }
+            });
+        });
+    }
+
+    // Handle content update
+    function handleContentUpdate(form) {
+        // Validate form
+        if (!Utils.validateForm(form)) {
+            return;
+        }
+
+        // Show loader
+        Loader.show(form);
+
+        // Simulate save
+        setTimeout(() => {
+            Loader.hide(form);
+            Toast.show('Content updated successfully!', 'success');
+        }, 1500);
     }
 
     // Handle settings update

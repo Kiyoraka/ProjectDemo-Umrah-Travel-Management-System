@@ -367,27 +367,93 @@
     color: var(--text-light);
 }
 
-/* Content Cards */
-.content-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+/* Content Tabs Container */
+.content-tabs-container {
+    margin-top: 20px;
 }
 
-.content-card {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 25px;
-    border-radius: 15px;
+/* Tab Navigation */
+.tabs-nav {
+    display: flex;
+    border-bottom: 2px solid var(--primary-green);
+    margin-bottom: 30px;
 }
 
-.content-card h4 {
-    color: var(--dark-green);
-    margin-bottom: 10px;
-}
-
-.content-card p {
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--text-light);
-    margin-bottom: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--dark-green);
+}
+
+.tab-btn.active {
+    color: var(--primary-green);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-green);
+}
+
+/* Tab Panels */
+.tabs-content {
+    padding: 20px;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Content Form */
+.content-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-form .form-group {
+    margin-bottom: 25px;
+}
+
+.content-form .form-label {
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.content-form .form-control {
+    width: 100%;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-buttons .btn {
+    min-width: 120px;
 }
 
 /* Data Table */
