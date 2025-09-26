@@ -608,6 +608,29 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <div class="pagination-info">
+            Showing <span id="showing-start">1</span> to <span id="showing-end">7</span> of <span id="total-bookings">42</span> bookings
+        </div>
+        <div class="pagination">
+            <button class="btn btn-glass pagination-btn" id="prevPage" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="page-numbers" id="pageNumbers">
+                <button class="page-num active" data-page="1">1</button>
+                <button class="page-num" data-page="2">2</button>
+                <button class="page-num" data-page="3">3</button>
+                <button class="page-num" data-page="4">4</button>
+                <button class="page-num" data-page="5">5</button>
+                <button class="page-num" data-page="6">6</button>
+            </div>
+            <button class="btn btn-glass pagination-btn" id="nextPage">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -655,5 +678,83 @@
 
 .btn-icon.view {
     color: #2196F3;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.pagination-info {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn:not(:disabled):hover {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+}
+
+.page-num {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    background: transparent;
+    color: var(--text-dark);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.page-num:hover {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: var(--primary-green);
+}
+
+.page-num.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+/* Hide extra table rows initially */
+.bookings-table tbody tr {
+    display: none;
+}
+
+.bookings-table tbody tr.visible {
+    display: table-row;
 }
 </style>

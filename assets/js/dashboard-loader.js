@@ -239,11 +239,15 @@
 
     // Booking Management initialization
     function initializeBookingManagement() {
+        // Initialize pagination
+        initializePagination();
+
         // Search functionality
         const searchInput = Utils.$('#bookingSearch');
         if (searchInput) {
             Utils.addEvent(searchInput, 'input', function() {
                 filterBookings(this.value.toLowerCase());
+                resetPagination();
             });
         }
 
@@ -260,11 +264,129 @@
                 // Filter table
                 const filter = btn.dataset.filter;
                 filterBookingsByStatus(filter);
+                resetPagination();
             });
         });
 
         // Action buttons
         setupBookingActions();
+    }
+
+    // Pagination configuration
+    const paginationConfig = {
+        currentPage: 1,
+        itemsPerPage: 7,
+        totalItems: 42,
+        totalPages: 6
+    };
+
+    // Initialize pagination
+    function initializePagination() {
+        // Show first page
+        showPage(1);
+
+        // Previous button
+        const prevBtn = Utils.$('#prevPage');
+        if (prevBtn) {
+            Utils.addEvent(prevBtn, 'click', function() {
+                if (paginationConfig.currentPage > 1) {
+                    showPage(paginationConfig.currentPage - 1);
+                }
+            });
+        }
+
+        // Next button
+        const nextBtn = Utils.$('#nextPage');
+        if (nextBtn) {
+            Utils.addEvent(nextBtn, 'click', function() {
+                if (paginationConfig.currentPage < paginationConfig.totalPages) {
+                    showPage(paginationConfig.currentPage + 1);
+                }
+            });
+        }
+
+        // Page number buttons
+        const pageNums = Utils.$$('.page-num');
+        pageNums.forEach(btn => {
+            Utils.addEvent(btn, 'click', function() {
+                const page = parseInt(this.dataset.page);
+                showPage(page);
+            });
+        });
+    }
+
+    // Show specific page
+    function showPage(pageNum) {
+        // Update current page
+        paginationConfig.currentPage = pageNum;
+
+        // Get all visible rows (not filtered out)
+        const allRows = Utils.$$('.bookings-table tbody tr');
+        const visibleRows = Array.from(allRows).filter(row => {
+            return row.style.display !== 'none';
+        });
+
+        // Calculate start and end
+        const start = (pageNum - 1) * paginationConfig.itemsPerPage;
+        const end = start + paginationConfig.itemsPerPage;
+
+        // Hide all rows first
+        allRows.forEach(row => {
+            Utils.removeClass(row, 'visible');
+        });
+
+        // Show only rows for current page
+        for (let i = start; i < end && i < visibleRows.length; i++) {
+            Utils.addClass(visibleRows[i], 'visible');
+        }
+
+        // Update pagination info
+        updatePaginationInfo(start, Math.min(end, visibleRows.length), visibleRows.length);
+
+        // Update button states
+        updatePaginationButtons(pageNum);
+    }
+
+    // Update pagination info text
+    function updatePaginationInfo(start, end, total) {
+        const startEl = Utils.$('#showing-start');
+        const endEl = Utils.$('#showing-end');
+        const totalEl = Utils.$('#total-bookings');
+
+        if (startEl) startEl.textContent = start + 1;
+        if (endEl) endEl.textContent = end;
+        if (totalEl) totalEl.textContent = total;
+    }
+
+    // Update pagination button states
+    function updatePaginationButtons(currentPage) {
+        // Previous/Next buttons
+        const prevBtn = Utils.$('#prevPage');
+        const nextBtn = Utils.$('#nextPage');
+
+        if (prevBtn) {
+            prevBtn.disabled = currentPage === 1;
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = currentPage === paginationConfig.totalPages;
+        }
+
+        // Page number buttons
+        const pageNums = Utils.$$('.page-num');
+        pageNums.forEach(btn => {
+            const page = parseInt(btn.dataset.page);
+            if (page === currentPage) {
+                Utils.addClass(btn, 'active');
+            } else {
+                Utils.removeClass(btn, 'active');
+            }
+        });
+    }
+
+    // Reset pagination to first page
+    function resetPagination() {
+        showPage(1);
     }
 
     // Filter bookings by search
