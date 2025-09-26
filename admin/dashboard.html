@@ -275,10 +275,6 @@ Sunday: Closed</textarea>
                             <button class="btn btn-primary" id="addPackageBtn">
                                 <i class="fas fa-plus"></i> Add New Package
                             </button>
-                            <div class="search-box">
-                                <i class="fas fa-search"></i>
-                                <input type="text" placeholder="Search packages..." class="search-input">
-                            </div>
                         </div>
 
                         <div class="table-wrapper glass-card">
@@ -294,22 +290,6 @@ Sunday: Closed</textarea>
                                     </tr>
                                 </thead>
                                 <tbody id="packagesTableBody">
-                                    <tr class="add-package-row" style="display: none;">
-                                        <td>#</td>
-                                        <td><input type="text" class="table-input" placeholder="Package Name"></td>
-                                        <td><input type="text" class="table-input" placeholder="Price"></td>
-                                        <td><input type="text" class="table-input" placeholder="Duration"></td>
-                                        <td>
-                                            <select class="table-select">
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <button class="btn-icon save" title="Save"><i class="fas fa-check"></i></button>
-                                            <button class="btn-icon cancel" title="Cancel"><i class="fas fa-times"></i></button>
-                                        </td>
-                                    </tr>
                                     <tr>
                                         <td>1</td>
                                         <td><span class="editable-text">Economy Package</span></td>
@@ -502,6 +482,199 @@ Sunday: Closed</textarea>
             </div>
         </main>
 
+    </div>
+
+    <!-- Package Modals -->
+    <!-- Add Package Modal -->
+    <div class="modal" id="addPackageModal">
+        <div class="modal-content glass-card">
+            <span class="modal-close"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <h2>Add New Package</h2>
+            </div>
+            <form id="addPackageForm">
+                <div class="form-group">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" name="packageName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <input type="text" name="price" class="form-control" placeholder="e.g., $2,500" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Duration</label>
+                    <input type="text" name="duration" class="form-control" placeholder="e.g., 15 Days" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-control">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Add Package</button>
+                    <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Package Modal -->
+    <div class="modal" id="editPackageModal">
+        <div class="modal-content glass-card">
+            <span class="modal-close"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <h2>Edit Package</h2>
+            </div>
+            <form id="editPackageForm">
+                <input type="hidden" name="packageId">
+                <div class="form-group">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" name="packageName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <input type="text" name="price" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Duration</label>
+                    <input type="text" name="duration" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-control">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deletePackageModal">
+        <div class="modal-content glass-card" style="max-width: 400px;">
+            <span class="modal-close"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <h2>Confirm Delete</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong id="deletePackageName"></strong>?</p>
+                <p class="text-warning">This action cannot be undone.</p>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="btn btn-primary" id="confirmDelete">Delete</button>
+                <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Package Modals -->
+    <!-- Add Package Modal -->
+    <div class="modal" id="addPackageModal">
+        <div class="modal-content glass-card">
+            <span class="modal-close"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <h2>Add New Package</h2>
+                <p>Create a new Umrah package</p>
+            </div>
+            <form id="addPackageForm">
+                <div class="form-group">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" name="packageName" class="form-control" placeholder="Enter package name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <input type="text" name="price" class="form-control" placeholder="e.g., $2,500" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Duration</label>
+                    <input type="text" name="duration" class="form-control" placeholder="e.g., 15 Days" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Package Details</label>
+                    <textarea name="details" class="form-control" rows="4" placeholder="Enter package inclusions and details"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-control">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Add Package</button>
+                    <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Package Modal -->
+    <div class="modal" id="editPackageModal">
+        <div class="modal-content glass-card">
+            <span class="modal-close"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <h2>Edit Package</h2>
+                <p>Update package details</p>
+            </div>
+            <form id="editPackageForm">
+                <input type="hidden" name="packageId" id="editPackageId">
+                <div class="form-group">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" name="packageName" id="editPackageName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <input type="text" name="price" id="editPrice" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Duration</label>
+                    <input type="text" name="duration" id="editDuration" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Package Details</label>
+                    <textarea name="details" id="editDetails" class="form-control" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select name="status" id="editStatus" class="form-control">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content glass-card delete-modal">
+            <span class="modal-close"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <h2>Delete Package</h2>
+            </div>
+            <div class="delete-confirmation">
+                <div class="delete-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p class="delete-message">Are you sure you want to delete <strong id="deletePackageName"></strong>?</p>
+                <p class="delete-warning">This action cannot be undone.</p>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                <button type="button" class="btn btn-glass modal-cancel">Cancel</button>
+            </div>
+        </div>
     </div>
 
     <!-- Base JavaScript (loaded first) -->

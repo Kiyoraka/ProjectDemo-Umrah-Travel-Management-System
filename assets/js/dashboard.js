@@ -367,80 +367,288 @@
     // Setup package management functionality
     function setupPackageManagement() {
         const addBtn = Utils.$('#addPackageBtn');
-        const addRow = Utils.$('.add-package-row');
 
-        if (addBtn && addRow) {
-            // Show add row when button clicked
+        // Setup modals
+        const addModal = Utils.$('#addPackageModal');
+        const editModal = Utils.$('#editPackageModal');
+        const deleteModal = Utils.$('#deletePackageModal');
+
+        // Add Package Button
+        if (addBtn) {
             Utils.addEvent(addBtn, 'click', function(e) {
                 e.preventDefault();
-                addRow.style.display = 'table-row';
-                const firstInput = addRow.querySelector('.table-input');
-                if (firstInput) firstInput.focus();
+                openModal(addModal);
             });
-
-            // Save button in add row
-            const saveBtn = addRow.querySelector('.btn-icon.save');
-            if (saveBtn) {
-                Utils.addEvent(saveBtn, 'click', function(e) {
-                    e.preventDefault();
-                    handleAddPackage(addRow);
-                });
-            }
-
-            // Cancel button in add row
-            const cancelBtn = addRow.querySelector('.btn-icon.cancel');
-            if (cancelBtn) {
-                Utils.addEvent(cancelBtn, 'click', function(e) {
-                    e.preventDefault();
-                    addRow.style.display = 'none';
-                    addRow.querySelectorAll('.table-input').forEach(input => input.value = '');
-                });
-            }
         }
 
-        // Search functionality
-        const searchInput = Utils.$('.search-input');
-        if (searchInput) {
-            Utils.addEvent(searchInput, 'input', Utils.debounce(function() {
-                filterPackages(this.value);
-            }, 300));
-        }
-    }
-
-    // Handle adding new package
-    function handleAddPackage(row) {
-        const inputs = row.querySelectorAll('.table-input');
-        const select = row.querySelector('.table-select');
-
-        // Validate inputs
-        let isValid = true;
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.style.borderColor = 'red';
-            } else {
-                input.style.borderColor = '';
-            }
+        // Edit buttons
+        const editBtns = Utils.$$('.packages-table .btn-icon.edit');
+        editBtns.forEach(btn => {
+            Utils.addEvent(btn, 'click', function(e) {
+                e.preventDefault();
+                const row = this.closest('tr');
+                openEditModal(row);
+            });
         });
 
-        if (isValid) {
-            Toast.show('Package added successfully!', 'success');
-            row.style.display = 'none';
-            inputs.forEach(input => input.value = '');
-            // In real app, would add to table and save to database
-        } else {
-            Toast.show('Please fill all fields', 'error');
+        // Delete buttons
+        const deleteBtns = Utils.$$('.packages-table .btn-icon.delete');
+        deleteBtns.forEach(btn => {
+            Utils.addEvent(btn, 'click', function(e) {
+                e.preventDefault();
+                const row = this.closest('tr');
+                openDeleteModal(row);
+            });
+        });
+
+        // Modal close buttons
+        const closeButtons = Utils.$$('.modal-close, .modal-cancel');
+        closeButtons.forEach(btn => {
+            Utils.addEvent(btn, 'click', function() {
+                const modal = this.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        // Close modal when clicking outside
+        const modals = Utils.$$('.modal');
+        modals.forEach(modal => {
+            Utils.addEvent(modal, 'click', function(e) {
+                if (e.target === this) {
+                    closeModal(this);
+                }
+            });
+        });
+
+        // Form submissions
+        const addForm = Utils.$('#addPackageForm');
+        if (addForm) {
+            Utils.addEvent(addForm, 'submit', function(e) {
+                e.preventDefault();
+                handleAddPackage(this);
+            });
+        }
+
+        const editForm = Utils.$('#editPackageForm');
+        if (editForm) {
+            Utils.addEvent(editForm, 'submit', function(e) {
+                e.preventDefault();
+                handleEditPackage(this);
+            });
+        }
+
+        const confirmDeleteBtn = Utils.$('#confirmDelete');
+        if (confirmDeleteBtn) {
+            Utils.addEvent(confirmDeleteBtn, 'click', function() {
+                handleDeletePackage();
+            });
         }
     }
 
-    // Filter packages based on search
-    function filterPackages(searchTerm) {
-        const rows = Utils.$$('.packages-table tbody tr:not(.add-package-row)');
-        const term = searchTerm.toLowerCase();
+    // Open modal
+    function openModal(modal) {
+        if (modal) {
+            Utils.addClass(modal, 'active');
+        }
+    }
 
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(term) ? '' : 'none';
+    // Close modal
+    function closeModal(modal) {
+        if (modal) {
+            Utils.removeClass(modal, 'active');
+            // Reset form if exists
+            const form = modal.querySelector('form');
+            if (form) form.reset();
+        }
+    }
+
+    // Open edit modal with data
+    function openEditModal(row) {
+        const modal = Utils.$('#editPackageModal');
+        const form = Utils.$('#editPackageForm');
+
+        if (modal && form) {
+            // Store row reference for later update
+            modal.dataset.editingRow = Array.from(row.parentNode.children).indexOf(row);
+
+            // Fill form with row data
+            form.packageId.value = row.cells[0].textContent;
+            form.packageName.value = row.cells[1].textContent;
+            form.price.value = row.cells[2].textContent.replace('$', '').replace(',', '');
+            form.duration.value = row.cells[3].textContent.replace(' Days', '');
+
+            // Set status
+            const statusBadge = row.querySelector('.status-badge');
+            if (statusBadge) {
+                form.status.value = statusBadge.classList.contains('active') ? 'active' : 'inactive';
+            }
+
+            openModal(modal);
+        }
+    }
+
+    // Open delete modal
+    function openDeleteModal(row) {
+        const modal = Utils.$('#deletePackageModal');
+        const nameElement = Utils.$('#deletePackageName');
+
+        if (modal && nameElement) {
+            const packageName = row.cells[1].textContent;
+            nameElement.textContent = packageName;
+            modal.dataset.packageId = row.cells[0].textContent;
+            modal.dataset.deleteRow = Array.from(row.parentNode.children).indexOf(row);
+            openModal(modal);
+        }
+    }
+
+    // Handle add package
+    function handleAddPackage(form) {
+        if (!Utils.validateForm(form)) {
+            return;
+        }
+
+        // Get form data
+        const formData = new FormData(form);
+        const packageData = {
+            id: generatePackageId(),
+            name: formData.get('packageName'),
+            price: formData.get('price'),
+            duration: formData.get('duration'),
+            status: formData.get('status')
+        };
+
+        // Add new row to table
+        const tableBody = Utils.$('.packages-table tbody');
+        if (tableBody) {
+            const newRow = createPackageRow(packageData);
+            tableBody.insertAdjacentHTML('beforeend', newRow);
+
+            // Re-attach event listeners for new buttons
+            setupPackageRowActions();
+        }
+
+        Toast.show('Package added successfully!', 'success');
+        closeModal(form.closest('.modal'));
+    }
+
+    // Handle edit package
+    function handleEditPackage(form) {
+        if (!Utils.validateForm(form)) {
+            return;
+        }
+
+        const modal = form.closest('.modal');
+        const rowIndex = modal.dataset.editingRow;
+        const tableBody = Utils.$('.packages-table tbody');
+
+        if (tableBody && rowIndex !== undefined) {
+            const row = tableBody.children[rowIndex];
+            if (row) {
+                // Update row data
+                const formData = new FormData(form);
+                row.cells[0].textContent = formData.get('packageId');
+                row.cells[1].textContent = formData.get('packageName');
+                row.cells[2].textContent = '$' + formData.get('price');
+                row.cells[3].textContent = formData.get('duration') + ' Days';
+
+                // Update status badge
+                const statusBadge = row.querySelector('.status-badge');
+                if (statusBadge) {
+                    const status = formData.get('status');
+                    statusBadge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+                    statusBadge.className = 'status-badge ' + status;
+                }
+            }
+        }
+
+        Toast.show('Package updated successfully!', 'success');
+        closeModal(modal);
+    }
+
+    // Handle delete package
+    function handleDeletePackage() {
+        const modal = Utils.$('#deletePackageModal');
+        const rowIndex = modal.dataset.deleteRow;
+        const tableBody = Utils.$('.packages-table tbody');
+
+        if (tableBody && rowIndex !== undefined) {
+            const row = tableBody.children[rowIndex];
+            if (row) {
+                // Fade out and remove
+                row.style.transition = 'opacity 0.3s';
+                row.style.opacity = '0';
+                setTimeout(() => {
+                    row.remove();
+                }, 300);
+            }
+        }
+
+        Toast.show('Package deleted successfully!', 'success');
+        closeModal(modal);
+    }
+
+    // Generate package ID
+    function generatePackageId() {
+        const tableBody = Utils.$('.packages-table tbody');
+        if (tableBody) {
+            const rows = tableBody.children;
+            return rows.length + 1;
+        }
+        return 1;
+    }
+
+    // Create package row HTML
+    function createPackageRow(data) {
+        const statusClass = data.status === 'active' ? 'active' : 'inactive';
+        const statusText = data.status.charAt(0).toUpperCase() + data.status.slice(1);
+
+        return `
+            <tr>
+                <td>${data.id}</td>
+                <td>${data.name}</td>
+                <td>$${data.price}</td>
+                <td>${data.duration} Days</td>
+                <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                <td class="action-buttons">
+                    <button class="btn-icon edit" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-icon delete" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    }
+
+    // Setup package row actions
+    function setupPackageRowActions() {
+        // Re-attach edit button listeners
+        const editBtns = Utils.$$('.packages-table .btn-icon.edit');
+        editBtns.forEach(btn => {
+            // Remove existing listeners to avoid duplicates
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+
+            Utils.addEvent(newBtn, 'click', function(e) {
+                e.preventDefault();
+                const row = this.closest('tr');
+                openEditModal(row);
+            });
+        });
+
+        // Re-attach delete button listeners
+        const deleteBtns = Utils.$$('.packages-table .btn-icon.delete');
+        deleteBtns.forEach(btn => {
+            // Remove existing listeners to avoid duplicates
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+
+            Utils.addEvent(newBtn, 'click', function(e) {
+                e.preventDefault();
+                const row = this.closest('tr');
+                openDeleteModal(row);
+            });
         });
     }
 

@@ -464,7 +464,7 @@
 /* Table Actions Bar */
 .table-actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -621,6 +621,20 @@
 .packages-table tbody tr:hover {
     background: rgba(76, 175, 80, 0.05);
     transform: translateX(2px);
+}
+
+/* Dashboard Modals */
+.modal-body {
+    padding: 20px 0;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.text-warning {
+    color: #ff9800;
+    font-size: 0.9rem;
 }
 
 /* Messages */
