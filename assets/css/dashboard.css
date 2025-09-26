@@ -290,6 +290,13 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    background: rgba(76, 175, 80, 0.1) !important;
+    color: var(--primary-green);
+    transition: var(--transition);
+}
+
+.stat-card:hover .stat-icon {
+    background: var(--primary-green) !important;
     color: var(--white);
 }
 
