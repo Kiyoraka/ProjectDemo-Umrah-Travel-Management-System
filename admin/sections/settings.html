@@ -135,68 +135,6 @@
             <button type="submit" class="btn btn-primary">Update Security Settings</button>
         </form>
     </div>
-
-    <!-- Backup Settings -->
-    <div class="settings-card glass-card">
-        <h4><i class="fas fa-database"></i> Backup & Maintenance</h4>
-        <form class="settings-form">
-            <div class="form-group">
-                <label class="form-label">Automatic Backup</label>
-                <select class="form-control">
-                    <option>Disabled</option>
-                    <option>Daily</option>
-                    <option selected>Weekly</option>
-                    <option>Monthly</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Backup Time</label>
-                <input type="time" class="form-control" value="02:00">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Keep Backups For</label>
-                <select class="form-control">
-                    <option>7 days</option>
-                    <option selected>30 days</option>
-                    <option>90 days</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-glass">
-                    <i class="fas fa-download"></i> Download Backup Now
-                </button>
-            </div>
-            <button type="submit" class="btn btn-primary">Save Backup Settings</button>
-        </form>
-    </div>
-
-    <!-- API Settings -->
-    <div class="settings-card glass-card">
-        <h4><i class="fas fa-plug"></i> API Settings</h4>
-        <form class="settings-form">
-            <div class="form-group">
-                <label class="form-label">API Endpoint</label>
-                <input type="url" class="form-control" value="https://api.umrahtravel.com/v1">
-            </div>
-            <div class="form-group">
-                <label class="form-label">API Key</label>
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" class="form-control" value="sk_live_••••••••••••••••" readonly>
-                    <button type="button" class="btn btn-glass">Regenerate</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Rate Limit (requests/hour)</label>
-                <input type="number" class="form-control" value="1000">
-            </div>
-            <div class="form-group">
-                <label class="form-label">
-                    <input type="checkbox" checked> Enable API Access
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Save API Settings</button>
-        </form>
-    </div>
 </div>
 
 <style>
