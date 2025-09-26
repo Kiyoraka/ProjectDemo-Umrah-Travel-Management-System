@@ -245,14 +245,17 @@
 
 .section-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .section-header h3 {
     color: var(--white);
     margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .section-header p {
