@@ -13,6 +13,7 @@
 }
 
 .nav-line {
+    display: none; /* Removed as per requirement */
     width: 2px;
     height: 150px;
     background: rgba(255, 255, 255, 0.3);
@@ -71,20 +72,27 @@
     transform: translateY(-50%);
     white-space: nowrap;
     padding: 5px 15px;
-    background: var(--glass-white);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
-    color: var(--white);
+    color: var(--dark-green);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-item:hover .nav-label {
     opacity: 1;
+}
+
+.nav-item.active .nav-label {
+    opacity: 1;
+    background: var(--white);
+    color: var(--primary-green);
 }
 
 /* Login Button in Nav */
