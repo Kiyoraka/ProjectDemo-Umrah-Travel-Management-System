@@ -3,34 +3,34 @@
     <h3>User Management</h3>
 </div>
 
-<!-- User Stats -->
+<!-- User Stats by Package -->
 <div class="stats-grid">
     <div class="stat-card glass">
-        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-icon"><i class="fas fa-crown"></i></div>
         <div class="stat-content">
-            <h4>Total Users</h4>
-            <p class="stat-value">70</p>
+            <h4>VIP Package</h4>
+            <p class="stat-value" id="vip-count">18</p>
         </div>
     </div>
     <div class="stat-card glass">
-        <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+        <div class="stat-icon"><i class="fas fa-star"></i></div>
         <div class="stat-content">
-            <h4>Active Users</h4>
-            <p class="stat-value">62</p>
+            <h4>Premium Package</h4>
+            <p class="stat-value" id="premium-count">20</p>
         </div>
     </div>
     <div class="stat-card glass">
-        <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
         <div class="stat-content">
-            <h4>New This Month</h4>
-            <p class="stat-value">12</p>
+            <h4>Standard Package</h4>
+            <p class="stat-value" id="standard-count">17</p>
         </div>
     </div>
     <div class="stat-card glass">
-        <div class="stat-icon"><i class="fas fa-user-shield"></i></div>
+        <div class="stat-icon"><i class="fas fa-tag"></i></div>
         <div class="stat-content">
-            <h4>Admin Users</h4>
-            <p class="stat-value">3</p>
+            <h4>Economy Package</h4>
+            <p class="stat-value" id="economy-count">15</p>
         </div>
     </div>
 </div>
@@ -64,8 +64,13 @@
     </div>
 
     <!-- Pagination -->
-    <div class="pagination" id="usersPagination">
-        <!-- Pagination will be generated dynamically -->
+    <div class="pagination-container">
+        <div class="pagination-info">
+            Showing <span id="showing-start">1</span> to <span id="showing-end">7</span> of <span id="total-users">70</span> users
+        </div>
+        <div class="pagination" id="usersPagination">
+            <!-- Pagination will be generated dynamically -->
+        </div>
     </div>
 </div>
 
@@ -149,28 +154,18 @@
     let currentUserPage = 1;
 
     function displayUsers(page) {
-        console.log('=== displayUsers called with page:', page);
-        console.log('userData length:', userData.length);
-        console.log('First user:', userData[0]);
-
         const tbody = document.getElementById('usersTableBody');
         if (!tbody) {
-            console.error('ERROR: Users table body not found!');
             return;
         }
-        console.log('Table body found:', tbody);
 
         const start = (page - 1) * usersPerPage;
         const end = start + usersPerPage;
         const paginatedUsers = userData.slice(start, end);
-        console.log('Paginated users count:', paginatedUsers.length);
-        console.log('Paginated users:', paginatedUsers);
 
         tbody.innerHTML = '';
-        console.log('Cleared table body');
 
-        paginatedUsers.forEach((user, index) => {
-            console.log(`Adding user ${index + 1}:`, user);
+        paginatedUsers.forEach(user => {
             const row = `
                 <tr>
                     <td>#${user.id}</td>
@@ -188,11 +183,7 @@
             tbody.innerHTML += row;
         });
 
-        console.log('Final table HTML length:', tbody.innerHTML.length);
-        console.log('Table rows count:', tbody.getElementsByTagName('tr').length);
-
         updateUserPagination();
-        console.log('=== displayUsers completed ===');
     }
 
     function updateUserPagination() {
@@ -208,32 +199,38 @@
 
         // Previous button
         paginationHTML += `
-            <button class="page-btn" onclick="changeUserPage(${currentUserPage - 1})" ${currentUserPage === 1 ? 'disabled' : ''}>
-                <i class="fas fa-chevron-left"></i>
+            <button class="btn btn-glass pagination-btn" onclick="changeUserPage(${currentUserPage - 1})" ${currentUserPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i> Previous
             </button>
         `;
 
-        // Page numbers
+        // Page numbers container
+        paginationHTML += '<div class="page-numbers">';
         for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || (i >= currentUserPage - 1 && i <= currentUserPage + 1)) {
-                paginationHTML += `
-                    <button class="page-btn ${i === currentUserPage ? 'active' : ''}" onclick="changeUserPage(${i})">
-                        ${i}
-                    </button>
-                `;
-            } else if (i === currentUserPage - 2 || i === currentUserPage + 2) {
-                paginationHTML += `<span class="page-dots">...</span>`;
-            }
+            paginationHTML += `
+                <button class="page-num ${i === currentUserPage ? 'active' : ''}" data-page="${i}" onclick="changeUserPage(${i})">
+                    ${i}
+                </button>
+            `;
         }
+        paginationHTML += '</div>';
 
         // Next button
         paginationHTML += `
-            <button class="page-btn" onclick="changeUserPage(${currentUserPage + 1})" ${currentUserPage === totalPages ? 'disabled' : ''}>
-                <i class="fas fa-chevron-right"></i>
+            <button class="btn btn-glass pagination-btn" onclick="changeUserPage(${currentUserPage + 1})" ${currentUserPage === totalPages ? 'disabled' : ''}>
+                Next <i class="fas fa-chevron-right"></i>
             </button>
         `;
 
         pagination.innerHTML = paginationHTML;
+
+        // Update pagination info
+        const start = (currentUserPage - 1) * usersPerPage + 1;
+        const end = Math.min(currentUserPage * usersPerPage, userData.length);
+        const showingStart = document.getElementById('showing-start');
+        const showingEnd = document.getElementById('showing-end');
+        if (showingStart) showingStart.textContent = start;
+        if (showingEnd) showingEnd.textContent = end;
     }
 
     window.changeUserPage = function(page) {
@@ -267,33 +264,45 @@
 
     // Initialize users display function
     window.initializeUsersDisplay = function() {
-        console.log('=== initializeUsersDisplay called ===');
-        console.log('userData available?', typeof userData !== 'undefined');
-        console.log('userData length:', userData ? userData.length : 'N/A');
-
         const tbody = document.getElementById('usersTableBody');
-        console.log('Looking for tbody with id "usersTableBody"');
-
         if (tbody) {
-            console.log('SUCCESS: Users table body found!');
-            console.log('Calling displayUsers(1)...');
+            updatePackageCounts();
             displayUsers(1);
-        } else {
-            console.error('ERROR: Users table body NOT found!');
-            console.log('Available elements with IDs:');
-            const allElements = document.querySelectorAll('[id]');
-            allElements.forEach(el => console.log('  -', el.id));
         }
     };
 
+    // Calculate package counts
+    function updatePackageCounts() {
+        const packageCounts = {
+            'VIP Umrah': 0,
+            'Premium Umrah': 0,
+            'Standard Umrah': 0,
+            'Economy Umrah': 0
+        };
+
+        userData.forEach(user => {
+            if (packageCounts.hasOwnProperty(user.package)) {
+                packageCounts[user.package]++;
+            }
+        });
+
+        // Update the display
+        const vipElement = document.getElementById('vip-count');
+        const premiumElement = document.getElementById('premium-count');
+        const standardElement = document.getElementById('standard-count');
+        const economyElement = document.getElementById('economy-count');
+
+        if (vipElement) vipElement.textContent = packageCounts['VIP Umrah'];
+        if (premiumElement) premiumElement.textContent = packageCounts['Premium Umrah'];
+        if (standardElement) standardElement.textContent = packageCounts['Standard Umrah'];
+        if (economyElement) economyElement.textContent = packageCounts['Economy Umrah'];
+    }
+
     // Initialize immediately when script loads
-    console.log('=== Script loaded, checking for immediate init ===');
     const tbody = document.getElementById('usersTableBody');
     if (tbody) {
-        console.log('DIRECT INIT: Table body found, displaying users');
+        updatePackageCounts();
         displayUsers(1);
-    } else {
-        console.log('DIRECT INIT: Table body not found, waiting for initializeUsersDisplay call');
     }
 })();
 </script>
@@ -308,5 +317,78 @@
     background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.2));
     color: #4CAF50;
     display: inline-block;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.pagination-info {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn:not(:disabled):hover {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+}
+
+.page-num {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-num:hover {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: var(--primary-green);
+}
+
+.page-num.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+    font-weight: 600;
 }
 </style>
