@@ -428,4 +428,7 @@
         checkInitialHash();
     });
 
+    // Make navigateToSection globally available
+    window.navigateToSection = navigateToSection;
+
 })();
