@@ -211,6 +211,8 @@
 </div>
 
 <script>
+// Wait for section to be fully loaded
+if (document.getElementById('messages-section')) {
 (function() {
     // Messages data
     const messagesData = [
@@ -247,7 +249,10 @@
     // Display messages function
     window.displayMessages = function(page) {
         const tbody = document.getElementById('messagesTableBody');
-        if (!tbody) return;
+        if (!tbody) {
+            console.log('Messages tbody not found, skipping display');
+            return;
+        }
 
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
@@ -380,6 +385,7 @@
         displayMessages(1);
     }, 100);
 })();
+} // End if check
 </script>
 
 <style>
