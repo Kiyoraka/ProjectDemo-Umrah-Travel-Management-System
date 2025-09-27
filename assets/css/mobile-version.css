@@ -108,16 +108,9 @@
         text-align: center;
     }
 
-    /* Mobile footer adjustments */
+    /* Hide footer on mobile */
     .simple-footer {
-        bottom: 39px; /* Above mobile nav, reduced by another 30% from 56px */
-        padding: 6px 15px;
-        width: 90%;
-        max-width: none;
-    }
-
-    .simple-footer p {
-        font-size: 0.7rem;
+        display: none !important;
     }
 
     /* Home section mobile */
@@ -381,33 +374,45 @@
     }
 
     .contact-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
+        font-size: 1.17rem; /* Further reduced by 10% */
+        margin-bottom: 11px;
         text-align: center;
     }
 
     .contact-section > p {
-        font-size: 0.9rem;
+        font-size: 0.72rem; /* Further reduced by 10% */
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 18px;
         color: #666;
     }
 
     .contact-grid {
         display: block;
-        max-width: 350px;
+        max-width: 270px; /* Further reduced by 10% from 300px */
         margin: 0 auto;
     }
 
     .contact-form {
         background: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 16px; /* Further reduced by 10% */
+        border-radius: 9px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
 
-    .contact-info {
-        display: none; /* Hide contact info on mobile */
+    .contact-form h3 {
+        font-size: 0.9rem; /* Further reduced by 10% */
+        margin-bottom: 13px;
+        text-align: center;
+        color: #333;
+    }
+
+    /* Hide all contact info elements on mobile */
+    .contact-info,
+    .info-item,
+    .info-card,
+    .info-icon,
+    .info-text {
+        display: none !important;
     }
 
     /* Mobile buttons */
@@ -443,14 +448,33 @@
         border-radius: 15px;
     }
 
-    /* Forms on mobile */
-    .form-group {
-        margin-bottom: 15px;
+    /* Forms on mobile - reduced by 40% total */
+    .contact-form .form-group {
+        margin-bottom: 9px; /* Further reduced by 10% */
     }
 
-    .form-control {
-        padding: 12px;
-        font-size: 16px; /* Prevents zoom on iOS */
+    .contact-form .form-label {
+        font-size: 0.72rem; /* Further reduced by 10% */
+        margin-bottom: 3px;
+        color: #555;
+    }
+
+    .contact-form .form-control {
+        padding: 7px; /* Further reduced by 10% */
+        font-size: 13px; /* Slightly smaller */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .contact-form textarea.form-control {
+        min-height: 63px; /* Further reduced by 10% */
+    }
+
+    .contact-form .btn-primary {
+        width: 100%;
+        padding: 9px;
+        font-size: 0.76rem; /* Further reduced by 10% */
+        margin-top: 9px;
     }
 
     /* Smooth scrolling for mobile */
@@ -569,10 +593,6 @@
 
     .mobile-nav {
         padding-bottom: env(safe-area-inset-bottom);
-    }
-
-    .simple-footer {
-        bottom: calc(39px + env(safe-area-inset-bottom)); /* Reduced by another 30% */
     }
 }
 
