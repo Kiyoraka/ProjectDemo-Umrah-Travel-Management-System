@@ -155,6 +155,17 @@
     background-position: center;
 }
 
+/* Unique Home Card - Independent from glass-card */
+.home-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
 .hero-content {
     text-align: center;
     animation: fadeIn 1s ease-out;
@@ -214,6 +225,19 @@
 /* About Section */
 .about-section {
     background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(76, 175, 80, 0.1));
+}
+
+/* Unique About Card - Independent from glass-card */
+.about-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 17px; /* 15% smaller */
+    box-shadow: 0 8px 34px rgba(0, 0, 0, 0.1);
+    padding: 1.7rem; /* 15% smaller */
+    max-width: 85%; /* Reduce width by 15% */
+    margin: 0 auto;
 }
 
 .about-content {
@@ -279,9 +303,9 @@
 
 .packages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); /* Reduced by 15% from 300px */
-    gap: 25px; /* Reduced by 15% from 30px */
-    margin-top: 42px; /* Reduced by 15% from 50px */
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr)); /* Reduced by 25% from 300px */
+    gap: 23px; /* Reduced by 25% from 30px */
+    margin-top: 38px; /* Reduced by 25% from 50px */
 }
 
 .package-card {
@@ -294,13 +318,13 @@
 }
 
 .package-card:hover {
-    transform: translateY(-8px); /* Reduced by 15% from -10px */
+    transform: translateY(-7px); /* Reduced by 25% from -10px */
 }
 
 .package-header {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: var(--white);
-    padding: 17px; /* Reduced by 15% from 20px */
+    padding: 15px; /* Reduced by 25% from 20px */
     text-align: center;
 }
 
@@ -322,7 +346,7 @@
 }
 
 .package-body {
-    padding: 25px; /* Reduced by 15% from 30px */
+    padding: 23px; /* Reduced by 25% from 30px */
     background: var(--white);
     flex: 1;
     display: flex;
@@ -354,6 +378,20 @@
 /* Contact Section */
 .contact-section {
     background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(139, 195, 74, 0.1));
+}
+
+/* Unique Contact Card - Independent from glass-card */
+.contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px; /* 25% smaller */
+    box-shadow: 0 7px 30px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; /* 25% smaller */
+    max-width: 75%; /* Reduce width by 25% */
+    margin: 0 auto;
+    margin-top: 10%; /* Move down as requested */
 }
 
 .contact-content {
