@@ -413,32 +413,32 @@
     background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(139, 195, 74, 0.1));
 }
 
-/* Form elements - Decreased by 20% */
+/* Form elements - Now at 88% size */
 .contact-section .form-group {
-    margin-bottom: 1.2rem; /* 20% smaller */
+    margin-bottom: 1.32rem; /* 88% of 1.5rem */
 }
 
 .contact-section input,
 .contact-section textarea {
-    font-size: 0.8rem !important; /* 20% smaller */
-    padding: 0.8rem !important; /* 20% smaller */
+    font-size: 0.88rem !important; /* 88% of 1rem */
+    padding: 0.88rem !important; /* 88% of 1rem */
 }
 
 .contact-section label {
-    font-size: 0.72rem !important; /* 20% smaller */
-    margin-bottom: 0.4rem !important;
+    font-size: 0.79rem !important; /* 88% of 0.9rem */
+    margin-bottom: 0.44rem !important;
 }
 
-/* Contact Card - Decreased by 20% */
+/* Contact Card - Now at 88% size (increased by 10% from 80%) */
 .contact-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 16px; /* 20% smaller */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    padding: 1.6rem; /* 20% smaller */
-    transform: scale(0.8); /* Scale down by 20% */
+    border-radius: 17.6px; /* 88% of original */
+    box-shadow: 0 8.8px 35px rgba(0, 0, 0, 0.1);
+    padding: 1.76rem; /* 88% of original 2rem */
+    transform: scale(0.88); /* Scale to 88% */
     transform-origin: center;
     margin: 0 auto;
 }
@@ -448,49 +448,49 @@
     margin: 0 auto;
 }
 
-/* Contact section content - Decreased by 20% */
+/* Contact section content - Now at 88% size */
 .contact-section h2 {
-    font-size: 1.44rem !important; /* 20% smaller */
-    margin-bottom: 0.8rem;
+    font-size: 1.58rem !important; /* 88% of 1.8rem */
+    margin-bottom: 0.88rem;
 }
 
 .contact-section p {
-    font-size: 0.72rem !important; /* 20% smaller */
-    margin-bottom: 1.2rem;
+    font-size: 0.79rem !important; /* 88% of 0.9rem */
+    margin-bottom: 1.32rem;
 }
 
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px; /* 20% smaller */
-    margin-top: 32px; /* 20% smaller */
+    gap: 44px; /* 88% of 50px */
+    margin-top: 35px; /* 88% of 40px */
 }
 
 .contact-form {
-    padding: 24px; /* 20% smaller */
+    padding: 26px; /* 88% of 30px */
 }
 
 .contact-info {
-    padding: 24px; /* 20% smaller */
+    padding: 26px; /* 88% of 30px */
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* 20% smaller */
+    margin-bottom: 22px; /* 88% of 25px */
 }
 
 .info-icon {
-    width: 40px; /* 20% smaller */
-    height: 40px; /* 20% smaller */
+    width: 44px; /* 88% of 50px */
+    height: 44px; /* 88% of 50px */
     background: var(--primary-green);
     color: var(--white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 16px; /* 20% smaller */
-    font-size: 0.96rem; /* 20% smaller */
+    margin-right: 18px; /* 88% of 20px */
+    font-size: 1.06rem; /* 88% of 1.2rem */
 }
 
 .info-icon i {
@@ -498,15 +498,15 @@
 }
 
 .info-text h4 {
-    margin-bottom: 4px; /* 20% smaller */
+    margin-bottom: 4.4px; /* 88% of 5px */
     color: var(--dark-green);
-    font-size: 0.8rem; /* 20% smaller */
+    font-size: 0.88rem; /* 88% of 1rem */
 }
 
 .info-text p {
     margin: 0;
     color: var(--text-light);
-    font-size: 0.72rem; /* 20% smaller */
+    font-size: 0.79rem; /* 88% of 0.9rem */
 }
 
 /* Login Modal */
