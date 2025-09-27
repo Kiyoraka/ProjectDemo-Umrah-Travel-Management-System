@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis - UTMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .analysis-container {
+            padding: 20px;
+            height: calc(100vh - 90px);
+            overflow: hidden;
+        }
+
+        .chart-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            height: calc(50% - 30px);
+        }
+
+        .chart-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 175, 80, 0.1);
+        }
+
+        .chart-card h3 {
+            margin: 0 0 15px 0;
+            color: #2e7d32;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        .half-width {
+            flex: 1;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: calc(100% - 40px);
+        }
+
+        /* Ensure charts fit properly */
+        #packagePieChart {
+            max-height: 100% !important;
+        }
+
+        .bottom-charts .chart-wrapper {
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-kaaba"></i></span>
+                    <span class="logo-text">UTMS Admin</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-tachometer-alt"></i></span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a href="analysis.html" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
+                            <span class="nav-text">Analysis</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="content">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-edit"></i></span>
+                            <span class="nav-text">Content Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="packages">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-box"></i></span>
+                            <span class="nav-text">Package Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="bookings">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
+                            <span class="nav-text">Booking Management</span>
+                            <span class="badge">42</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="users">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-users"></i></span>
+                            <span class="nav-text">User Management</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="messages">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-comments"></i></span>
+                            <span class="nav-text">Messages</span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-section="settings">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-glass logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <h1 class="page-title">Umrah Travel Management System</h1>
+            </header>
+
+            <!-- Analysis Content -->
+            <div class="analysis-container">
+                <!-- Top Row - Pie Chart -->
+                <div class="chart-row">
+                    <div class="chart-card full-width">
+                        <h3><i class="fas fa-chart-pie"></i> Package Distribution</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="packagePieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row - Two Column Charts -->
+                <div class="chart-row bottom-charts">
+                    <div class="chart-card half-width">
+                        <h3><i class="fas fa-chart-line"></i> Booking Growth (2024)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="bookingGrowthChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card half-width">
+                        <h3><i class="fas fa-chart-area"></i> Profit/Loss Analysis (2024)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="profitLossChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Color palette with different shades of green
+        const greenPalette = {
+            primary: '#4CAF50',
+            secondary: '#66BB6A',
+            tertiary: '#81C784',
+            light: '#A5D6A7',
+            lighter: '#C8E6C9',
+            dark: '#388E3C',
+            darker: '#2E7D32',
+            accent: '#1B5E20'
+        };
+
+        // Package Pie Chart
+        const packageCtx = document.getElementById('packagePieChart').getContext('2d');
+        const packageChart = new Chart(packageCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Economy Package', 'Premium Package', 'VIP Package'],
+                datasets: [{
+                    data: [45, 35, 20], // Percentage distribution
+                    backgroundColor: [
+                        greenPalette.primary,
+                        greenPalette.dark,
+                        greenPalette.accent
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Booking Growth Chart
+        const bookingCtx = document.getElementById('bookingGrowthChart').getContext('2d');
+        const bookingChart = new Chart(bookingCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Total Bookings',
+                    data: [120, 135, 128, 145, 160, 175, 190, 210, 185, 195, 220, 240],
+                    borderColor: greenPalette.primary,
+                    backgroundColor: `${greenPalette.primary}20`,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Profit/Loss Chart
+        const profitCtx = document.getElementById('profitLossChart').getContext('2d');
+        const profitChart = new Chart(profitCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [45000, 52000, 48000, 58000, 62000, 68000, 75000, 82000, 72000, 78000, 88000, 95000],
+                    backgroundColor: greenPalette.primary,
+                    borderColor: greenPalette.dark,
+                    borderWidth: 1
+                }, {
+                    label: 'Expenses',
+                    data: [38000, 41000, 39000, 42000, 45000, 48000, 52000, 55000, 51000, 53000, 58000, 62000],
+                    backgroundColor: greenPalette.lighter,
+                    borderColor: greenPalette.secondary,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': $';
+                                }
+                                label += context.parsed.y.toLocaleString();
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
