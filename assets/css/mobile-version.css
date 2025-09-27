@@ -307,58 +307,71 @@
         border-radius: 12px;
         padding: 20px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         text-align: center;
     }
 
-    .package-header {
-        padding: 0;
-        background: none;
-        width: 100%;
-        margin-bottom: 10px;
-        display: block !important; /* Ensure header is visible */
+    /* Force show package header elements */
+    .package-card .package-header {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        width: 100% !important;
+        margin: 0 !important;
     }
 
-    .package-name {
-        font-size: 1.1rem;
-        color: #333;
-        margin-bottom: 8px;
-        display: block !important; /* Force display */
-        font-weight: 600;
+    .package-card .package-name,
+    .package-card h3.package-name {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-size: 1.2rem !important;
+        color: #333 !important;
+        margin: 0 0 10px 0 !important;
+        font-weight: 600 !important;
     }
 
-    .package-price {
-        font-size: 1.3rem; /* Smaller price size */
-        color: #4CAF50;
-        font-weight: bold;
-        display: block !important; /* Force display */
+    .package-card .package-price {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-size: 1.4rem !important;
+        color: #4CAF50 !important;
+        font-weight: bold !important;
+        margin: 0 0 15px 0 !important;
     }
 
     /* Hide package details on mobile */
-    .package-duration,
-    .package-body,
-    .package-features {
+    .package-card .package-duration,
+    .package-card .package-body {
         display: none !important;
     }
 
-    /* Simple book button */
-    .package-card .btn,
-    .package-card .btn-book {
+    /* Show book button from package body */
+    .package-card .package-body .btn-book {
+        display: block !important;
+        visibility: visible !important;
         width: 100%;
         max-width: 180px;
         padding: 10px 20px;
-        margin-top: 10px;
+        margin: 0 auto;
         background: #4CAF50;
         color: white;
         border: none;
         border-radius: 25px;
         font-size: 0.9rem;
-        cursor: pointer;
+    }
+
+    /* Hide features but show button container */
+    .package-card .package-features {
+        display: none !important;
+    }
+
+    .package-card .package-body {
         display: block !important;
-        margin-left: auto;
-        margin-right: auto;
+        padding: 0 !important;
+        background: transparent !important;
     }
 
 
