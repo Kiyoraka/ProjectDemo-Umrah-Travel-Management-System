@@ -227,38 +227,38 @@
     background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(76, 175, 80, 0.1));
 }
 
-/* About section content - Increased by 10% */
+/* About section content - Now at 105% size */
 .about-section h2 {
-    font-size: 1.98rem !important; /* 10% larger */
-    margin-bottom: 1.1rem;
+    font-size: 1.89rem !important; /* 5% larger than original */
+    margin-bottom: 1.05rem;
 }
 
 .about-section h3 {
-    font-size: 1.32rem !important; /* 10% larger */
-    margin-bottom: 0.55rem;
+    font-size: 1.26rem !important; /* 5% larger than original */
+    margin-bottom: 0.53rem;
 }
 
 .about-section p {
-    font-size: 0.99rem !important; /* 10% larger */
-    line-height: 1.6;
-    margin-bottom: 0.88rem;
+    font-size: 0.95rem !important; /* 5% larger than original */
+    line-height: 1.55;
+    margin-bottom: 0.84rem;
 }
 
 .about-section li {
-    font-size: 0.94rem !important; /* 10% larger */
-    padding: 0.33rem 0;
+    font-size: 0.89rem !important; /* 5% larger than original */
+    padding: 0.32rem 0;
 }
 
-/* About Card - Increased by 10% */
+/* About Card - Now at 105% size (decreased by 5% from 110%) */
 .about-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 22px; /* 10% larger */
-    box-shadow: 0 11px 44px rgba(0, 0, 0, 0.1);
-    padding: 2.2rem; /* 10% larger */
-    transform: scale(1.1); /* Scale up by 10% */
+    border-radius: 21px; /* 5% larger than original */
+    box-shadow: 0 10.5px 42px rgba(0, 0, 0, 0.1);
+    padding: 2.1rem; /* 5% larger than original */
+    transform: scale(1.05); /* Scale up by 5% */
     transform-origin: center;
 }
 
@@ -270,9 +270,9 @@
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2.2rem; /* 10% larger */
+    gap: 2.1rem; /* 5% larger */
     align-items: center;
-    margin-top: 1.65rem; /* 10% larger */
+    margin-top: 1.58rem; /* 5% larger */
 }
 
 .about-image {
@@ -281,13 +281,13 @@
 
 .about-image-box {
     width: 100%;
-    height: 220px; /* 10% larger */
+    height: 210px; /* 5% larger */
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-    border-radius: 16.5px; /* 10% larger */
+    border-radius: 15.75px; /* 5% larger */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.3rem; /* 10% larger */
+    font-size: 3.15rem; /* 5% larger */
     color: var(--white);
 }
 
@@ -304,10 +304,10 @@
 }
 
 .stat-number {
-    font-size: 1.98rem; /* 10% larger */
+    font-size: 1.89rem; /* 5% larger */
     font-weight: bold;
     color: var(--primary-green);
-    margin-bottom: 0.28rem;
+    margin-bottom: 0.26rem;
 }
 
 .stat-label {
