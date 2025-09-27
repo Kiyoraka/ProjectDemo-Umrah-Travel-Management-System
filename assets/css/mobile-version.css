@@ -381,34 +381,34 @@
     }
 
     .contact-section h2 {
-        font-size: 1.3rem; /* Reduced by 30% */
-        margin-bottom: 12px;
+        font-size: 1.17rem; /* Further reduced by 10% */
+        margin-bottom: 11px;
         text-align: center;
     }
 
     .contact-section > p {
-        font-size: 0.8rem; /* Reduced */
+        font-size: 0.72rem; /* Further reduced by 10% */
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         color: #666;
     }
 
     .contact-grid {
         display: block;
-        max-width: 300px; /* Reduced from 350px */
+        max-width: 270px; /* Further reduced by 10% from 300px */
         margin: 0 auto;
     }
 
     .contact-form {
         background: white;
-        padding: 18px; /* Reduced by 30% from 25px */
-        border-radius: 10px;
+        padding: 16px; /* Further reduced by 10% */
+        border-radius: 9px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
 
     .contact-form h3 {
-        font-size: 1rem; /* Reduced by 30% */
-        margin-bottom: 15px;
+        font-size: 0.9rem; /* Further reduced by 10% */
+        margin-bottom: 13px;
         text-align: center;
         color: #333;
     }
@@ -455,33 +455,33 @@
         border-radius: 15px;
     }
 
-    /* Forms on mobile - reduced by 30% */
+    /* Forms on mobile - reduced by 40% total */
     .contact-form .form-group {
-        margin-bottom: 10px; /* Reduced from 15px */
+        margin-bottom: 9px; /* Further reduced by 10% */
     }
 
     .contact-form .form-label {
-        font-size: 0.8rem; /* Reduced */
-        margin-bottom: 4px;
+        font-size: 0.72rem; /* Further reduced by 10% */
+        margin-bottom: 3px;
         color: #555;
     }
 
     .contact-form .form-control {
-        padding: 8px; /* Reduced from 12px */
-        font-size: 14px; /* Slightly smaller */
+        padding: 7px; /* Further reduced by 10% */
+        font-size: 13px; /* Slightly smaller */
         border: 1px solid #ddd;
-        border-radius: 6px;
+        border-radius: 5px;
     }
 
     .contact-form textarea.form-control {
-        min-height: 70px; /* Reduced from default */
+        min-height: 63px; /* Further reduced by 10% */
     }
 
     .contact-form .btn-primary {
         width: 100%;
-        padding: 10px;
-        font-size: 0.85rem;
-        margin-top: 10px;
+        padding: 9px;
+        font-size: 0.76rem; /* Further reduced by 10% */
+        margin-top: 9px;
     }
 
     /* Smooth scrolling for mobile */
