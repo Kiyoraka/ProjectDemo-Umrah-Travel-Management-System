@@ -196,3 +196,143 @@
     color: #4CAF50 !important;
 }
 </style>
+
+<script>
+(function() {
+    // Package Management Modal Functionality
+
+    // Get modal elements
+    const addPackageModal = document.getElementById('addPackageModal');
+    const editPackageModal = document.getElementById('editPackageModal');
+    const deletePackageModal = document.getElementById('deletePackageModal');
+
+    // Get buttons
+    const addPackageBtn = document.getElementById('addPackageBtn');
+
+    // Add Package Modal
+    if (addPackageBtn) {
+        addPackageBtn.addEventListener('click', function() {
+            if (addPackageModal) {
+                addPackageModal.style.display = 'block';
+            }
+        });
+    }
+
+    // Edit and Delete buttons for each row
+    document.querySelectorAll('.btn-icon.edit').forEach(button => {
+        button.addEventListener('click', function() {
+            if (editPackageModal) {
+                // Get package data from the row
+                const row = this.closest('tr');
+                const packageId = row.cells[0].textContent;
+                const packageName = row.cells[1].textContent;
+                const price = row.cells[2].textContent;
+                const duration = row.cells[3].textContent;
+
+                // Populate edit form
+                const editForm = editPackageModal.querySelector('form');
+                if (editForm) {
+                    const nameInput = editForm.querySelector('[name="packageName"]');
+                    const priceInput = editForm.querySelector('[name="price"]');
+                    const durationInput = editForm.querySelector('[name="duration"]');
+
+                    if (nameInput) nameInput.value = packageName;
+                    if (priceInput) priceInput.value = price;
+                    if (durationInput) durationInput.value = duration;
+                }
+
+                editPackageModal.style.display = 'block';
+            }
+        });
+    });
+
+    document.querySelectorAll('.btn-icon.delete').forEach(button => {
+        button.addEventListener('click', function() {
+            if (deletePackageModal) {
+                // Get package data from the row
+                const row = this.closest('tr');
+                const packageName = row.cells[1].textContent;
+
+                // Update delete modal with package name
+                const packageNameElement = deletePackageModal.querySelector('#deletePackageName');
+                if (packageNameElement) {
+                    packageNameElement.textContent = packageName;
+                }
+
+                deletePackageModal.style.display = 'block';
+            }
+        });
+    });
+
+    // Close modals
+    document.querySelectorAll('.modal-close, .modal-cancel').forEach(element => {
+        element.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    });
+
+    // Handle form submissions
+    const addPackageForm = document.getElementById('addPackageForm');
+    if (addPackageForm) {
+        addPackageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const packageName = formData.get('packageName');
+            const price = formData.get('price');
+            const duration = formData.get('duration');
+
+            // In a real app, this would send to server
+            alert(`Package "${packageName}" added successfully!`);
+
+            // Close modal and reset form
+            addPackageModal.style.display = 'none';
+            this.reset();
+        });
+    }
+
+    const editPackageForm = document.getElementById('editPackageForm');
+    if (editPackageForm) {
+        editPackageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const packageName = formData.get('packageName');
+
+            // In a real app, this would send to server
+            alert(`Package "${packageName}" updated successfully!`);
+
+            // Close modal
+            editPackageModal.style.display = 'none';
+        });
+    }
+
+    // Delete confirmation
+    const confirmDeleteBtn = document.getElementById('confirmDeletePackage');
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener('click', function() {
+            const packageName = document.getElementById('deletePackageName')?.textContent || 'Package';
+
+            // In a real app, this would send delete request to server
+            alert(`Package "${packageName}" deleted successfully!`);
+
+            // Close modal
+            deletePackageModal.style.display = 'none';
+        });
+    }
+})();
+</script>
