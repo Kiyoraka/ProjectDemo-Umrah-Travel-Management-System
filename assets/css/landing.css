@@ -227,6 +227,24 @@
     background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(76, 175, 80, 0.1));
 }
 
+/* Reduce About section text sizes by 25% */
+.about-section h2 {
+    font-size: 1.5rem !important; /* Reduced by 25% from 2rem */
+}
+
+.about-section h3 {
+    font-size: 1.125rem !important; /* Reduced by 25% from 1.5rem */
+}
+
+.about-section p {
+    font-size: 0.75rem !important; /* Reduced by 25% from 1rem */
+    line-height: 1.4;
+}
+
+.about-section li {
+    font-size: 0.75rem !important; /* Reduced by 25% from 1rem */
+}
+
 /* Unique About Card - Independent from glass-card */
 .about-card {
     background: rgba(255, 255, 255, 0.95);
@@ -243,16 +261,16 @@
 }
 
 .about-content {
-    max-width: 765px; /* Reduced by 15% from 900px */
+    max-width: 574px; /* Reduced by 25% from 765px */
     margin: 0 auto;
 }
 
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 42px; /* Reduced by 15% from 50px */
+    gap: 32px; /* Reduced by 25% from 42px */
     align-items: center;
-    margin-top: 25px; /* Reduced by 25% for vertical spacing */
+    margin-top: 19px; /* Reduced by 25% more */
 }
 
 .about-image {
@@ -261,37 +279,37 @@
 
 .about-image-box {
     width: 100%;
-    height: 255px; /* Reduced by 25% for height */
+    height: 191px; /* Reduced by 25% from 255px */
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-    border-radius: 17px; /* Reduced by 15% from 20px */
+    border-radius: 13px; /* Reduced by 25% */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.4rem; /* Reduced by 15% from 4rem */
+    font-size: 2.55rem; /* Reduced by 25% from 3.4rem */
     color: var(--white);
 }
 
 .about-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 17px; /* Reduced by 15% from 20px */
-    margin-top: 25px; /* Reduced by 15% from 30px */
+    gap: 13px; /* Reduced by 25% from 17px */
+    margin-top: 19px; /* Reduced by 25% from 25px */
 }
 
 .stat-card {
-    padding: 17px; /* Reduced by 15% from 20px */
+    padding: 13px; /* Reduced by 25% from 17px */
     text-align: center;
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 1.88rem; /* Reduced by 25% from 2.5rem */
     font-weight: bold;
     color: var(--primary-green);
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .stat-label {
-    font-size: 1rem;
+    font-size: 0.75rem; /* Reduced by 25% from 1rem */
     color: var(--text-light);
 }
 
