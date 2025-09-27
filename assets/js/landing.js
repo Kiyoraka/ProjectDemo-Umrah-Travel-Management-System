@@ -30,8 +30,8 @@
         // Setup scroll animations
         setupScrollAnimations();
 
-        // Initialize first section
-        navigateToSection(0);
+        // Don't navigate here, let checkInitialHash handle it
+        // navigateToSection(0);
     }
 
     // Setup vertical navigation
@@ -408,13 +408,26 @@
     // Check for direct navigation via hash
     function checkInitialHash() {
         const hash = window.location.hash.replace('#', '');
-        const sectionIndex = sections.indexOf(hash);
 
-        if (sectionIndex !== -1) {
+        if (hash === '' || hash === null) {
+            // No hash, navigate to home section
             config.currentSection = -1; // Reset to allow navigation
             setTimeout(() => {
-                navigateToSection(sectionIndex);
+                navigateToSection(0);
             }, 100);
+        } else {
+            const sectionIndex = sections.indexOf(hash);
+            if (sectionIndex !== -1) {
+                config.currentSection = -1; // Reset to allow navigation
+                setTimeout(() => {
+                    navigateToSection(sectionIndex);
+                }, 100);
+            } else {
+                // Invalid hash, default to home
+                setTimeout(() => {
+                    navigateToSection(0);
+                }, 100);
+            }
         }
     }
 
