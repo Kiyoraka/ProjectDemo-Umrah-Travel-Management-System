@@ -88,7 +88,7 @@
 
     /* Mobile header adjustments */
     .simple-header {
-        top: 15px;
+        top: 18px; /* Dropped 20% from 15px */
         padding: 8px 20px;
         width: 90%;
         max-width: none;
@@ -145,29 +145,81 @@
         padding: 15px; /* Reduced padding for mobile */
     }
 
+    /* Features grid on mobile - horizontal icon/title layout */
+    .features-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .features-grid .feature-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        /* Remove all animations */
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .features-grid .feature-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+        color: #4CAF50;
+    }
+
+    .features-grid .feature-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+        flex: 1;
+    }
+
+    /* Hide descriptions in features grid */
+    .features-grid .feature-card p {
+        display: none;
+    }
+
     .hero-features {
         flex-direction: column;
-        gap: 10px; /* Reduced gap */
+        gap: 8px; /* Reduced gap */
         margin-top: 20px; /* Reduced margin */
     }
 
     .feature-card {
         padding: 12px; /* Reduced padding */
         width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        /* Remove all animations */
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
     }
 
     .feature-card h3 {
         font-size: 1.1rem; /* Smaller heading */
-        margin-bottom: 5px;
+        margin-bottom: 0;
+        flex: 1;
     }
 
+    /* Hide feature card descriptions on mobile */
     .feature-card p {
-        font-size: 0.85rem; /* Smaller text */
+        display: none;
     }
 
     .feature-icon {
-        font-size: 2rem; /* Smaller icon */
-        margin-bottom: 8px;
+        font-size: 1.8rem; /* Smaller icon */
+        margin-bottom: 0;
+        color: #4CAF50;
     }
 
     /* About section mobile */
@@ -283,7 +335,7 @@
     }
 
     .simple-header {
-        top: 10px;
+        top: 12px; /* Dropped 20% from 10px */
         padding: 5px 10px;
     }
 
@@ -310,6 +362,7 @@
 
     .feature-card {
         padding: 10px;
+        gap: 10px;
     }
 
     .feature-icon {
@@ -342,7 +395,7 @@
     }
 
     .simple-header {
-        top: 10px;
+        top: 12px; /* Dropped 20% from 10px */
         padding: 5px 15px;
     }
 
@@ -425,9 +478,24 @@
         -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Reduce animations on mobile for better performance */
+    /* Disable animations on mobile for better performance */
     * {
-        animation-duration: 0.3s !important;
-        transition-duration: 0.3s !important;
+        animation-duration: 0s !important;
+        transition-duration: 0s !important;
+    }
+
+    /* Specifically disable animations for feature cards and related elements */
+    .feature-card,
+    .feature-card *,
+    .features-grid,
+    .features-grid *,
+    .hero-features,
+    .hero-features *,
+    .animate-in,
+    .animate-fade-in {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
     }
 }
