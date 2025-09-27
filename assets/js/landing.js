@@ -37,12 +37,25 @@
     // Setup vertical navigation
     function setupVerticalNav() {
         const navItems = Utils.$$('.nav-item');
+        const mobileNavItems = Utils.$$('.mobile-nav-item');
         const loginBtn = Utils.$('.nav-login-btn');
 
         // Navigation dots click handlers
         navItems.forEach((item, index) => {
             Utils.addEvent(item, 'click', function() {
                 navigateToSection(index);
+            });
+        });
+
+        // Mobile navigation click handlers
+        mobileNavItems.forEach((item, index) => {
+            Utils.addEvent(item, 'click', function(e) {
+                e.preventDefault();
+                navigateToSection(index);
+
+                // Update active state
+                mobileNavItems.forEach(nav => Utils.removeClass(nav, 'active'));
+                Utils.addClass(item, 'active');
             });
         });
 
