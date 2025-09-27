@@ -2,13 +2,14 @@
 
 .simple-footer {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 25px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -25,16 +26,14 @@
 .simple-footer:hover {
     background: rgba(255, 255, 255, 1);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    transform: translateX(-50%) translateY(-2px);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .simple-footer {
-        bottom: 15px;
-        right: 15px;
-        left: 15px;
-        text-align: center;
+        bottom: 30px;
+        padding: 8px 20px;
         border-radius: 20px;
     }
 
