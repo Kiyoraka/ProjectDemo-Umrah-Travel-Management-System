@@ -81,7 +81,7 @@
         min-width: 100vw;
         width: 100vw;
         min-height: 100vh;
-        padding: 120px 20px 100px; /* Further increased top padding */
+        padding: 80px 20px 100px; /* Adjusted top padding */
         scroll-snap-align: start;
         position: relative;
     }
@@ -213,12 +213,65 @@
 
     /* About section mobile */
     .about-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        display: block;
     }
 
-    .about-image {
-        height: 250px;
+    .about-section .container {
+        padding: 0 20px;
+    }
+
+    .about-content {
+        text-align: center;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .about-section > p,
+    .about-content > p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        color: #666;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+
+    .about-text h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: #4CAF50;
+    }
+
+    .about-text p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        color: #555;
+    }
+
+    .about-text ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .about-text ul li {
+        font-size: 0.85rem;
+        padding: 5px 0;
+        color: #555;
+    }
+
+    /* Hide image box and stats on mobile */
+    .about-image,
+    .about-image-box,
+    .about-stats,
+    .stat-card {
+        display: none !important;
     }
 
     /* Packages section mobile */
