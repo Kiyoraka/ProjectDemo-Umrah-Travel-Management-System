@@ -282,30 +282,30 @@
     }
 
     .packages-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
+        font-size: 1.3rem; /* Reduced */
+        margin-bottom: 12px;
         text-align: center;
     }
 
     .packages-section > p {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Reduced */
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         color: #666;
     }
 
     .packages-grid {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px; /* Reduced by 20% from 15px */
         max-width: 350px;
         margin: 0 auto;
     }
 
     .package-card {
         background: white;
-        border-radius: 12px;
-        padding: 20px;
+        border-radius: 10px;
+        padding: 16px; /* Reduced by 20% from 20px */
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
     }
@@ -326,9 +326,9 @@
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        font-size: 1.2rem !important;
+        font-size: 0.96rem !important; /* Reduced by 20% from 1.2rem */
         color: #333 !important;
-        margin: 0 0 10px 0 !important;
+        margin: 0 0 8px 0 !important; /* Reduced spacing */
         font-weight: 600 !important;
     }
 
@@ -336,10 +336,10 @@
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        font-size: 1.4rem !important;
+        font-size: 1.12rem !important; /* Reduced by 20% from 1.4rem */
         color: #4CAF50 !important;
         font-weight: bold !important;
-        margin: 0 0 15px 0 !important;
+        margin: 0 0 12px 0 !important; /* Reduced spacing */
     }
 
     /* Hide package details on mobile */
@@ -353,14 +353,14 @@
         display: block !important;
         visibility: visible !important;
         width: 100%;
-        max-width: 180px;
-        padding: 10px 20px;
+        max-width: 144px; /* Reduced by 20% from 180px */
+        padding: 8px 16px; /* Reduced by 20% */
         margin: 0 auto;
         background: #4CAF50;
         color: white;
         border: none;
-        border-radius: 25px;
-        font-size: 0.9rem;
+        border-radius: 20px;
+        font-size: 0.72rem; /* Reduced by 20% from 0.9rem */
     }
 
     /* Hide features but show button container */
