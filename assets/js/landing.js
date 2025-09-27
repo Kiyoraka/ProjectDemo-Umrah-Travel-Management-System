@@ -146,10 +146,21 @@
         // Update current section
         config.currentSection = sectionIndex;
 
-        // Animate sections wrapper
-        const wrapper = Utils.$('.sections-wrapper');
-        if (wrapper) {
-            wrapper.style.transform = `translateX(-${sectionIndex * 100}vw)`;
+        // Check if mobile
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            // For mobile, use scroll instead of transform
+            const sections = Utils.$$('.page-section');
+            if (sections[sectionIndex]) {
+                sections[sectionIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            // For desktop, use transform animation
+            const wrapper = Utils.$('.sections-wrapper');
+            if (wrapper) {
+                wrapper.style.transform = `translateX(-${sectionIndex * 100}vw)`;
+            }
         }
 
         // Update navigation dots

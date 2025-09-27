@@ -64,26 +64,27 @@
 
     /* Adjust page container for mobile */
     .page-container {
-        height: 100vh;
+        height: auto;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: visible;
     }
 
     /* Stack sections vertically on mobile */
     .sections-wrapper {
-        flex-direction: column;
+        display: block;
         transform: none !important;
         height: auto;
     }
 
     /* Mobile sections */
     .page-section {
-        min-width: 100vw;
-        width: 100vw;
+        width: 100%;
         min-height: 100vh;
-        padding: 80px 20px 100px; /* Adjusted top padding */
-        scroll-snap-align: start;
+        padding: 80px 20px 100px;
+        box-sizing: border-box;
         position: relative;
+        display: block;
+        clear: both;
     }
 
     /* Mobile header adjustments */
@@ -362,9 +363,9 @@
         font-size: 16px; /* Prevents zoom on iOS */
     }
 
-    /* Mobile scroll snap */
-    .page-container {
-        scroll-snap-type: y mandatory;
+    /* Smooth scrolling for mobile */
+    html, body {
+        scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
     }
 }
