@@ -108,16 +108,9 @@
         text-align: center;
     }
 
-    /* Mobile footer adjustments */
+    /* Hide footer on mobile */
     .simple-footer {
-        bottom: 39px; /* Above mobile nav, reduced by another 30% from 56px */
-        padding: 6px 15px;
-        width: 90%;
-        max-width: none;
-    }
-
-    .simple-footer p {
-        font-size: 0.7rem;
+        display: none !important;
     }
 
     /* Home section mobile */
@@ -600,10 +593,6 @@
 
     .mobile-nav {
         padding-bottom: env(safe-area-inset-bottom);
-    }
-
-    .simple-footer {
-        bottom: calc(39px + env(safe-area-inset-bottom)); /* Reduced by another 30% */
     }
 }
 
