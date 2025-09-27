@@ -1,0 +1,313 @@
+<!-- Analysis Section -->
+<div class="section-header">
+    <h3>Analysis Dashboard</h3>
+</div>
+
+<div class="analysis-container">
+    <!-- Top Row - Pie Chart -->
+    <div class="chart-row">
+        <div class="chart-card full-width">
+            <h3><i class="fas fa-chart-pie"></i> Package Distribution</h3>
+            <div class="chart-wrapper pie-wrapper">
+                <canvas id="packagePieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Row - Two Column Charts -->
+    <div class="chart-row bottom-charts">
+        <div class="chart-card half-width">
+            <h3><i class="fas fa-chart-line"></i> Booking Growth (2024)</h3>
+            <div class="chart-wrapper">
+                <canvas id="bookingGrowthChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-card half-width">
+            <h3><i class="fas fa-chart-area"></i> Profit/Loss Analysis (2024)</h3>
+            <div class="chart-wrapper">
+                <canvas id="profitLossChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.analysis-container {
+    padding: 20px 0;
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chart-row {
+    display: flex;
+    gap: 20px;
+    height: 45%;
+}
+
+.chart-row.bottom-charts {
+    height: 50%;
+}
+
+.chart-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(76, 175, 80, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-card h3 {
+    margin: 0 0 15px 0;
+    color: #2e7d32;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    flex: 1;
+}
+
+.chart-wrapper {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.pie-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Fix axis labels color */
+.chart-card canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Wait for DOM to be ready
+setTimeout(() => {
+    // More distinguishable color palette
+    const colorPalette = {
+        economy: '#4CAF50',     // Bright green
+        premium: '#FF9800',     // Orange
+        vip: '#2196F3',         // Blue
+        primary: '#4CAF50',
+        secondary: '#66BB6A',
+        tertiary: '#81C784',
+        light: '#A5D6A7',
+        lighter: '#C8E6C9',
+        dark: '#388E3C',
+        darker: '#2E7D32'
+    };
+
+    // Package Pie Chart
+    const packageCtx = document.getElementById('packagePieChart');
+    if (packageCtx) {
+        const packageChart = new Chart(packageCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Economy Package', 'Premium Package', 'VIP Package'],
+                datasets: [{
+                    data: [45, 35, 20],
+                    backgroundColor: [
+                        colorPalette.economy,
+                        colorPalette.premium,
+                        colorPalette.vip
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14
+                            },
+                            color: '#333',
+                            generateLabels: function(chart) {
+                                const data = chart.data;
+                                if (data.labels.length && data.datasets.length) {
+                                    return data.labels.map((label, i) => {
+                                        const value = data.datasets[0].data[i];
+                                        return {
+                                            text: `${label}: ${value}%`,
+                                            fillStyle: data.datasets[0].backgroundColor[i],
+                                            strokeStyle: data.datasets[0].backgroundColor[i],
+                                            lineWidth: 0,
+                                            hidden: false,
+                                            index: i
+                                        };
+                                    });
+                                }
+                                return [];
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: true,
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        },
+                        formatter: (value) => value + '%'
+                    }
+                }
+            }
+        });
+    }
+
+    // Booking Growth Chart
+    const bookingCtx = document.getElementById('bookingGrowthChart');
+    if (bookingCtx) {
+        const bookingChart = new Chart(bookingCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Total Bookings',
+                    data: [120, 135, 128, 145, 160, 175, 190, 210, 185, 195, 220, 240],
+                    borderColor: colorPalette.primary,
+                    backgroundColor: `${colorPalette.primary}20`,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#333'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        },
+                        ticks: {
+                            color: '#666'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        },
+                        ticks: {
+                            color: '#fff',  // White month labels
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Profit/Loss Chart
+    const profitCtx = document.getElementById('profitLossChart');
+    if (profitCtx) {
+        const profitChart = new Chart(profitCtx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [45000, 52000, 48000, 58000, 62000, 68000, 75000, 82000, 72000, 78000, 88000, 95000],
+                    backgroundColor: colorPalette.primary,
+                    borderColor: colorPalette.dark,
+                    borderWidth: 1
+                }, {
+                    label: 'Expenses',
+                    data: [38000, 41000, 39000, 42000, 45000, 48000, 52000, 55000, 51000, 53000, 58000, 62000],
+                    backgroundColor: colorPalette.lighter,
+                    borderColor: colorPalette.secondary,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#333'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': $';
+                                }
+                                label += context.parsed.y.toLocaleString();
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            },
+                            color: '#666'
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        },
+                        ticks: {
+                            color: '#fff',  // White month labels
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+}, 100);
+</script>

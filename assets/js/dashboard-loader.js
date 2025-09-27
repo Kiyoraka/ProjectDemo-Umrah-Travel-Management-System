@@ -8,6 +8,7 @@
         currentSection: 'main',
         sectionPaths: {
             main: 'sections/main-dashboard.html',
+            analysis: 'sections/analysis.html',
             content: 'sections/content-management.html',
             packages: 'sections/package-management.html',
             bookings: 'sections/booking-management.html',
@@ -135,6 +136,9 @@
             case 'main':
                 initializeMainDashboard();
                 break;
+            case 'analysis':
+                initializeAnalysis();
+                break;
             case 'content':
                 initializeContentManagement();
                 break;
@@ -154,6 +158,12 @@
                 initializeSettings();
                 break;
         }
+    }
+
+    // Analysis Dashboard initialization
+    function initializeAnalysis() {
+        console.log('Analysis Dashboard initialized');
+        // Chart initialization is handled in the analysis.html script
     }
 
     // Main Dashboard initialization
