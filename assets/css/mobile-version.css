@@ -96,20 +96,9 @@
         background: rgba(255, 255, 255, 1); /* Solid white on mobile */
     }
 
-    /* Header spacer for mobile - visible only on mobile */
+    /* Header spacer for mobile - disabled */
     .header-spacer {
-        display: block !important; /* Override desktop hidden */
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 70px; /* Mobile header area coverage */
-        background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 0.95) 60%,
-            transparent 100%); /* Fade out gradient */
-        pointer-events: none;
-        z-index: 999;
+        display: none !important; /* Remove the white gradient behind header */
     }
 
     .simple-header h1 {
