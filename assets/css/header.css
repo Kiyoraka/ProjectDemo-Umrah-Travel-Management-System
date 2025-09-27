@@ -9,8 +9,8 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 15px 50px;
-    border-radius: 35px;
+    padding: 12px 40px;
+    border-radius: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
@@ -18,10 +18,10 @@
 .simple-header h1 {
     margin: 0;
     color: #2E7D32;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 600;
     white-space: nowrap;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .simple-header:hover {
@@ -33,39 +33,39 @@
 /* Responsive adjustments */
 @media (max-width: 992px) {
     .simple-header h1 {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
 
     .simple-header {
-        padding: 12px 40px;
+        padding: 10px 35px;
     }
 }
 
 @media (max-width: 768px) {
     .simple-header {
         top: 30px;
-        padding: 10px 30px;
+        padding: 8px 25px;
         border-radius: 25px;
     }
 
     .simple-header h1 {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 }
 
 @media (max-width: 576px) {
     .simple-header h1 {
-        font-size: 1.2rem;
-        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+        letter-spacing: 0.3px;
     }
 
     .simple-header {
-        padding: 8px 20px;
+        padding: 6px 15px;
     }
 }
 
 @media (max-width: 480px) {
     .simple-header h1 {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
