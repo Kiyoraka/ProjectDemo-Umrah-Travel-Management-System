@@ -233,10 +233,10 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 17px; /* 15% smaller */
-    box-shadow: 0 8px 34px rgba(0, 0, 0, 0.1);
-    padding: 1.7rem; /* 15% smaller */
-    max-width: 85%; /* Reduce width by 15% */
+    border-radius: 14px; /* 30% smaller total */
+    box-shadow: 0 7px 28px rgba(0, 0, 0, 0.1);
+    padding: 1.4rem; /* 30% smaller total */
+    max-width: 70%; /* Reduce width by 30% total */
     margin: 0 auto;
 }
 
