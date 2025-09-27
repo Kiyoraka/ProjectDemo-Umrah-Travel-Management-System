@@ -100,7 +100,7 @@
 
     /* Mobile footer adjustments */
     .simple-footer {
-        bottom: 56px; /* Above mobile nav, reduced by 20% from 70px */
+        bottom: 39px; /* Above mobile nav, reduced by another 30% from 56px */
         padding: 6px 15px;
         width: 90%;
         max-width: none;
@@ -311,7 +311,7 @@
     }
 
     .simple-footer {
-        bottom: calc(56px + env(safe-area-inset-bottom)); /* Reduced by 20% */
+        bottom: calc(39px + env(safe-area-inset-bottom)); /* Reduced by another 30% */
     }
 }
 
