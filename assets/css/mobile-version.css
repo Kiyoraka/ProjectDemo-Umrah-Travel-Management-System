@@ -81,7 +81,7 @@
         min-width: 100vw;
         width: 100vw;
         min-height: 100vh;
-        padding: 80px 20px 100px;
+        padding: 100px 20px 100px; /* Increased top padding to avoid header overlap */
         scroll-snap-align: start;
     }
 
@@ -112,25 +112,43 @@
 
     /* Home section mobile */
     .home-content h1 {
-        font-size: 2rem;
+        font-size: 1.5rem; /* Reduced from 2rem */
         line-height: 1.2;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .home-content p {
-        font-size: 1rem;
-        margin-bottom: 20px;
+        font-size: 0.9rem; /* Reduced from 1rem */
+        margin-bottom: 15px;
+    }
+
+    .home-content .glass-card {
+        padding: 15px; /* Reduced padding for mobile */
     }
 
     .hero-features {
         flex-direction: column;
-        gap: 15px;
-        margin-top: 30px;
+        gap: 10px; /* Reduced gap */
+        margin-top: 20px; /* Reduced margin */
     }
 
     .feature-card {
-        padding: 15px;
+        padding: 12px; /* Reduced padding */
         width: 100%;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem; /* Smaller heading */
+        margin-bottom: 5px;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem; /* Smaller text */
+    }
+
+    .feature-icon {
+        font-size: 2rem; /* Smaller icon */
+        margin-bottom: 8px;
     }
 
     /* About section mobile */
@@ -190,12 +208,18 @@
 
     /* Mobile buttons */
     .btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
+        padding: 10px 20px;
+        font-size: 0.85rem;
     }
 
     .btn-primary {
         width: 100%;
+        max-width: 280px; /* Limit button width on mobile */
+        margin: 0 auto; /* Center the button */
+    }
+
+    .home-content .btn {
+        margin-top: 10px;
     }
 
     /* Mobile modal */
@@ -235,8 +259,17 @@
 /* Small Mobile: 480px and below */
 @media (max-width: 480px) {
 
+    .page-section {
+        padding: 90px 15px 80px; /* Adjusted padding for small screens */
+    }
+
+    .simple-header {
+        top: 10px;
+        padding: 5px 10px;
+    }
+
     .simple-header h1 {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         letter-spacing: 0;
     }
 
@@ -245,11 +278,23 @@
     }
 
     .home-content h1 {
-        font-size: 1.75rem;
+        font-size: 1.3rem;
     }
 
     .home-content p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .home-content .glass-card {
+        padding: 12px;
+    }
+
+    .feature-card {
+        padding: 10px;
+    }
+
+    .feature-icon {
+        font-size: 1.5rem;
     }
 
     .package-card {
