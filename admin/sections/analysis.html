@@ -83,8 +83,12 @@
 }
 
 .pie-wrapper {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Fix axis labels color */
@@ -97,11 +101,11 @@
 <script>
 // Wait for DOM to be ready
 setTimeout(() => {
-    // More distinguishable color palette
+    // Green theme with distinguishable shades
     const colorPalette = {
-        economy: '#4CAF50',     // Bright green
-        premium: '#FF9800',     // Orange
-        vip: '#2196F3',         // Blue
+        economy: '#2E7D32',     // Dark green
+        premium: '#4CAF50',     // Medium green
+        vip: '#81C784',         // Light green
         primary: '#4CAF50',
         secondary: '#66BB6A',
         tertiary: '#81C784',
@@ -132,22 +136,33 @@ setTimeout(() => {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 150,
+                        top: 10,
+                        bottom: 10
+                    }
+                },
                 plugins: {
                     legend: {
                         position: 'right',
                         labels: {
-                            padding: 20,
+                            padding: 15,
                             font: {
-                                size: 14
+                                size: 14,
+                                weight: 'bold'
                             },
-                            color: '#333',
+                            color: '#2E7D32',
                             generateLabels: function(chart) {
                                 const data = chart.data;
                                 if (data.labels.length && data.datasets.length) {
                                     return data.labels.map((label, i) => {
                                         const value = data.datasets[0].data[i];
+                                        // Shorten the label text
+                                        const shortLabel = label.replace(' Package', '');
                                         return {
-                                            text: `${label}: ${value}%`,
+                                            text: `${shortLabel}: ${value}%`,
                                             fillStyle: data.datasets[0].backgroundColor[i],
                                             strokeStyle: data.datasets[0].backgroundColor[i],
                                             lineWidth: 0,
@@ -168,16 +183,19 @@ setTimeout(() => {
                         }
                     },
                     datalabels: {
-                        display: true,
                         color: '#fff',
                         font: {
                             weight: 'bold',
-                            size: 16
+                            size: 18
                         },
-                        formatter: (value) => value + '%'
+                        formatter: (value) => value + '%',
+                        anchor: 'center',
+                        align: 'center',
+                        offset: 0
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels]
         });
     }
 
